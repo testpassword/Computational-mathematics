@@ -1,7 +1,7 @@
 class MatrixSolver {
     companion object {
 
-        fun solveByGaussSeidel(matrix: ArrayList<ArrayList<Double>>): Boolean {
+        fun solveByGaussSeidel(matrix: Matrix): Boolean {
             return true
         }
 
