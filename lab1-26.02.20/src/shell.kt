@@ -1,6 +1,9 @@
 import java.io.*
 import java.lang.IllegalArgumentException
 
+/**
+ * @author
+ */
 fun main(args: Array<String>) {
     try {
         val supporter = MatrixBuilder()
@@ -20,11 +23,12 @@ fun main(args: Array<String>) {
             "-h" -> throw Exception()
             else -> throw IllegalArgumentException()
         }
+        println("Структура данных матрицы создана.")
         MatrixSolver.solveByGaussSeidel(matrix)
     } catch (e: ArrayIndexOutOfBoundsException) {
         System.err.println("Ключ запуска программы отсутствует. Используйте ключ -h для просмотра справки.")
     } catch (e: NumberFormatException) {
-        System.err.println("Параметры ключа -r заданы неккоректно - это должно быть целое число.")
+        System.err.println("Точность [0.000001 ; 1], размер матрицы [1 ; 20].")
     } catch (e: IllegalArgumentException) {
         System.err.println("Ключ задан неправильно.")
     } catch (e: FileNotFoundException) {
