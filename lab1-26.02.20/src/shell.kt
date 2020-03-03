@@ -18,7 +18,7 @@ fun main(args: Array<String>) {
                 supporter.read(File(args[1]).bufferedReader())
             }
             "-k" -> {
-                println("Введите расширенную матрицу системы:")
+                println("Введите размер матрицы, а саму расширенную матрицу системы:")
                 supporter.read(keyboardReader)
             }
             "-r" -> {
@@ -27,35 +27,29 @@ fun main(args: Array<String>) {
             }
             "-h" -> {
                 println(("""*** Режимы работы программы: ****
-                    ~   [-f path] для чтения матрицы из файла,
-                    ~   [-k] для ввода матрицы с клавиатуры,
-                    ~   [-r size] для генерирования случайной матрицы размерности size * size.
-                    ~  *** Формат матрицы: ***
-                    ~   размерность
-                    ~   a[i] a[i+1] a[n] b[i]
-                    ~  *** Пример: ***
-                    ~   3
-                    ~   10 2 8 5
-                    ~   2 3 1 24.42
-                    ~   1 13 14 46""".trimMargin("~")))
+                        ~   [-f path] для чтения матрицы из файла,
+                        ~   [-k] для ввода матрицы с клавиатуры,
+                        ~   [-r size] для генерирования случайной матрицы размерности size * size.
+                        ~*** Формат матрицы: ***
+                        ~   размерность
+                        ~   a[i] a[i+1] a[n] b[i]
+                        ~*** Пример: ***
+                        ~   3
+                        ~   10 2 8 5
+                        ~   2 3 1 24.42
+                        ~   1 13 14 46""".trimMargin("~")))
                 exitProcess(0)
             }
-            else -> throw IllegalArgumentException()
+            else -> throw IllegalArgumentException("Ключ задан неправильно.")
         }
-        println("Структура данных матрицы создана.")
-        val unknownVector = keyboardReader.use {
-            println("Введите погрешность ε [0.000001 ; 1]")
-            val infelicity = it.readLine().trim().toDouble()
-            if (infelicity > 1) throw NumberFormatException()
-            MatrixSolver.solveByGaussSeidel(linSys, infelicity)
-        }
-        println("Вектор неизвестных найден $unknownVector .")
+        println("Структура данных матрицы создана.\nВведите погрешность ε [0.000001 ; 1]")
+        val infelicity = keyboardReader.use { it.readLine().trim().toDouble() }
+        if (infelicity > 1) throw NumberFormatException()
+        val unknownVector = MatrixSolver.solveByGaussSeidel(linSys, infelicity)
     } catch (e: ArrayIndexOutOfBoundsException) {
         System.err.println("Ключ запуска программы отсутствует. Используйте ключ -h для просмотра справки.")
     }  catch (e: NumberFormatException) {
         System.err.println("Точность [0.000001 ; 1], размер матрицы [1 ; 20].")
-    } catch (e: IllegalArgumentException) {
-        System.err.println("Ключ задан неправильно.")
     } catch (e: Exception) {
         System.err.println(e.localizedMessage)
     }

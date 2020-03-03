@@ -12,30 +12,43 @@ class MatrixSolver {
          * @param linSys СЛАУ.
          * @param infelicity точность вычислений.
          */
-        fun solveByGaussSeidel(linSys: LinearSystem, infelicity: Double): MutableList<Double> {
+        fun solveByGaussSeidel(linSys: LinearSystem, infelicity: Double): DoubleArray {
             toDiagonalPrevalence(linSys)
             //TODO: дальнейшая обработка матрицы
-            return mutableListOf<Double>()
+            return DoubleArray(0, { 0.0 })
         }
 
         private fun toDiagonalPrevalence(linSys: LinearSystem) {
+            val coeffs = linSys.equations
+            val r = coeffs.indices
 
-            fun isDiagonalPrevalence(linSys: LinearSystem): Boolean {
-                val coefficients = linSys.equations
+            fun isDiagonalPrevalence(): Boolean {
                 var condition1 = 0 //все эл. главной диагонали должно быть >= сумме модулей коэф. остальных ур-я
                 var condition2 = false //хотя бы 1 из элементов должен быть > сумме модулей коэф. своего ур-я
-                for (i in coefficients.indices) {
-                    var diagEl = abs(coefficients[i][i])
-                    var sum = coefficients[i].sumByDouble { abs(it) } - diagEl
-                    if (diagEl >= sum) condition1++
-                    if (diagEl > sum) condition2 = true
+                for (i in r) {
+                    var diagEl = abs(coeffs[i][i])
+                    var seriesSum = coeffs[i].sumByDouble { abs(it) } - diagEl
+                    if (diagEl >= seriesSum) condition1++
+                    if (diagEl > seriesSum) condition2 = true
                 }
-                return (condition1 == coefficients.size) && condition2
+                return (condition1 == coeffs.size) && condition2
             }
 
-            if (isDiagonalPrevalence(linSys)) {
-                //TODO: привести к диагональному преобладанию
-            } else throw Exception("Невозможно достичь  ̶д̶з̶е̶н̶ диагональное преобладание.")
+            if (!isDiagonalPrevalence()) {
+                val maxValuesIndices = mutableListOf<Int>()
+                coeffs.forEach { maxValuesIndices.add(it.indexOf(it.maxBy { number -> abs(number) }!!)) }
+                for (i in r)
+                    for (j in r)
+                        if (i != j)
+                            if (maxValuesIndices[i] == maxValuesIndices[j]) throw Exception("Невозможно достичь  ̶д̶з̶е̶н̶ диагональное преобладание.")
+                coeffs.sortBy { it.indexOf(it.maxBy { number -> abs(number) }!!) }
+                val b = DoubleArray(linSys.size, { 0.0 })
+                for (i in r) {
+                    var strN = maxValuesIndices[i]
+                    b[strN] = linSys.resVector[i]
+                }
+                linSys.resVector = b
+            }
         }
     }
 }

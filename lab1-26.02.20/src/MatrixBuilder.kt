@@ -1,4 +1,5 @@
 import java.io.BufferedReader
+import java.lang.Exception
 import java.lang.IllegalArgumentException
 
 /**
@@ -9,9 +10,9 @@ import java.lang.IllegalArgumentException
  * @throws IllegalArgumentException если количество уравнений системы не совпадает с количеством ответов к ней.
  * @author Артемий Кульбако.
  */
-data class LinearSystem(var equations: MutableList<MutableList<Double>>, var resVector: MutableList<Double>,
-                         var size: Int = if (equations.size == resVector.size) resVector.size
-                         else throw IllegalArgumentException("Количество уравнений системы не совпадает с количеством ответов к ней."))
+data class LinearSystem constructor (var equations: Array<DoubleArray>, var resVector: DoubleArray,
+                        var size: Int = if (equations.size == resVector.size) resVector.size
+                        else throw IllegalArgumentException("Количество уравнений системы не совпадает с количеством ответов к ней."))
 
 /**
  * Создаёт структуру данных для СЛАУ.
@@ -33,11 +34,12 @@ class LinearSystemBuilder {
      */
     fun read(reader: BufferedReader): LinearSystem {
         val numbers = mutableListOf<MutableList<Double>>()
-        reader.use {
-            val size = it.readLine().trim().toInt()
-            if (size !in allowedSize) throw NumberFormatException()
-            for (i in 1..size)
-numbers.add(it.readLine().trim().split(" ").map { number -> number.toDouble() }.toMutableList())
+        val size = reader.readLine().trim().toInt()
+        if (size !in allowedSize) throw NumberFormatException()
+        for (i in 1..size) {
+            var equation = reader.readLine().trim().split(" ")
+            if (equation.size == size + 1) numbers.add(equation.map { number -> number.toDouble() }.toMutableList())
+            else throw Exception("Для уравнения №$i не задано решение или пропущен один из аргументов.")
         }
         val resV = mutableListOf<Double>()
         numbers.forEach {
@@ -45,7 +47,7 @@ numbers.add(it.readLine().trim().split(" ").map { number -> number.toDouble() }.
             resV.add(equationRes)
             it.remove(equationRes)
         }
-        return LinearSystem(numbers, resV)
+        return LinearSystem(numbers.map { it.toDoubleArray() }.toTypedArray(), resV.toDoubleArray())
     }
 
     /**
@@ -56,14 +58,8 @@ numbers.add(it.readLine().trim().split(" ").map { number -> number.toDouble() }.
      */
     fun generateRandom(size: Int): LinearSystem {
         if (size !in allowedSize) throw NumberFormatException()
-        val numbers = mutableListOf<MutableList<Double>>()
-        val resV = mutableListOf<Double>()
-        for (i in 1..size) {
-            var newEquation = mutableListOf<Double>()
-            for (j in 1..size) newEquation.add(allowedRandomRange.random().toDouble())
-            numbers.add(newEquation)
-            resV.add(allowedRandomRange.random().toDouble())
-        }
+        val numbers = Array(size, { DoubleArray(size, {allowedRandomRange.random().toDouble()}) })
+        val resV = DoubleArray(size, { allowedRandomRange.random().toDouble() })
         return LinearSystem(numbers, resV)
     }
 }
