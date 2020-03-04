@@ -42,7 +42,9 @@ fun main(args: Array<String>) {
             }
             else -> throw IllegalArgumentException("Ключ задан неправильно.")
         }
-        println("Структура данных матрицы создана.\nВведите погрешность ε [0.000001 ; 1]")
+        println("Структура данных матрицы создана.")
+        println(linSys.toString())
+        println("Введите погрешность ε [0.000001 ; 1]")
         val infelicity = keyboardReader.use { it.readLine().trim().toDouble() }
         if (infelicity > 1) throw NumberFormatException()
         val unknownVector = MatrixSolver.solveByGaussSeidel(linSys, infelicity)

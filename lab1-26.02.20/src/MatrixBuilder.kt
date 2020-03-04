@@ -1,18 +1,5 @@
 import java.io.BufferedReader
 import java.lang.Exception
-import java.lang.IllegalArgumentException
-
-/**
- * Структура данных для системы линейных алгебраических уравнений.
- * @property equations коэффиценты при уравнениях в системе.
- * @property resVector результирующий вектор системы.
- * @property size размерность матрицы.
- * @throws IllegalArgumentException если количество уравнений системы не совпадает с количеством ответов к ней.
- * @author Артемий Кульбако.
- */
-data class LinearSystem constructor (var equations: Array<DoubleArray>, var resVector: DoubleArray,
-                        var size: Int = if (equations.size == resVector.size) resVector.size
-                        else throw IllegalArgumentException("Количество уравнений системы не совпадает с количеством ответов к ней."))
 
 /**
  * Создаёт структуру данных для СЛАУ.
@@ -43,7 +30,7 @@ class LinearSystemBuilder {
         }
         val resV = mutableListOf<Double>()
         numbers.forEach {
-            val equationRes = it.last()
+            var equationRes = it.last()
             resV.add(equationRes)
             it.remove(equationRes)
         }
@@ -58,7 +45,7 @@ class LinearSystemBuilder {
      */
     fun generateRandom(size: Int): LinearSystem {
         if (size !in allowedSize) throw NumberFormatException()
-        val numbers = Array(size, { DoubleArray(size, {allowedRandomRange.random().toDouble()}) })
+        val numbers = Array(size) { DoubleArray(size) {allowedRandomRange.random().toDouble()} }
         val resV = DoubleArray(size, { allowedRandomRange.random().toDouble() })
         return LinearSystem(numbers, resV)
     }
