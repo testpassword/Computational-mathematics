@@ -1,7 +1,5 @@
 import java.io.*
 import java.lang.IllegalArgumentException
-import kotlin.math.abs
-import kotlin.system.exitProcess
 
 /**
  * Осуществляет взаимодействие с пользователем.
@@ -38,16 +36,14 @@ fun main(args: Array<String>) {
                         ~   10 2 8 5
                         ~   2 3 1 24.42
                         ~   1 13 14 46""".trimMargin("~")))
-                exitProcess(0)
+                kotlin.system.exitProcess(0)
             }
             else -> throw IllegalArgumentException("Ключ задан неправильно.")
         }
-        println("Структура данных матрицы создана.")
-        println(linSys.toString())
-        println("Введите погрешность ε [0.000001 ; 1]")
+        println("Структура данных матрицы создана.\n${linSys}Введите погрешность ε [0.000001 ; 1]")
         val infelicity = keyboardReader.use { it.readLine().trim().toDouble() }
         if (infelicity > 1) throw NumberFormatException()
-        val unknownVector = MatrixSolver.solveByGaussSeidel(linSys, infelicity)
+        val unknownVector = MatrixSolver.solveByGaussSeidel(linSys, infelicity, false)
     } catch (e: ArrayIndexOutOfBoundsException) {
         System.err.println("Ключ запуска программы отсутствует. Используйте ключ -h для просмотра справки.")
     }  catch (e: NumberFormatException) {

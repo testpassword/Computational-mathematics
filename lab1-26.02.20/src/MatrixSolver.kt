@@ -9,16 +9,21 @@ class MatrixSolver {
     companion object {
         /**
          * Решает СЛАУ методом Гаусса-Зейдаля.
-         * @param linSys СЛАУ.
+         * @param linearSystem СЛАУ.
          * @param infelicity точность вычислений.
+         * @param modify true - если разрешено изменять матрицу, false - если запрещено (работа с клоном).
          */
-        fun solveByGaussSeidel(linSys: LinearSystem, infelicity: Double): DoubleArray {
+        fun solveByGaussSeidel(linearSystem: LinearSystem, infelicity: Double, modify: Boolean): DoubleArray {
+            val linSys = if (modify) clone(linearSystem) else linearSystem
             linSys.let {
                 if (!toDiagonalPrevalence(it)) throw Exception("Невозможно достичь  ̶д̶з̶е̶н̶ диагональное преобладание.")
-                solve(it)
+                resolve(it)
+                iterate(it)
             }
             return DoubleArray(0, { 0.0 })
         }
+
+        private fun clone(linearSystem: LinearSystem) = LinearSystem(linearSystem.equations.map { it.clone() }.toTypedArray(), linearSystem.resVector.clone())
 
         private fun toDiagonalPrevalence(linSys: LinearSystem): Boolean {
 
@@ -34,35 +39,49 @@ class MatrixSolver {
                 return (condition1 == matrix.size) && condition2
             }
 
-            val coeffs = linSys.equations
-            val r = coeffs.indices
-            if (!isDiagonalPrevalence(coeffs)) {
-                val maxValuesIndices = mutableListOf<Int>()
-                coeffs.forEach { maxValuesIndices.add(it.indexOf(it.maxBy { number -> abs(number) }!!)) }
+            val As = linSys.equations
+            val r = As.indices
+            if (!isDiagonalPrevalence(As)) {
+                val maxValuesIndices = As.map { it.indexOf(it.maxBy { number -> abs(number) }!!) }
                 for (i in r)
                     for (j in r)
                         if (i != j)
                             if (maxValuesIndices[i] == maxValuesIndices[j]) return false
-                coeffs.sortBy { it.indexOf(it.maxBy { number -> abs(number) }!!) }
-                val b = DoubleArray(linSys.resVector.size, { 0.0 })
-                b.forEachIndexed { i, _ -> b[maxValuesIndices[i]] = linSys.resVector[i] }
-                linSys.resVector = b
+                As.sortBy { it.indexOf(it.maxBy { number -> abs(number) }!!) }
+                val Bs = linSys.resVector.clone()
+                linSys.resVector.forEachIndexed { i, _ -> linSys.resVector[maxValuesIndices[i]] = Bs[i] }
             }
             return true
         }
+        
+        private fun resolve(linearSystem: LinearSystem) {
+            val As = linearSystem.equations
+            val size = As.size
+            val approximations = DoubleArray(size, { 0.0 }) //x(0)
+            linearSystem.resVector.zip(linearSystem.getDiagonalElements(), { a, b -> b / a }).toDoubleArray() //newB
+            val tmpCoeffs = Array(size, { DoubleArray(size, { 0.0 }) }) //newA
+            for (i in tmpCoeffs.indices)
+                for (j in tmpCoeffs.indices)
+                    tmpCoeffs[i][j] = if (i == j) 0.0 else (-1) * As[i][j] / As[i][i]
+        }
 
-        private fun solve(linSys: LinearSystem) {
-            val oldCoeffs = linSys.equations
-            val size = oldCoeffs.size
-            val approximation = DoubleArray(size, { 0.0 })
-            val terms = linSys.resVector.zip(linSys.getDiagonalElements(), { a, b -> b / a })
-            val tmpCoeffs = Array(size, { DoubleArray(size, { 0.0 }) })
-            for (i in tmpCoeffs.indices) {
-                for (j in tmpCoeffs.indices) {
-                if (i == j) tmpCoeffs[i][j] = 0.0 else tmpCoeffs[i][j] = (-1) * oldCoeffs[i][j] / oldCoeffs[i][i]
+        fun iterate(linearSystem: LinearSystem) {
+            /*
+            var iterCounter = 0
+            do {
+                var oldApproximations = approximations.clone()
+                for (i in approximations.indices) {
+                    var sum = getSum(i, approximations)
+                    approximations[i] = newResVector[i] + sum
                 }
-            }
-            //TODO: остальное
+
+                /*
+                скопировать новые коэфф в старые коэфф
+                посчитать новые коэфф
+                 */
+            } while ()
+
+             */
         }
     }
 
