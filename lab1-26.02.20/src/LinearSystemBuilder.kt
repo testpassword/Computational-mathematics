@@ -20,21 +20,17 @@ class LinearSystemBuilder {
      * @throws NumberFormatException если не удаётся распарсить данные; если размер матрицы не принаджлежит промежутку allowedSize.
      */
     fun read(reader: BufferedReader): LinearSystem {
-        val numbers = mutableListOf<MutableList<Double>>()
+        val rawNumbers = mutableListOf<MutableList<Double>>()
         val size = reader.readLine().trim().toInt()
         if (size !in allowedSize) throw NumberFormatException()
         for (i in 1..size) {
-            var equation = reader.readLine().trim().split(" ")
-            if (equation.size == size + 1) numbers.add(equation.map { number -> number.toDouble() }.toMutableList())
+            val equation = reader.readLine().trim().split(" ")
+            if (equation.size == size + 1) rawNumbers.add(equation.map { number -> number.toDouble() }.toMutableList())
             else throw Exception("Для уравнения №$i не задано решение или пропущен один из аргументов.")
         }
-        val resV = mutableListOf<Double>()
-        numbers.forEach {
-            var equationRes = it.last()
-            resV.add(equationRes)
-            it.remove(equationRes)
-        }
-        return LinearSystem(numbers.map { it.toDoubleArray() }.toTypedArray(), resV.toDoubleArray())
+        val v = rawNumbers.map { it.last() }.toDoubleArray()
+        rawNumbers.map { it.removeLast() }
+        return LinearSystem(rawNumbers.map { it.toDoubleArray() }.toTypedArray(), v)
     }
 
     /**
@@ -45,8 +41,8 @@ class LinearSystemBuilder {
      */
     fun generateRandom(size: Int): LinearSystem {
         if (size !in allowedSize) throw NumberFormatException()
-        val numbers = Array(size) { DoubleArray(size) {allowedRandomRange.random().toDouble()} }
-        val resV = DoubleArray(size, { allowedRandomRange.random().toDouble() })
-        return LinearSystem(numbers, resV)
+        return LinearSystem(Array(size, { DoubleArray(size) {allowedRandomRange.random().toDouble()} }),
+            DoubleArray(size, { allowedRandomRange.random().toDouble() })
+        )
     }
 }

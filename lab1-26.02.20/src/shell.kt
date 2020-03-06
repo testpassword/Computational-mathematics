@@ -9,7 +9,7 @@ import java.lang.IllegalArgumentException
 fun main(args: Array<String>) {
     try {
         val supporter = LinearSystemBuilder()
-        val keyboardReader = BufferedReader(InputStreamReader(System.`in`))
+        val keyReader = BufferedReader(InputStreamReader(System.`in`))
         val linSys = when (args[0]) {
             "-f" -> {
                 println("Чтение из файла ${args[1]}...")
@@ -17,7 +17,7 @@ fun main(args: Array<String>) {
             }
             "-k" -> {
                 println("Введите размер матрицы, а саму расширенную матрицу системы:")
-                supporter.read(keyboardReader)
+                supporter.read(keyReader)
             }
             "-r" -> {
                 println("Генерирование матрицы размерностью ${args[1]}...")
@@ -40,10 +40,13 @@ fun main(args: Array<String>) {
             }
             else -> throw IllegalArgumentException("Ключ задан неправильно.")
         }
-        println("Структура данных матрицы создана.\n${linSys}Введите погрешность ε [0.000001 ; 1]")
-        val infelicity = keyboardReader.use { it.readLine().trim().toDouble() }
-        if (infelicity > 1) throw NumberFormatException()
-        val unknownVector = MatrixSolver.solveByGaussSeidel(linSys, infelicity, false)
+        println("""Структура данных матрицы создана.
+                ~$linSys
+                ~Введите погрешность ε [0.000001 ; 1]""".trimMargin("~"))
+        val infelicity = keyReader.use { it.readLine().trim().toDouble() }.let { if (it > 1) throw NumberFormatException() else it}
+        val answer = MatrixSolver.solveByGaussSeidel(linSys, infelicity, true)
+        println("""Вектор неизвестных = ${answer.first.contentToString()}
+                ~Количество итераций = ${answer.second}""".trimMargin("~"))
     } catch (e: ArrayIndexOutOfBoundsException) {
         System.err.println("Ключ запуска программы отсутствует. Используйте ключ -h для просмотра справки.")
     }  catch (e: NumberFormatException) {

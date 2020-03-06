@@ -13,17 +13,17 @@ class MatrixSolver {
          * @param infelicity точность вычислений.
          * @param modify true - если разрешено изменять матрицу, false - если запрещено (работа с клоном).
          */
-        fun solveByGaussSeidel(linearSystem: LinearSystem, infelicity: Double, modify: Boolean): DoubleArray {
+        fun solveByGaussSeidel(linearSystem: LinearSystem, infelicity: Double, modify: Boolean): Pair<DoubleArray, Int> {
             val linSys = if (modify) clone(linearSystem) else linearSystem
             linSys.let {
                 if (!toDiagonalPrevalence(it)) throw Exception("Невозможно достичь  ̶д̶з̶е̶н̶ диагональное преобладание.")
-                resolve(it)
-                iterate(it)
+                transform(it)
+                return iterate(it, infelicity)
             }
-            return DoubleArray(0, { 0.0 })
         }
 
-        private fun clone(linearSystem: LinearSystem) = LinearSystem(linearSystem.equations.map { it.clone() }.toTypedArray(), linearSystem.resVector.clone())
+        private fun clone(linSys: LinearSystem) =
+            LinearSystem(linSys.equations.map { it.clone() }.toTypedArray(), linSys.resVector.clone())
 
         private fun toDiagonalPrevalence(linSys: LinearSystem): Boolean {
 
@@ -53,35 +53,34 @@ class MatrixSolver {
             }
             return true
         }
-        
-        private fun resolve(linearSystem: LinearSystem) {
-            val As = linearSystem.equations
-            val size = As.size
-            val approximations = DoubleArray(size, { 0.0 }) //x(0)
-            linearSystem.resVector.zip(linearSystem.getDiagonalElements(), { a, b -> b / a }).toDoubleArray() //newB
-            val tmpCoeffs = Array(size, { DoubleArray(size, { 0.0 }) }) //newA
-            for (i in tmpCoeffs.indices)
-                for (j in tmpCoeffs.indices)
-                    tmpCoeffs[i][j] = if (i == j) 0.0 else (-1) * As[i][j] / As[i][i]
+
+        private fun transform(linSys: LinearSystem) {
+            linSys.resVector = linSys.resVector.zip(linSys.getDiagonalElements(), { a, b -> a / b }).toDoubleArray()
+            linSys.equations = linSys.equations.mapIndexed { i, doubles ->
+                doubles.mapIndexed { j, d ->
+                    if (i == j) 0.0 else (-1) * d / doubles[i]
+                }.toDoubleArray()
+            }.toTypedArray()
         }
 
-        fun iterate(linearSystem: LinearSystem) {
-            /*
+        private fun iterate(linSys: LinearSystem, infelicity: Double): Pair<DoubleArray, Int> {
+
+            fun isAccuracyReached(newX: DoubleArray, oldX: DoubleArray, precision: Double) =
+                (newX.zip(oldX, { a, b -> abs(a - b) }).toDoubleArray().max()!! < precision)
+
             var iterCounter = 0
+            var newApproximations = DoubleArray(linSys.size, { 0.0 }) //x(0)
+            var oldApproximations: DoubleArray
             do {
-                var oldApproximations = approximations.clone()
-                for (i in approximations.indices) {
-                    var sum = getSum(i, approximations)
-                    approximations[i] = newResVector[i] + sum
+                oldApproximations = newApproximations.clone()
+                newApproximations.forEachIndexed { i, _ ->
+                    var sum = 0.0
+                    newApproximations.forEachIndexed { j, d -> sum += linSys.equations[i][j] * d }
+                    newApproximations[i] = linSys.resVector[i] + sum
                 }
-
-                /*
-                скопировать новые коэфф в старые коэфф
-                посчитать новые коэфф
-                 */
-            } while ()
-
-             */
+                iterCounter++
+            } while (!isAccuracyReached(newApproximations, oldApproximations, infelicity))
+            return Pair(newApproximations, iterCounter)
         }
     }
 

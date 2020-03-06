@@ -11,11 +11,14 @@ class LinearSystem {
 
     var equations: Array<DoubleArray>
     var resVector: DoubleArray
+    var size: Int
+        private set
 
     constructor (equations: Array<DoubleArray>, resVector: DoubleArray) {
         if (equations.size == resVector.size) {
             this.equations = equations
             this.resVector = resVector
+            this.size = resVector.size
         } else throw IllegalArgumentException("Количество уравнений и ответов к ним не совпадает.")
     }
 
