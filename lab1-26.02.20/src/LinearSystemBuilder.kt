@@ -1,5 +1,6 @@
 import java.io.BufferedReader
 import java.lang.Exception
+import kotlin.math.abs
 
 /**
  * Создаёт структуру данных для СЛАУ.
@@ -10,13 +11,13 @@ import java.lang.Exception
 class LinearSystemBuilder {
 
     var allowedSize = (1..20)
-    var allowedRandomRange = (1..100)
+    var allowedRandomRange = (1..1000)
 
     /**
      * Читает построчно переданный BufferedReader и парсит его на наличие данных, необходимых для создания матрицы.
      * @see BufferedReader
      * @param reader служит для чтения данных.
-     * @return созаднную из потока данных СЛАУ.
+     * @return созданную из потока данных СЛАУ.
      * @throws NumberFormatException если не удаётся распарсить данные; если размер матрицы не принаджлежит промежутку allowedSize.
      */
     fun read(reader: BufferedReader): LinearSystem {
@@ -39,10 +40,11 @@ class LinearSystemBuilder {
      * @return СЛАУ с случайно-сгенерированными коэффицентами.
      * @throws NumberFormatException если размер матрицы не принаджлежит промежутку allowedSize.
      */
-    fun generateRandom(size: Int): LinearSystem {
+    fun generateRandom(size: Int, isDiagPrev: Boolean): LinearSystem {
         if (size !in allowedSize) throw NumberFormatException()
-        return LinearSystem(Array(size, { DoubleArray(size) {allowedRandomRange.random().toDouble()} }),
-            DoubleArray(size, { allowedRandomRange.random().toDouble() })
+        val numbers = Array(size) { DoubleArray(size) {allowedRandomRange.random().toDouble()} }
+        if (isDiagPrev) numbers.forEachIndexed { i, arr -> arr[i] = arr.sumByDouble { abs(it) } * allowedRandomRange.random() }
+        return LinearSystem(numbers, DoubleArray(size) { allowedRandomRange.random().toDouble() }
         )
     }
 }

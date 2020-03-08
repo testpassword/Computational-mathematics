@@ -21,13 +21,15 @@ fun main(args: Array<String>) {
             }
             "-r" -> {
                 println("Генерирование матрицы размерностью ${args[1]}...")
-                supporter.generateRandom(args[1].toInt())
+                supporter.generateRandom(args[1].toInt(), true)
             }
             "-h" -> {
                 println(("""*** Режимы работы программы: ****
                         ~   [-f path] для чтения матрицы из файла,
                         ~   [-k] для ввода матрицы с клавиатуры,
-                        ~   [-r size] для генерирования случайной матрицы размерности size * size.
+                        ~   [-r size] для генерирования случайной матрицы размерности size * size [1 ; 20].
+                        ~   Максимальный размер элемента матрицы = 1000.
+                        ~   Целая часть должна отделяться от дробной точкой 
                         ~*** Формат матрицы: ***
                         ~   размерность
                         ~   a[i] a[i+1] a[n] b[i]
@@ -42,11 +44,12 @@ fun main(args: Array<String>) {
         }
         println("""Структура данных матрицы создана.
                 ~$linSys
-                ~Введите погрешность ε [0.000001 ; 1]""".trimMargin("~"))
-        val infelicity = keyReader.use { it.readLine().trim().toDouble() }.let { if (it > 1) throw NumberFormatException() else it}
-        val answer = MatrixSolver.solveByGaussSeidel(linSys, infelicity, true)
-        println("""Вектор неизвестных = ${answer.first.contentToString()}
-                ~Количество итераций = ${answer.second}""".trimMargin("~"))
+                ~Введите точность ε [0.000001 ; 1]""".trimMargin("~"))
+        val precision = keyReader.use { it.readLine().trim().toDouble() }.let { if (it > 1) throw NumberFormatException() else it}
+        val answer = LinearSystemSolver.solveByGaussSeidel(linSys, precision, true)
+        println("""Вектор неизвестных = ${answer.xVector.contentToString()}
+                ~Погрешности = ± ${answer.infelicity.contentToString()}
+                ~Количество итераций = ${answer.counter}""".trimMargin("~"))
     } catch (e: ArrayIndexOutOfBoundsException) {
         System.err.println("Ключ запуска программы отсутствует. Используйте ключ -h для просмотра справки.")
     }  catch (e: NumberFormatException) {

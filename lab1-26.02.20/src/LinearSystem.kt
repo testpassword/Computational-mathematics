@@ -7,25 +7,19 @@ import java.lang.StringBuilder
  * @throws IllegalArgumentException если количество уравнений системы не совпадает с количеством ответов к ней.
  * @author Артемий Кульбако.
  */
-class LinearSystem {
+class LinearSystem(equations: Array<DoubleArray>, resVector: DoubleArray) {
 
     var equations: Array<DoubleArray>
     var resVector: DoubleArray
     var size: Int
         private set
 
-    constructor (equations: Array<DoubleArray>, resVector: DoubleArray) {
+    init {
         if (equations.size == resVector.size) {
             this.equations = equations
             this.resVector = resVector
             this.size = resVector.size
         } else throw IllegalArgumentException("Количество уравнений и ответов к ним не совпадает.")
-    }
-
-    fun getDiagonalElements(): DoubleArray {
-        val diags = mutableListOf<Double>()
-        equations.forEachIndexed { i, el -> diags.add(el[i]) }
-        return diags.toDoubleArray()
     }
 
     override fun equals(other: Any?): Boolean {
