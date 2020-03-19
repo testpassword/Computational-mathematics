@@ -5,7 +5,7 @@ import kotlin.math.abs
 /**
  * Создаёт структуру данных для СЛАУ.
  * @property allowedSize разрешённый диапазон размера СЛАУ.
- * @property allowedRandomRange разрешённый диапозон случайных значений коэффицетов СЛАУ.
+ * @property allowedRandomRange разрешённый диапазон случайных значений коэффициентов СЛАУ.
  * @author Артемий Кульбако.
  */
 class LinearSystemBuilder {

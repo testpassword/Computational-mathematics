@@ -16,7 +16,7 @@ fun main(args: Array<String>) {
                 supporter.read(File(args[1]).bufferedReader())
             }
             "-k" -> {
-                println("Введите размер матрицы, а саму расширенную матрицу системы:")
+                println("Введите размер матрицы, и саму расширенную матрицу системы:")
                 supporter.read(keyReader)
             }
             "-r" -> {
@@ -25,30 +25,31 @@ fun main(args: Array<String>) {
             }
             "-h" -> {
                 println(("""*** Режимы работы программы: ****
-                        ~   [-f path] для чтения матрицы из файла,
-                        ~   [-k] для ввода матрицы с клавиатуры,
-                        ~   [-r size] для генерирования случайной матрицы размерности size * size [1 ; 20].
-                        ~   Максимальный размер элемента матрицы = 1000.
-                        ~   Целая часть должна отделяться от дробной точкой 
+                        ~ [-f path] для чтения матрицы из файла,
+                        ~ [-k] для ввода матрицы с клавиатуры,
+                        ~ [-r size] для генерирования случайной матрицы размерности size * size [1 ; 20].
+                        ~ Максимальный размер элемента матрицы = 1000.
+                        ~ Целая часть должна отделяться от дробной точкой 
                         ~*** Формат матрицы: ***
-                        ~   размерность
-                        ~   a[i] a[i+1] a[n] b[i]
+                        ~ размерность
+                        ~ a[i] a[i+1] a[n] b[i]
                         ~*** Пример: ***
-                        ~   3
-                        ~   10 2 8 5
-                        ~   2 3 1 24.42
-                        ~   1 13 14 46""".trimMargin("~")))
+                        ~ 3
+                        ~ 10 2 8 5
+                        ~ 2 3 1 24.42
+                        ~ 1 13 14 46""".trimMargin("~")))
                 kotlin.system.exitProcess(0)
             }
             else -> throw IllegalArgumentException("Ключ задан неправильно.")
         }
-        println("""Структура данных матрицы создана.
+        println("""Структура данных для СЛАУ создана.
                 ~$linSys
-                ~Введите точность ε [0.000001 ; 1]""".trimMargin("~"))
-        val precision = keyReader.use { it.readLine().trim().toDouble() }.let { if (it > 1) throw NumberFormatException() else it}
+                ~Введите точность [0.000001 ; 1]""".trimMargin("~"))
+        val precision = keyReader.use { it.readLine().trim().toDouble() }
+            .let { if ((it > 1) || (it < 0.000001)) throw NumberFormatException() else it}
         val answer = LinearSystemSolver.solveByGaussSeidel(linSys, precision, true)
         println("""Вектор неизвестных = ${answer.xVector.contentToString()}
-                ~Погрешности = ± ${answer.infelicity.contentToString()}
+                ~Погрешности = ${answer.infelicity.contentToString()}
                 ~Количество итераций = ${answer.counter}""".trimMargin("~"))
     } catch (e: ArrayIndexOutOfBoundsException) {
         System.err.println("Ключ запуска программы отсутствует. Используйте ключ -h для просмотра справки.")
