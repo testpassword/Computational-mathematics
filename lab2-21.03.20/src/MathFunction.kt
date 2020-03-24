@@ -1,12 +1,12 @@
 /**
  * Представляет собой характеристику математической функции.
  * @property description описание функции.
- * @property func осуществляет расчёт неизвестного параметр x по переданному правилу
- * @version 0.1
+ * @property func осуществляет расчёт неизвестного параметр x по переданному правилу.
+ * @version 1.0
  */
 interface MathFunction {
 
-    fun func(xParameter: Double): Double
+    fun func(xParam: Double): Double
 
     val description: String
 }
