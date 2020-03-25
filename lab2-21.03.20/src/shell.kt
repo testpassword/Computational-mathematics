@@ -37,13 +37,9 @@ fun main(args: Array<String>) {
     val functions = buildFunctions()
     println("Введите номер желаемой функции:")
     functions.forEachIndexed { i, el -> println("${i}. ${el.description} dx") }
-    /*
-    Переменные funcNumber, limits, precision - необходимо инициализировать, так-как компилятор в строке 78 не может знать,
-    что ветка when выполнилась, но это знаю я.
-     */
-    var funcNumber = -1
-    var limits = listOf<Double>()
-    var precision = 0.0
+    var funcNumber: Int? = null
+    var limits: List<Double>? = null
+    var precision: Double? = null
     keyReader.use {
         var inputStep = 0
         while (inputStep < 3) {
@@ -51,7 +47,7 @@ fun main(args: Array<String>) {
                 0 -> {
                     try {
                         funcNumber = it.readLine().trim().toInt()
-                        if (funcNumber in functions.indices) {
+                        if (funcNumber!! in functions.indices) {
                             inputStep++
                             println("Введите пределы интегрирования через пробел:")
                         } else throw NumberFormatException()
@@ -60,7 +56,7 @@ fun main(args: Array<String>) {
                 1 -> {
                     try {
                         limits = it.readLine().trim().split(" ").map { n -> n.toDouble() }
-                        if (limits.size == 2) {
+                        if (limits!!.size == 2) {
                             inputStep++
                             println("Введите точность:")
                         } else throw NumberFormatException()
@@ -69,17 +65,17 @@ fun main(args: Array<String>) {
                 2 -> {
                     try {
                         precision = it.readLine().trim().toDouble()
-                        if (precision in 0.000001..1.0) inputStep++ else throw NumberFormatException()
+                        if (precision!! in 0.000001..1.0) inputStep++ else throw NumberFormatException()
                     } catch (e: NumberFormatException) { printError("Ошибка ввода: введите число в [0.000001 ; 1].") }
                 }
             }
         }
     }
     try {
-        val answer = IntegralSolver.integrateByTrapezoid(functions[funcNumber], Limits(Pair(limits[0], limits[1])), precision)
+        val answer = IntegralSolver.integrateByTrapezoid(functions[funcNumber!!], Limits(Pair(limits!![0], limits!![1])), precision!!)
         println("""Значение интеграла = ${answer.resValue}
-                                    ~Количество разбиений = ${answer.blocks}
-                                    ~Погрешность = ${answer.infelicity}""".trimMargin("~"))
+                ~Количество разбиений = ${answer.blocks}
+                ~Погрешность = ${answer.infelicity}""".trimMargin("~"))
     } catch (e: Exception) { println(e.message) }
 }
 
