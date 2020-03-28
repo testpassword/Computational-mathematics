@@ -25,13 +25,13 @@ data class Limits(val limits: Pair<Double, Double>) {
 
     init {
         if (limits.first > limits.second) {
-            low = limits.second
-            high = limits.first
-            isSwitchedRange = true
+            this.low = limits.second
+            this.high = limits.first
+            this.isSwitchedRange = true
         } else {
-            low = limits.first
-            high = limits.second
-            isSwitchedRange = false
+            this.low = limits.first
+            this.high = limits.second
+            this.isSwitchedRange = false
         }
     }
 }
@@ -62,8 +62,11 @@ class IntegralSolver {
                 }
                 return area
             }
-
-            var step = limits.high - limits.low
+            var step = when {
+                limits.low.let { it.isNaN() || it.isInfinite() } -> limits.high - (limits.low + precision)
+                limits.high.let { it.isNaN() || it.isInfinite() } -> (limits.high - precision) - limits.low
+                else -> limits.high - limits.low
+            }
             var error: Double
             var integralN: Double
             var integral2N = approximate(mathFunc, limits, step)
