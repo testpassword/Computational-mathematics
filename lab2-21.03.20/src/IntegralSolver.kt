@@ -10,70 +10,85 @@ import kotlin.math.abs
 data class IntegralAnswer(val resValue: Double, val infelicity: Double, val blocks: Int)
 
 /**
- * Содержит результат пределы интегрирования.
- * @param limits верхний и нижний предел (не упорядоченные).
- * @property low нижний предел.
- * @property high верхний предел.
- * @property isSwitchedRange менялись ли пределы местами.
- * @version 1.0
- */
-data class Limits(val limits: Pair<Double, Double>) {
-
-    val low: Double
-    val high: Double
-    val isSwitchedRange: Boolean
-
-    init {
-        if (limits.first > limits.second) {
-            this.low = limits.second
-            this.high = limits.first
-            this.isSwitchedRange = true
-        } else {
-            this.low = limits.first
-            this.high = limits.second
-            this.isSwitchedRange = false
-        }
-    }
-}
-
-/**
- * Находит численное значение интеграла.
+ * Находит численное значение интеграла разными методами.
  * @author Артемий Кульбако.
  * @version 1.0
  */
 class IntegralSolver {
 
+    /**
+     * Константы, определяющие варианты решения методом прямоугольников.
+     * @property LEFT метод левых прямоугольников.
+     * @property CENTER метод средних прямоугольников.
+     * @property RIGHT метод правых прямоугольников.
+     */
+    enum class RectangleMethodType { LEFT, CENTER, RIGHT }
+
+    private interface ApproximationRule { fun findValue(step: Double, i: Int): Double }
+
     companion object {
+
         /**
          * Находит значение интеграла методом трапеций.
-         * @param mathFunc интеграл, который нужно посчитать.
-         * @param limits пределы интеграла.
+         * @param integral интеграл, который нужно посчитать.
+         * @param precision точность вычислений.
+         * @return IntegralAnswer.
+         * @version 1.1
+         */
+        fun integrateByTrapezoid(integral: Integral, precision: Double): IntegralAnswer {
+            val rule = object: ApproximationRule {
+                override fun findValue(step: Double, i: Int) =
+                    step * 0.5 * (integral.f.func(integral.limits.low + i * step) +
+                            (integral.f.func(integral.limits.low + (i + 1) * step)))
+            }
+            return approximate(integral, precision, rule)
+        }
+
+        /**
+         * Находит значение интеграла методом прямоугольников.
+         * @param integral интеграл, который нужно посчитать.
          * @param precision точность вычислений.
          * @return IntegralAnswer.
          * @version 1.0
          */
-        fun integrateByTrapezoid(mathFunc: MathFunction, limits: Limits, precision: Double): IntegralAnswer {
+        fun integrateByRectangle(integral: Integral, precision: Double, type: RectangleMethodType): IntegralAnswer {
+            val rule = when (type) {
+                RectangleMethodType.LEFT -> object: ApproximationRule {
+                    override fun findValue(step: Double, i: Int) =
+                        step * integral.f.func(integral.limits.low + i * step)
+                }
+                RectangleMethodType.CENTER -> object: ApproximationRule {
+                    override fun findValue(step: Double, i: Int) =
+                        (step * integral.f.func(integral.limits.low + i * step) +
+                            step * integral.f.func(integral.limits.low + (i + 1) * step)) / 2
+                }
+                RectangleMethodType.RIGHT -> object: ApproximationRule {
+                    override fun findValue(step: Double, i: Int) =
+                        step * integral.f.func(integral.limits.low + (i + 1) * step)
+                }
+            }
+            return approximate(integral, precision, rule)
+        }
 
-            fun approximate(mathFunc: MathFunction, limits: Limits, step: Double): Double {
+        private fun approximate(integral: Integral, precision: Double, rule: ApproximationRule): IntegralAnswer {
+            fun findArea(integral: Integral, step: Double): Double {
                 var area = 0.0
-                for (i in 0 until ((limits.high - limits.low) / step).toInt()) {
-                    area += step * 0.5 * (mathFunc.func(limits.low + i * step) + (mathFunc.func(limits.low + (i + 1) * step)))
+                for (i in 0 until ((integral.limits.high - integral.limits.low) / step).toInt()) {
+                    area += rule.findValue(step, i)
                     if (area.isNaN() || area.isInfinite()) throw Exception("Функция не определена на заданном отрезке.")
                 }
                 return area
             }
-            var step = when {
-                limits.low.let { it.isNaN() || it.isInfinite() } -> limits.high - (limits.low + precision)
-                limits.high.let { it.isNaN() || it.isInfinite() } -> (limits.high - precision) - limits.low
-                else -> limits.high - limits.low
-            }
+
+            val limits = integral.limits
+            var step = limits.high - limits.low
             var error: Double
             var integralN: Double
-            var integral2N = approximate(mathFunc, limits, step)
+            var integral2N = findArea(integral, step)
             do {
                 integralN = integral2N
                 step /= 2
-                integral2N = approximate(mathFunc, limits, step)
+                integral2N = findArea(integral, step)
                 error = calcError(integral2N, integralN)
             } while (error > precision)
             if (limits.isSwitchedRange) integral2N = - integral2N

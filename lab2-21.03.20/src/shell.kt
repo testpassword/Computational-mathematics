@@ -12,26 +12,24 @@ import kotlin.math.*
  */
 fun main(args: Array<String>) {
 
-    fun buildFunctions(): MutableList<MathFunction> {
-        return mutableListOf(
+    fun buildFunctions() = mutableListOf(
             object: MathFunction {
                 override fun func(xParam: Double) = xParam.pow(2)
-                override val description = "x^2"
+                override var description = "x^2"
             },
             object: MathFunction {
                 override fun func(xParam: Double) = 1 / ln(xParam)
-                override val description = "1/ln(x)"
+                override var description = "1/ln(x)"
             },
             object: MathFunction {
                 override fun func(xParam: Double) = cos(xParam) / (xParam + 2)
-                override val description = "cos(x)/(x+2)"
+                override var description = "cos(x)/(x+2)"
             },
             object: MathFunction {
                 override fun func(xParam: Double) = sqrt(1 + 2 * xParam.pow(2) - xParam.pow(3))
-                override val description = "sqrt(1 + 2x^2 - x^3)"
+                override var description = "sqrt(1 + 2x^2 - x^3)"
             }
         )
-    }
 
     val keyReader = BufferedReader(InputStreamReader(System.`in`))
     val functions = buildFunctions()
@@ -72,7 +70,8 @@ fun main(args: Array<String>) {
         }
     }
     try {
-        val answer = IntegralSolver.integrateByTrapezoid(functions[funcNumber!!], Limits(Pair(limits!![0], limits!![1])), precision!!)
+        val integral = Integral(functions[funcNumber!!], Limits(Pair(limits!![0], limits!![1]), precision!!))
+        val answer = IntegralSolver.integrateByTrapezoid(integral, precision!!)
         println("""Значение интеграла = ${answer.resValue}
                 ~Количество разбиений = ${answer.blocks}
                 ~Погрешность = ${answer.infelicity}""".trimMargin("~"))
@@ -81,7 +80,7 @@ fun main(args: Array<String>) {
 
 var counter = 0
 fun printError(msg: String) {
+    System.err.println(msg)
     counter++
     if (counter == 100) println("Ты чо дурак!? Дифиченто, блин!")
-    System.err.println(msg)
 }

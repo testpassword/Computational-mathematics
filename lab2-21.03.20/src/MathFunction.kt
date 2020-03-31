@@ -8,5 +8,5 @@ interface MathFunction {
 
     fun func(xParam: Double): Double
 
-    val description: String
+    var description: String
 }

@@ -8,14 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f03dfd2-cb51-48de-8a43-a6528770c8a0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/code.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/docs/code.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/вычмат_лаб2_отчёт.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/docs/вычмат_лаб2_отчёт.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/integ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/integ.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lab2-21.03.20.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/lab2-21.03.20.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/IntegralSolver$Companion$integrateByTrapezoid$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/IntegralSolver$Companion$integrateByTrapezoid$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/IntegralSolver$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/IntegralSolver$Companion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IntegralSolver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/IntegralSolver.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/~$чмат_лаб2_отчёт.docx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +41,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin File" />
+        <option value="Kotlin Interface" />
       </list>
     </option>
   </component>
@@ -119,6 +113,9 @@
       <workItem from="1585478463513" duration="1395000" />
       <workItem from="1585480494579" duration="30000" />
       <workItem from="1585480689497" duration="50000" />
+      <workItem from="1585606156784" duration="64000" />
+      <workItem from="1585607848326" duration="4795000" />
+      <workItem from="1585644717628" duration="9945000" />
     </task>
     <task id="LOCAL-00001" summary="Завершены проектирование, метод трапеций (без Рунге)">
       <created>1585005307504</created>
@@ -127,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585005307504</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Изменена архитектура системы; добавлен метод прямоугольников">
+      <created>1585655530085</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1585655530085</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,7 +140,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Завершены проектирование, метод трапеций (без Рунге)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Завершены проектирование, метод трапеций (без Рунге)" />
+    <MESSAGE value="Изменена архитектура системы; добавлен метод прямоугольников" />
+    <option name="LAST_COMMIT_MESSAGE" value="Изменена архитектура системы; добавлен метод прямоугольников" />
   </component>
   <component name="WindowStateProjectService">
     <state x="360" y="70" key="#Deployment" timestamp="1585005234209">
@@ -151,18 +156,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1585084911186" />
-    <state x="169" y="131" key="#com.intellij.ide.util.MemberChooser" timestamp="1585055971702">
+    <state x="169" y="131" key="#com.intellij.ide.util.MemberChooser" timestamp="1585649533457">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="169" y="131" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1585055971702" />
+    <state x="169" y="131" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1585649533457" />
     <state x="498" y="196" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1585058586160">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="196" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1585058586160" />
-    <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1584997610296">
+    <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1585606169585">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1584997610296" />
+    <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1585606169585" />
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584998537072">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -171,30 +176,34 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1536.824@0.0.1536.824" timestamp="1585058821305" />
-    <state x="349" y="0" key="CommitChangelistDialog2" timestamp="1585005305683">
+    <state x="349" y="0" key="CommitChangelistDialog2" timestamp="1585655526565">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="349" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585005305683" />
+    <state x="349" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585655526565" />
     <state x="165" y="170" key="FileChooserDialogImpl" timestamp="1585086519675">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="165" y="170" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585086519675" />
-    <state width="1493" height="189" key="GridCell.Tab.0.bottom" timestamp="1585480423014">
+    <state x="626" y="332" key="Github.Dialog.Accounts.Choose" timestamp="1585655553264">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="189" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585480423014" />
-    <state width="1493" height="189" key="GridCell.Tab.0.center" timestamp="1585480423014">
+    <state x="626" y="332" key="Github.Dialog.Accounts.Choose/0.0.1536.824@0.0.1536.824" timestamp="1585655553264" />
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1585655617974">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="189" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585480423014" />
-    <state width="1493" height="189" key="GridCell.Tab.0.left" timestamp="1585480423014">
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585655617974" />
+    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1585655617974">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="189" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585480423014" />
-    <state width="1493" height="189" key="GridCell.Tab.0.right" timestamp="1585480423014">
+    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585655617974" />
+    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1585655617974">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="189" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585480423014" />
+    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585655617974" />
+    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1585655617974">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585655617974" />
     <state width="1493" height="229" key="GridCell.Tab.1.bottom" timestamp="1585090100461">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -215,22 +224,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="349" y="155" key="IDE.errors.dialog/0.0.1536.824@0.0.1536.824" timestamp="1585087339149" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1585058839223">
+    <state x="249" y="0" key="SettingsEditor" timestamp="1585606219060">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585058839223" />
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585606219060" />
+    <state x="361" y="141" key="Vcs.Push.Dialog.v2" timestamp="1585655537516">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="141" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1585655537516" />
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1584912646493">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1584912646493" />
-    <state width="428" height="500" key="javadoc.popup.new" timestamp="1585002633384">
+    <state width="428" height="500" key="javadoc.popup.new" timestamp="1585652910622">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="428" height="500" key="javadoc.popup.new/0.0.1536.824@0.0.1536.824" timestamp="1585002633384" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1585127566934">
+    <state width="428" height="500" key="javadoc.popup.new/0.0.1536.824@0.0.1536.824" timestamp="1585652910622" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1585608208254">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1585127566934" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1585608208254" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1585087660483">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
