@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="640.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
    <left>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="233.0" prefWidth="301.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="highInput" alignment="CENTER" prefHeight="31.0" prefWidth="100.0" promptText="b" />
+            <TextField fx:id="highInput" alignment="CENTER" prefHeight="31.0" prefWidth="100.0" promptText="b" styleClass="interaction" />
             <HBox alignment="CENTER" prefHeight="141.0" prefWidth="351.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="141.0" prefWidth="58.0" text="∫" textAlignment="CENTER">
+                  <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="1.0" prefHeight="141.0" prefWidth="58.0" text="∫" textAlignment="CENTER">
                      <font>
                         <Font size="96.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="funcChooser" prefHeight="31.0" prefWidth="152.0" promptText="функция" />
+                  <ComboBox fx:id="funcChooser" prefHeight="30.0" prefWidth="152.0" promptText="функция" styleClass="interaction" />
                </children>
             </HBox>
-            <TextField fx:id="lowInput" prefHeight="31.0" prefWidth="100.0" promptText="a" />
+            <TextField fx:id="lowInput" prefHeight="31.0" prefWidth="100.0" promptText="a" styleClass="interaction" />
          </children>
       </VBox>
    </left>
@@ -34,10 +34,10 @@
    <right>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="233.0" prefWidth="303.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="73.0" prefWidth="271.0" spacing="15.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="271.0" spacing="15.0">
                <children>
                   <Label text="Точность:" />
-                  <TextField fx:id="epsInput" prefHeight="31.0" prefWidth="139.0" promptText="0.000001 ; 1" />
+                  <TextField fx:id="epsInput" prefHeight="31.0" prefWidth="139.0" promptText="0.000001 ; 1" styleClass="interaction" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -46,15 +46,28 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <ComboBox fx:id="methodChooser" prefHeight="31.0" prefWidth="182.0" promptText="метод" />
-            <Button fx:id="calcButton" alignment="CENTER" mnemonicParsing="false" onAction="#calcResult" prefHeight="31.0" prefWidth="126.0" text="ПОСЧИТАТЬ" />
+            <ComboBox fx:id="methodChooser" prefHeight="30.0" prefWidth="182.0" promptText="метод" styleClass="interaction">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </VBox.margin></ComboBox>
+            <Button fx:id="calcButton" alignment="CENTER" mnemonicParsing="false" onAction="#calcResult" prefHeight="50.0" prefWidth="150.0" text="ПОСЧИТАТЬ" />
          </children>
       </VBox>
    </right>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
    <center>
       <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
    </center>
+   <top>
+      <ToolBar prefHeight="40.0" prefWidth="631.0" BorderPane.alignment="CENTER">
+         <items>
+            <Label text="Кульбако Артемий, P3212" />
+         </items>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <effect>
+            <DropShadow height="16.23" radius="8.807500000000001" />
+         </effect>
+      </ToolBar>
+   </top>
 </BorderPane>

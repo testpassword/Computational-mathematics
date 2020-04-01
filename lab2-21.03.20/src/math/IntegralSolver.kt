@@ -57,8 +57,7 @@ class IntegralSolver {
             val rule = when (type) {
                 RectangleMethodType.LEFT -> object:
                     ApproximationRule {
-                    override fun findValue(step: Double, i: Int) =
-                        step * integral.f.func(integral.limits.low + i * step)
+                    override fun findValue(step: Double, i: Int) = step * integral.f.func(integral.limits.low + i * step)
                 }
                 RectangleMethodType.CENTER -> object:
                     ApproximationRule {
@@ -68,8 +67,7 @@ class IntegralSolver {
                 }
                 RectangleMethodType.RIGHT -> object:
                     ApproximationRule {
-                    override fun findValue(step: Double, i: Int) =
-                        step * integral.f.func(integral.limits.low + (i + 1) * step)
+                    override fun findValue(step: Double, i: Int) = step * integral.f.func(integral.limits.low + (i + 1) * step)
                 }
             }
             return approximate(integral, precision, rule)

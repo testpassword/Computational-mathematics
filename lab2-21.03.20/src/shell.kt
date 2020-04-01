@@ -56,5 +56,5 @@ fun launchConsole() {
         println("""Значение интеграла = ${answer.resValue}
                 ~Количество разбиений = ${answer.blocks}
                 ~Погрешность = ${answer.infelicity}""".trimMargin("~"))
-    } catch (e: Exception) { println(e.message) }
+    } catch (e: Exception) { System.err.println(e.message) }
 }
