@@ -1,0 +1,12 @@
+.bar { -fx-background-color: rgba(0, 0, 0, 0.35) }
+
+.button {
+    -fx-background-color: rgba(0, 0, 0, 0.78);
+    -fx-text-fill: #ffffff;
+}
+
+.exit-button { -fx-background-color: rgba(202, 3, 56, 0.4) }
+
+.minimize-button { -fx-background-color: rgba(0, 153, 255, 0.4) }
+
+.info-button { -fx-background-color: rgba(250, 250, 250, 0.1) }

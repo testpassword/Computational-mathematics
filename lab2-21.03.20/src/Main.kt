@@ -1,3 +1,4 @@
+import controllers.launchConsole
 import javafx.application.Application
 import javafx.fxml.FXMLLoader.load
 import javafx.scene.Scene
