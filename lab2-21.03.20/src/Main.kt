@@ -16,7 +16,6 @@ class Main : Application() {
     /**
      * Отвечает за построение главной сцены JavaFX.
      * @param primaryStage сцена приложения.
-     * @version 1.0
      */
     override fun start(primaryStage: Stage?) {
         primaryStage?.let {
@@ -33,7 +32,6 @@ class Main : Application() {
         /**
          * Определяет метод взаимодействия с пользователем.
          * @param args - аргументы командной строки.
-         * @version 1.1
          */
         @JvmStatic
         fun main(args: Array<String>) {
@@ -42,24 +40,24 @@ class Main : Application() {
         }
 
         /**
-         * Хранилище функций, доступных для интегрирования.
+         * Глобальное хранилище функций, доступных для интегрирования.
          */
-        val functions = mutableListOf(
+        val functions = listOf(
             object: MathFunction {
                 override fun func(xParam: Double) = xParam.pow(2)
-                override var description = "x^2"
+                override fun toString() = "x^2"
             },
             object: MathFunction {
                 override fun func(xParam: Double) = 1 / ln(xParam)
-                override var description = "1/ln(x)"
+                override fun toString() = "1/ln(x)"
             },
             object: MathFunction {
                 override fun func(xParam: Double) = cos(xParam) / (xParam + 2)
-                override var description = "cos(x)/(x+2)"
+                override fun toString() = "cos(x)/(x+2)"
             },
             object: MathFunction {
                 override fun func(xParam: Double) = sqrt(1 + 2 * xParam.pow(2) - xParam.pow(3))
-                override var description = "sqrt(1 + 2x^2 - x^3)"
+                override fun toString() = "sqrt(1 + 2x^2 - x^3)"
             }
         )
     }

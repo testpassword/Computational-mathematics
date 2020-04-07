@@ -1,6 +1,7 @@
 import math.Integral
 import math.IntegralSolver
 import math.Limits
+import math.MathFunction
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.lang.Exception
@@ -9,14 +10,12 @@ import java.lang.NumberFormatException
 /**
  * Осуществляет взаимодействие с пользователем через эмулятор терминала.
  * @author Артемий Кульбако.
- * @version 1.1
  */
 fun launchConsole() {
-
     val keyReader = BufferedReader(InputStreamReader(System.`in`))
     println("Введите номер желаемой функции:")
-    Main.functions.forEachIndexed { i, el -> println("${i}. ${el.description} dx") }
-    var funcNumber: Int? = null
+    Main.functions.forEachIndexed { i, el -> println("${i}. $el dx") }
+    var func: MathFunction? = null
     var limits: List<Double>? = null
     var precision: Double? = null
     keyReader.use {
@@ -25,11 +24,13 @@ fun launchConsole() {
             when (inputStep) {
                 0 -> {
                     try {
-                        funcNumber = it.readLine().trim().toInt()
-                        if (funcNumber!! in Main.functions.indices) {
-                            inputStep++
-                            println("Введите пределы интегрирования через пробел:")
-                        } else throw NumberFormatException()
+                        it.readLine().trim().toInt().let {n ->
+                            if (n in Main.functions.indices) {
+                                inputStep++
+                                func = Main.functions[n]
+                                println("Введите пределы интегрирования через пробел:")
+                            } else throw NumberFormatException()
+                        }
                     } catch (e: NumberFormatException) { System.err.println("Ошибка ввода: введите целое число в [1 ; 5].") }
                 }
                 1 -> {
@@ -51,7 +52,7 @@ fun launchConsole() {
         }
     }
     try {
-        val integral = Integral(Main.functions[funcNumber!!], Limits(Pair(limits!![0], limits!![1]), precision!!))
+        val integral = Integral(func!!, Limits(Pair(limits!![0], limits!![1]), precision!!))
         val answer = IntegralSolver.integrateByTrapezoid(integral, precision!!)
         println("""Значение интеграла = ${answer.resValue}
                 ~Количество разбиений = ${answer.blocks}

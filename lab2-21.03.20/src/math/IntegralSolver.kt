@@ -26,6 +26,7 @@ class IntegralSolver {
      */
     enum class RectangleMethodType { LEFT, CENTER, RIGHT }
 
+    @FunctionalInterface
     private interface ApproximationRule { fun findValue(step: Double, i: Int): Double }
 
     companion object {
@@ -35,7 +36,6 @@ class IntegralSolver {
          * @param integral интеграл, который нужно посчитать.
          * @param precision точность вычислений.
          * @return math.IntegralAnswer.
-         * @version 1.1
          */
         fun integrateByTrapezoid(integral: Integral, precision: Double): IntegralAnswer {
             val rule = object: ApproximationRule {
@@ -51,7 +51,6 @@ class IntegralSolver {
          * @param integral интеграл, который нужно посчитать.
          * @param precision точность вычислений.
          * @return math.IntegralAnswer.
-         * @version 1.0
          */
         fun integrateByRectangle(integral: Integral, precision: Double, type: RectangleMethodType): IntegralAnswer {
             val rule = when (type) {

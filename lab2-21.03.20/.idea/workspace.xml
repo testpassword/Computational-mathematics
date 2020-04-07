@@ -8,29 +8,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f03dfd2-cb51-48de-8a43-a6528770c8a0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/resources/AvenirNextCyr-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/integ.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/integ.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/Main$Companion$functions$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/Main$Companion$functions$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/Main$Companion$functions$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/Main$Companion$functions$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/Main$Companion$functions$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/Main$Companion$functions$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/Main$Companion$functions$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/Main$Companion$functions$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/Main$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/Main$Companion.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/controllers/MainController$initialize$numericVerifier$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/controllers/MainController$initialize$numericVerifier$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/ShellKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/ShellKt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/controllers/MainController$initialize$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/controllers/MainController$initialize$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/controllers/MainController$initialize$numericVerifier$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/controllers/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/controllers/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/Integral.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/Integral.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/IntegralSolver$ApproximationRule.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/IntegralSolver$ApproximationRule.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/IntegralSolver$Companion$approximate$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/IntegralSolver$Companion$approximate$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/IntegralSolver$Companion$integrateByRectangle$rule$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/IntegralSolver$Companion$integrateByRectangle$rule$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/IntegralSolver$Companion$integrateByRectangle$rule$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/IntegralSolver$Companion$integrateByRectangle$rule$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/IntegralSolver$Companion$integrateByRectangle$rule$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/IntegralSolver$Companion$integrateByRectangle$rule$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/IntegralSolver$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/IntegralSolver$Companion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/resources/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/resources/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/Limits.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/Limits.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/MathFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2-21.03.20/math/MathFunction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/MainController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/MainController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/Integral.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/Integral.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/math/IntegralSolver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/IntegralSolver.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/MathFunction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/MathFunction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/AvenirNextCyr-Regular.ttf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shell.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/shell.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +94,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ComMat2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -112,7 +116,7 @@
       <recent name="V:\itmo\2 course\computational mathematics\lab2-21.03.20\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Kotlin.CMD">
+  <component name="RunManager" selected="Kotlin.GUI">
     <configuration name="CMD" type="JetRunConfigurationType">
       <module name="lab2-21.03.20" />
       <option name="VM_PARAMETERS" value="" />
@@ -177,6 +181,11 @@
       <workItem from="1585735315208" duration="2765000" />
       <workItem from="1585738113748" duration="33000" />
       <workItem from="1585738359530" duration="3908000" />
+      <workItem from="1585748177549" duration="11000" />
+      <workItem from="1585750765238" duration="6450000" />
+      <workItem from="1585766082837" duration="2523000" />
+      <workItem from="1586204412389" duration="10000" />
+      <workItem from="1586259634724" duration="465000" />
     </task>
     <task id="LOCAL-00001" summary="Завершены проектирование, метод трапеций (без Рунге)">
       <created>1585005307504</created>
@@ -217,10 +226,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1585689391042" />
-    <state x="813" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1585734567057">
+    <state x="813" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1585766281668">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="813" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1585734567057" />
+    <state x="813" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1585766281668" />
     <state x="498" y="196" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1585689382996">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -253,22 +262,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="626" y="332" key="Github.Dialog.Accounts.Choose/0.0.1536.824@0.0.1536.824" timestamp="1585655553264" />
-    <state width="1493" height="229" key="GridCell.Tab.0.bottom" timestamp="1585742276555">
+    <state width="1493" height="154" key="GridCell.Tab.0.bottom" timestamp="1586260099758">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="229" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585742276555" />
-    <state width="1493" height="229" key="GridCell.Tab.0.center" timestamp="1585742276555">
+    <state width="1493" height="154" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586260099758" />
+    <state width="1493" height="154" key="GridCell.Tab.0.center" timestamp="1586260099758">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="229" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585742276555" />
-    <state width="1493" height="229" key="GridCell.Tab.0.left" timestamp="1585742276555">
+    <state width="1493" height="154" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586260099758" />
+    <state width="1493" height="154" key="GridCell.Tab.0.left" timestamp="1586260099757">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="229" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585742276555" />
-    <state width="1493" height="229" key="GridCell.Tab.0.right" timestamp="1585742276555">
+    <state width="1493" height="154" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586260099757" />
+    <state width="1493" height="154" key="GridCell.Tab.0.right" timestamp="1586260099758">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="229" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585742276555" />
+    <state width="1493" height="154" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586260099758" />
     <state width="1493" height="229" key="GridCell.Tab.1.bottom" timestamp="1585742276555">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -305,10 +314,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="428" height="500" key="javadoc.popup.new/0.0.1536.824@0.0.1536.824" timestamp="1585739807258" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1585608208254">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1585767789107">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1585608208254" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1585767789107" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1585087660483">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
