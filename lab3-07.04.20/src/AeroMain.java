@@ -4,7 +4,6 @@ import javafx.beans.property.*;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
-import javafx.scene.Cursor;
 import javafx.scene.effect.*;
 import javafx.scene.image.*;
 import javafx.scene.image.Image;

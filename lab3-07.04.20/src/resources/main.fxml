@@ -21,10 +21,10 @@
                   </DropShadow>
                </effect>
                <HBox.margin>
-                  <Insets right="50.0" />
+                  <Insets right="35.0" />
                </HBox.margin>
             </Button>
-          <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" text="Очистить">
+          <Button mnemonicParsing="false" onAction="#clearTable" prefHeight="45.0" prefWidth="120.0" text="Очистить">
                <effect>
                   <DropShadow height="40.0" radius="19.65" width="40.6">
                      <color>
@@ -81,7 +81,7 @@
       </HBox>
    </bottom>
    <right>
-      <LineChart BorderPane.alignment="CENTER">
+      <LineChart prefWidth="640.0" BorderPane.alignment="CENTER">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -91,6 +91,27 @@
       </LineChart>
    </right>
    <left>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <VBox prefHeight="200.0" prefWidth="640.0" styleClass="control-pane" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="contentTable" editable="true" prefHeight="200.0" prefWidth="200.0">
+               <placeholder>
+                  <Label text="Точки отсутствуют" />
+               </placeholder>
+              <columns>
+                <TableColumn prefWidth="300.2000389099121" text="x" />
+                <TableColumn prefWidth="298.9999694824219" text="y" />
+              </columns>
+               <effect>
+                  <DropShadow height="50.0" radius="27.0" width="60.0">
+                     <color>
+                        <Color red="0.7921568751335144" green="0.0117647061124444" blue="0.21960784494876862" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </TableView>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding></VBox>
    </left>
 </BorderPane>

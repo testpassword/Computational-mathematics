@@ -41,7 +41,8 @@ class GUIController {
             it.textProperty().addListener { _, _, newValue ->
                 if (!newValue.matches(("\\d{0,4}([\\.]\\d{0,4})?").toRegex()))
                     outputField.let { textArea ->
-                        textArea.appendText("Введите число типа Double длиною не больше 8 символов\n")
+                        textArea.appendText(
+                            "Введите число типа Double длиною не больше 8 символов, по 4 символа до и после разделителя\n")
                         textArea.styleClass.add("error")
                     }
             }

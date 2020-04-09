@@ -94,10 +94,7 @@ class IntegralSolver {
                 error = calcError(integral2N, integralN)
             } while (error > precision)
             if (limits.isSwitchedRange) integral2N = - integral2N
-            return IntegralAnswer(
-                integral2N,
-                error,
-                ((limits.high - limits.low) / step).toInt()
+            return IntegralAnswer(integral2N, error, ((limits.high - limits.low) / step).toInt()
             )
         }
 
