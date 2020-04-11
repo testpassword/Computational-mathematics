@@ -13,16 +13,17 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.*;
 import javafx.util.Duration;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class AeroMain extends Application {
 
-    private static final Effect frostEffect = new BoxBlur(78, 78, 10);
+    private static final Effect blur = new BoxBlur(78, 78, 10);
     private static final ImageView background = new ImageView();
     private static final Pane layout = new Pane();
+    public static Stage stage;
 
     @Override public void start(Stage stage) throws IOException {
+        AeroMain.stage = stage;
         layout.getChildren().setAll(background, FXMLLoader.load(getClass().getResource("/resources/main.fxml")));
         layout.setStyle("-fx-background-color: null");
         Scene scene = new Scene(layout, Color.TRANSPARENT);
@@ -31,17 +32,18 @@ public class AeroMain extends Application {
         makeSmoke(stage);
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setScene(scene);
+        stage.getIcons().add(new Image("/resources/icons/window-w.png"));
         stage.setResizable(false);
         stage.show();
         background.setImage(redrawBackground(stage));
-        background.setEffect(frostEffect);
+        background.setEffect(blur);
         makeDraggable(stage, layout);
     }
 
     private Image redrawBackground(Stage stage) {
         try {
-            Robot robot = new Robot();
-            BufferedImage image = robot.createScreenCapture(new java.awt.Rectangle(
+            var robot = new Robot();
+            var image = robot.createScreenCapture(new java.awt.Rectangle(
                     (int) stage.getX(), (int) stage.getY(), (int) stage.getWidth(), (int) stage.getHeight()));
             return SwingFXUtils.toFXImage(image, null);
         } catch (java.awt.AWTException e) {
@@ -55,12 +57,12 @@ public class AeroMain extends Application {
     }
 
     private void makeDraggable(Stage stage, Node byNode) {
-        final Delta dragDelta = new Delta();
+        final var dragDelta = new Delta();
         byNode.setOnMousePressed(mouseEvent -> {
             dragDelta.x = stage.getX() - mouseEvent.getScreenX();
             dragDelta.y = stage.getY() - mouseEvent.getScreenY();
         });
-        final BooleanProperty inDrag = new SimpleBooleanProperty(false);
+        final var inDrag = new SimpleBooleanProperty(false);
         byNode.setOnMouseReleased(mouseEvent -> {
             if (inDrag.get()) {
                 stage.hide();

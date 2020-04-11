@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<BorderPane maxHeight="2160.0" maxWidth="3840.0" minHeight="576.0" minWidth="1024.0" prefHeight="720.0" prefWidth="1280.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GUIController">
+<BorderPane maxHeight="2160.0" maxWidth="3840.0" minHeight="576.0" minWidth="1024.0" prefHeight="648.0" prefWidth="1152.0" stylesheets="@interface.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GUIController">
    <bottom>
       <HBox fx:id="toolbar" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="bar" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" text="Решить">
+            <Button mnemonicParsing="false" onAction="#calculate" prefHeight="46.0" prefWidth="127.0" text="Решить">
                <effect>
                   <DropShadow height="40.0" radius="24.5" width="60.0">
                      <color>
@@ -24,17 +24,6 @@
                   <Insets right="35.0" />
                </HBox.margin>
             </Button>
-          <Button mnemonicParsing="false" onAction="#clearTable" prefHeight="45.0" prefWidth="120.0" text="Очистить">
-               <effect>
-                  <DropShadow height="40.0" radius="19.65" width="40.6">
-                     <color>
-                        <Color red="0.7921568751335144" green="0.0117647061124444" blue="0.21960784494876862" />
-                     </color>
-                  </DropShadow>
-               </effect>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin></Button>
             <Button fx:id="infoBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="1178.0" layoutY="44.0" mnemonicParsing="false" onAction="#showCredits" styleClass="info-button">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="minimize-button">
@@ -47,7 +36,7 @@
                   <Insets left="800.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="minimizeBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="1196.0" layoutY="41.0" mnemonicParsing="false" styleClass="minimize-button">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="1196.0" layoutY="41.0" mnemonicParsing="false" onAction="#minimizeWindow" styleClass="minimize-button">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="minimize-button">
                      <image>
@@ -81,7 +70,7 @@
       </HBox>
    </bottom>
    <right>
-      <LineChart prefWidth="640.0" BorderPane.alignment="CENTER">
+      <LineChart prefHeight="548.0" prefWidth="576.0" stylesheets="@chart.css" BorderPane.alignment="CENTER">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -91,27 +80,44 @@
       </LineChart>
    </right>
    <left>
-      <VBox prefHeight="200.0" prefWidth="640.0" styleClass="control-pane" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="548.0" prefWidth="576.0" spacing="10.0" styleClass="control-pane" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="contentTable" editable="true" prefHeight="200.0" prefWidth="200.0">
-               <placeholder>
-                  <Label text="Точки отсутствуют" />
-               </placeholder>
-              <columns>
-                <TableColumn prefWidth="300.2000389099121" text="x" />
-                <TableColumn prefWidth="298.9999694824219" text="y" />
-              </columns>
-               <effect>
-                  <DropShadow height="50.0" radius="27.0" width="60.0">
-                     <color>
-                        <Color red="0.7921568751335144" green="0.0117647061124444" blue="0.21960784494876862" />
-                     </color>
-                  </DropShadow>
-               </effect>
-            </TableView>
+            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="538.0" spacing="25.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" onAction="#onRadioChanged" text="система" />
+                  <ComboBox fx:id="eq1Chooser" prefWidth="150.0" promptText="уравнение 1" />
+                  <ComboBox fx:id="eq2Chooser" disable="true" prefWidth="150.0" promptText="уравнение 2" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding></HBox>
+            <ComboBox fx:id="methodChooser" prefWidth="150.0" promptText="метод" />
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="500.0" spacing="10.0">
+               <children>
+                  <Label contentDisplay="RIGHT" prefHeight="46.0" text="left">
+                     <graphic>
+                        <TextField fx:id="leftBoundInput" />
+                     </graphic>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding></Label>
+                  <Label contentDisplay="RIGHT" prefHeight="46.0" text="right">
+                     <graphic>
+                        <TextField fx:id="rightBoundInput" />
+                     </graphic>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding></Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <TextField fx:id="infelicityInput" prefHeight="26.0" prefWidth="200.0" promptText="точность [0.000001; 1]" />
+            <TextArea fx:id="outputArea" editable="false" prefHeight="101.0" prefWidth="447.0" promptText="здесь будет ответ" />
          </children>
          <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
          </padding></VBox>
    </left>
 </BorderPane>
