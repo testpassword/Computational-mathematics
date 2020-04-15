@@ -45,9 +45,12 @@ fun main(args: Array<String>) {
         println("""Структура данных для СЛАУ создана.
                 ~$linSys
                 ~Введите точность [0.000001 ; 1]""".trimMargin("~"))
-        val precision = keyReader.use { it.readLine().trim().toDouble() }
+        val precision = keyReader.readLine().trim().toDouble()
             .let { if ((it > 1) || (it < 0.000001)) throw NumberFormatException() else it}
-        val answer = LinearSystemSolver.solveByGaussSeidel(linSys, precision, true)
+        println("Введите x0. Если хотить оставить их = 0, то вводить ничего не нужно")
+        val startApproxes = keyReader.use { it.readLine() }.trim()
+        val answer = if (startApproxes == "") LinearSystemSolver.solveByGaussSeidel(linSys, precision, true)
+        else LinearSystemSolver.solveByGaussSeidel(linSys, precision, true, startApproxes.split(" ").map { it.toDouble() }.toDoubleArray())
         println("""Вектор неизвестных = ${answer.xVector.contentToString()}
                 ~Погрешности = ${answer.infelicity.contentToString()}
                 ~Количество итераций = ${answer.counter}""".trimMargin("~"))

@@ -41,3 +41,7 @@
 .text-field {
     -fx-text-fill: black;
 }
+
+.text-area .content {
+    -fx-background-color: #0f111a;
+}

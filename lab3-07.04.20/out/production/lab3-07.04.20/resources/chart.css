@@ -1,6 +1,6 @@
 .chart {
     -fx-padding: 10px;
-    -fx-background-color: rgba(1, 1, 1, 0.8);
+    -fx-background-color: rgba(1, 1, 1, 0.85);
     -fx-legend-visible: false;
 }
 

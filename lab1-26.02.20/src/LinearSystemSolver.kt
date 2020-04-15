@@ -29,12 +29,13 @@ class LinearSystemSolver {
          * @return GaussSeidelAnswer.
          * @throws Exception если невозможно привести матрицу к диагональному преобразованию.
          */
-        fun solveByGaussSeidel(linearSystem: LinearSystem, precision: Double, modify: Boolean): GaussSeidelAnswer {
+        fun solveByGaussSeidel(linearSystem: LinearSystem, precision: Double, modify: Boolean,
+                               startApproxes: DoubleArray = DoubleArray(linearSystem.size) { 0.0 }): GaussSeidelAnswer {
             val linSys = if (modify) clone(linearSystem) else linearSystem
             linSys.let {
                 if (!toDiagonalPrevalence(it)) throw Exception("Невозможно достичь диагонального преобладания. Итерации расходятся.")
                 transform(it)
-                return iterate(it, precision)
+                return iterate(it, precision, startApproxes)
             }
         }
 
@@ -79,13 +80,13 @@ class LinearSystemSolver {
             }.toTypedArray()
         }
 
-        private fun iterate(linSys: LinearSystem, precision: Double): GaussSeidelAnswer {
+        private fun iterate(linSys: LinearSystem, precision: Double, startApproxes: DoubleArray): GaussSeidelAnswer {
 
             fun isAccuracyReached(newX: DoubleArray, oldX: DoubleArray, precision: Double) =
                 (newX.zip(oldX) { a, b -> abs(a - b) }.toDoubleArray().max()!! < precision)
 
             var iterCounter = 0
-            val newApproxes = DoubleArray(linSys.size) { 0.0 } //x(0) - approximations
+            val newApproxes = startApproxes.clone()
             var oldApproxes: DoubleArray
             do {
                 oldApproxes = newApproxes.clone()
