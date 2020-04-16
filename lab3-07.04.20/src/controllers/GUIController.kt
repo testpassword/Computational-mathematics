@@ -39,7 +39,7 @@ class GUIController {
     private val RED_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.RED)
     private val BLUE_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.DEEPSKYBLUE)
     private val GREEN_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.LIGHTGREEN)
-    private val eqsMethods = FXCollections.observableArrayList(SolveMethods.BISECTION, SolveMethods.TANGENTS)
+    private val eqsMethods = FXCollections.observableArrayList(SolveMethods.values().toList())
     private val sysOfEqsMethod = FXCollections.observableArrayList(SolveMethods.ITERATIVE)
 
     fun initialize() {
@@ -65,30 +65,31 @@ class GUIController {
         if (radioBtn.isSelected) {
             eq2Chooser.isDisable = false
             methodChooser.items = sysOfEqsMethod
-            leftBoundLbl.text = "начальное приближение x1"
-            rightBoundLbl.text = "начальное приближение x2"
+            leftBoundLbl.text = "x1(0)"
+            rightBoundLbl.text = "x2(0)"
         } else {
             eq2Chooser.isDisable = true
             methodChooser.items = eqsMethods
-            leftBoundLbl.text = "левая граница"
-            rightBoundLbl.text = "правая граница"
+            leftBoundLbl.text = "левая гр."
+            rightBoundLbl.text = "правая гр."
         }
+        arrayOf(eq1Chooser, eq2Chooser).forEach { it.value = null }
         methodChooser.value = null
     }
 
     @FXML private fun showResult() {
+        val MAX = Double.MAX_VALUE / 2
         try {
             val selectedEqs = arrayOf(eq1Chooser, eq2Chooser).mapNotNull { it.value }
             val borders = arrayOf(leftBoundInput, rightBoundInput).map { it.text.toDouble() }.zipWithNext()[0].apply {
                 if (this.first > this.second) throw IllegalArgumentException()
-                val MAX = Double.MAX_VALUE / 2
                 if (this.first > MAX || this.second > MAX) throw SizeLimitExceededException()
             }
             val accuracy = infelicityInput.text.toDouble().apply { if (this < 0.000001) throw NumberFormatException() }
             val res = NonLinearEquationSolver.solve(selectedEqs, borders, accuracy, methodChooser.value)
             canvas.data.clear()
             selectedEqs.forEach { drawGraph(it, borders, res.iterCounter) }
-            drawPoint(res.arg, res.funcValue)
+            drawPoint(res.root.first, res.root.second)
             outputArea.appendText(res.toString())
             outputArea.effect = GREEN_LIGHT
         } catch (e: Exception) {
@@ -100,7 +101,7 @@ class GUIController {
                 """.trimIndent())
                 is IllegalArgumentException -> outputArea.appendText("Левая граница должна быть строго меньше правой")
                 is IllegalStateException -> outputArea.appendText("Метод решения не выбран")
-                is SizeLimitExceededException -> outputArea.appendText("Значения не должны превышать ${Double.MAX_VALUE / 2}")
+                is SizeLimitExceededException -> outputArea.appendText("Значения не должны превышать $MAX")
                 else -> outputArea.appendText(e.localizedMessage)
             }
             outputArea.effect = RED_LIGHT
