@@ -15,9 +15,8 @@ import javafx.scene.input.MouseEvent
 import javafx.scene.layout.HBox
 import javafx.scene.paint.Color
 import math.MathFunction
-import math.NonLinearEquationSolver
-import math.NonLinearEquationSolver.SolveMethods
-import services.FunctionService
+import math.EquationService
+import math.EquationService.SolveMethods
 import java.awt.Desktop
 import java.net.URI
 import javax.naming.SizeLimitExceededException
@@ -51,7 +50,7 @@ class GUIController {
         arrayOf(eq1Chooser, eq2Chooser, methodChooser, leftBoundInput, rightBoundInput, infelicityInput, radioBtn).forEach {
             it.focusedProperty().addListener { _, _, newValue -> it.effect = if (newValue!!) BLUE_LIGHT else null }
         }
-        arrayOf(eq1Chooser, eq2Chooser).forEach { it.items = FXCollections.observableArrayList(FunctionService.equations) }
+        arrayOf(eq1Chooser, eq2Chooser).forEach { it.items = FXCollections.observableArrayList(EquationService.equations) }
         methodChooser.items = eqsMethods
     }
 
@@ -86,7 +85,7 @@ class GUIController {
                 if (this.first > MAX || this.second > MAX) throw SizeLimitExceededException()
             }
             val accuracy = infelicityInput.text.toDouble().apply { if (this < 0.000001) throw NumberFormatException() }
-            val res = NonLinearEquationSolver.solve(selectedEqs, borders, accuracy, methodChooser.value)
+            val res = EquationService.solve(selectedEqs, borders, accuracy, methodChooser.value)
             canvas.data.clear()
             selectedEqs.forEach { drawGraph(it, borders, res.iterCounter) }
             drawPoint(res.root.first, res.root.second)
