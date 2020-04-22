@@ -5,28 +5,30 @@ import javafx.application.Platform
 import javafx.collections.FXCollections
 import javafx.event.EventHandler
 import javafx.fxml.FXML
+import javafx.fxml.FXMLLoader
+import javafx.fxml.Initializable
 import javafx.scene.Cursor
-import javafx.scene.chart.LineChart
-import javafx.scene.chart.XYChart
-import javafx.scene.chart.XYChart.Series
 import javafx.scene.control.*
 import javafx.scene.effect.DropShadow
 import javafx.scene.input.MouseEvent
+import javafx.scene.layout.BorderPane
 import javafx.scene.layout.HBox
 import javafx.scene.paint.Color
-import math.MathFunction
 import math.EquationService
 import math.EquationService.SolveMethods
+import math.MathFunction
 import java.awt.Desktop
-import java.net.URI
+import java.net.*
+import java.util.*
 import javax.naming.SizeLimitExceededException
 
-class GUIController {
+class GUIController: Initializable {
 
     @FXML private lateinit var toolbar: HBox
     @FXML private lateinit var radioBtn: RadioButton
     @FXML private lateinit var eq1Chooser: ComboBox<MathFunction>
     @FXML private lateinit var eq2Chooser: ComboBox<MathFunction>
+    private lateinit var eqChoosers: Array<ComboBox<MathFunction>>
     @FXML private lateinit var methodChooser: ComboBox<SolveMethods>
     @FXML private lateinit var leftBoundLbl: Label
     @FXML private lateinit var rightBoundLbl: Label
@@ -34,14 +36,17 @@ class GUIController {
     @FXML private lateinit var leftBoundInput: TextField
     @FXML private lateinit var rightBoundInput: TextField
     @FXML private lateinit var infelicityInput: TextField
-    @FXML private lateinit var canvas: LineChart<Double, Double>
+    @FXML private lateinit var mainPane: BorderPane
     private val RED_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.RED)
     private val BLUE_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.DEEPSKYBLUE)
     private val GREEN_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.LIGHTGREEN)
     private val eqsMethods = FXCollections.observableArrayList(SolveMethods.values().toList())
     private val sysOfEqsMethod = FXCollections.observableArrayList(SolveMethods.ITERATIVE)
+    private lateinit var gControl: GraphController
+    val fxEqs = FXCollections.observableArrayList(EquationService.equations)
+    val fxSysOfEqs = FXCollections.observableArrayList(EquationService.systemsOfEquations)
 
-    fun initialize() {
+    override fun initialize(p0: URL?, p1: ResourceBundle?) {
         toolbar.let {
             it.onMousePressed = EventHandler { mouseEvent: MouseEvent -> it.cursor = Cursor.MOVE }
             it.onMouseEntered = EventHandler { mouseEvent: MouseEvent -> if (!mouseEvent.isPrimaryButtonDown) { it.cursor = Cursor.HAND } }
@@ -50,8 +55,12 @@ class GUIController {
         arrayOf(eq1Chooser, eq2Chooser, methodChooser, leftBoundInput, rightBoundInput, infelicityInput, radioBtn).forEach {
             it.focusedProperty().addListener { _, _, newValue -> it.effect = if (newValue!!) BLUE_LIGHT else null }
         }
-        arrayOf(eq1Chooser, eq2Chooser).forEach { it.items = FXCollections.observableArrayList(EquationService.equations) }
+        eqChoosers = arrayOf(eq1Chooser, eq2Chooser).apply { this.forEach { it.items = fxEqs } }
         methodChooser.items = eqsMethods
+        FXMLLoader(javaClass.getResource("/resources/graph.fxml")).apply {
+            mainPane.right = this.load()
+            gControl = this.getController() as GraphController
+        }
     }
 
     @FXML private fun minimizeWindow() { AeroMain.stage.isIconified = true }
@@ -63,11 +72,13 @@ class GUIController {
     @FXML private fun onRadioChanged() {
         if (radioBtn.isSelected) {
             eq2Chooser.isDisable = false
+            eqChoosers.forEach { it.items = this.fxSysOfEqs }
             methodChooser.items = sysOfEqsMethod
             leftBoundLbl.text = "x1(0)"
             rightBoundLbl.text = "x2(0)"
         } else {
             eq2Chooser.isDisable = true
+            eqChoosers.forEach { it.items = this.fxEqs }
             methodChooser.items = eqsMethods
             leftBoundLbl.text = "левая гр."
             rightBoundLbl.text = "правая гр."
@@ -86,15 +97,14 @@ class GUIController {
             }
             val accuracy = infelicityInput.text.toDouble().apply { if (this < 0.000001) throw NumberFormatException() }
             val res = EquationService.solve(selectedEqs, borders, accuracy, methodChooser.value)
-            canvas.data.clear()
-            selectedEqs.forEach { drawGraph(it, borders, res.iterCounter) }
-            drawPoint(res.root.first, res.root.second)
+            gControl.clear()
+            if (selectedEqs.size == 1) gControl.drawGraph(selectedEqs[0], borders) else selectedEqs.forEach { gControl.drawGraph(it) }
+            gControl.drawPoint(res.root.first, res.root.second)
             outputArea.appendText(res.toString())
             outputArea.effect = GREEN_LIGHT
         } catch (e: Exception) {
             when (e) {
                 is NumberFormatException -> outputArea.appendText("""
-                    ОШИБКА!
                     Поля должны быть представлены числом
                     максимально допустимая точность 0.000001
                 """.trimIndent())
@@ -106,17 +116,4 @@ class GUIController {
             outputArea.effect = RED_LIGHT
         } finally { outputArea.appendText("\n") }
     }
-
-    fun drawGraph(equation: MathFunction, borders: Pair<Double, Double>, precision: Int) {
-        val series = Series<Double, Double>()
-        var a = borders.first
-        var b = borders.second
-        while (a <= b) {
-            series.data.add(XYChart.Data(a, equation.func(a)))
-            a += (borders.second - borders.first) / precision
-        }
-        canvas.data.add(series)
-    }
-
-    fun drawPoint(x: Double, y: Double) = canvas.data.add(Series<Double, Double>().apply { this.data.add(XYChart.Data(x, y)) })
 }

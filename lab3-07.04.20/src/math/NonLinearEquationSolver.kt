@@ -41,7 +41,9 @@ internal class NonLinearEquationSolver {
         return NonLinearEquationAnswer(Pair(x, xFuncValue), i, i == MAX_ITERS)
     }
 
-    internal fun iterativeMethod(system: List<MathFunction>, borders: Pair<Double, Double>, accuracy: Double): NonLinearEquationAnswer {
+    internal fun iterativeMethod(system: List<MathFunction>, borders: Pair<Double, Double>,
+                                 accuracy: Double): NonLinearEquationAnswer {
+        var i = 0
         if (system.size == 1) {
             val derA = findDerivative(system[0], borders.first, 1)
             val derB = findDerivative(system[0], borders.second, 1)
@@ -49,7 +51,6 @@ internal class NonLinearEquationSolver {
             if (maxDer >= 1) throw Exception("Не выполняется условие сходимости метода")
             var x = maxDer
             val lambda = -1 / maxDer
-            var i = 0
             do {
                 i++
                 val previousX = x
@@ -57,7 +58,7 @@ internal class NonLinearEquationSolver {
             } while (abs(x - previousX) >= accuracy && i <= MAX_ITERS)
             return NonLinearEquationAnswer(Pair(x, system[0].func(x)), i, i == MAX_ITERS)
         } else {
-            return NonLinearEquationAnswer(Pair(0.0, 0.0), 100, false)
+            return NonLinearEquationAnswer(Pair(0.0, 0.0), 100, i == MAX_ITERS)
         }
     }
 

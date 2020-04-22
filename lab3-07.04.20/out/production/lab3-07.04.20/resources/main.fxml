@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<BorderPane maxHeight="2160.0" maxWidth="3840.0" minHeight="576.0" minWidth="1024.0" prefHeight="648.0" prefWidth="1152.0" stylesheets="@interface.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GUIController">
+<BorderPane fx:id="mainPane" maxHeight="2160.0" maxWidth="3840.0" minHeight="576.0" minWidth="1024.0" prefHeight="648.0" prefWidth="1152.0" stylesheets="@interface.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GUIController">
    <bottom>
       <HBox fx:id="toolbar" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="bar" BorderPane.alignment="CENTER">
          <children>
@@ -70,20 +69,7 @@
       </HBox>
    </bottom>
    <right>
-      <LineChart fx:id="canvas" prefHeight="548.0" prefWidth="576.0" stylesheets="@chart.css" title="y = ƒ(x)" BorderPane.alignment="CENTER">
-        <xAxis>
-          <NumberAxis label="x" side="BOTTOM">
-               <effect>
-                  <Bloom />
-               </effect></NumberAxis>
-        </xAxis>
-        <yAxis>
-          <NumberAxis label="y" side="LEFT">
-               <effect>
-                  <Bloom />
-               </effect></NumberAxis>
-        </yAxis>
-      </LineChart>
+      <!--место для графика-->
    </right>
    <left>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="548.0" prefWidth="576.0" spacing="10.0" styleClass="control-pane" BorderPane.alignment="CENTER">
