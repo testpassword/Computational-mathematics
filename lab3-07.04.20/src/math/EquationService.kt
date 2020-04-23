@@ -2,15 +2,29 @@ package math
 
 import kotlin.math.*
 
-//TODO: документация
+/**
+ * Предоставляет единую точку доступа к экземпляру класса {@see NonLinearEquationSolver}.
+ * @author Артемий Кульбако.
+ * @version 1.3
+ */
 class EquationService {
 
+    /**
+     * Константы, определяющие методы решения системы нелинейных уравнений.
+     * @property BISECTION метод половинного деления.
+     * @property TANGENTS метод касательных (метод Ньютона).
+     * @property ITERATIVE метод простых итераций.
+     */
     enum class SolveMethods {
         BISECTION { override fun toString(): String { return "половинного деления" } },
         TANGENTS { override fun toString(): String { return "касательных" } },
         ITERATIVE { override fun toString(): String { return "итерационный" } }
     }
 
+    /**
+     * @property equations нелинейные уравнения с одной неизвестной переменной.
+     * @property systemsOfEquations системы нелинейных уравнений с двумя неизвестными переменными.
+     */
     companion object {
 
         private val solver = NonLinearEquationSolver()
@@ -20,37 +34,54 @@ class EquationService {
         init {
             this.equations = setOf(
                 object: MathFunction {
-                    override fun func(vararg x: Double): Double = x[0] / 2 - 3
+                    override fun func(vararg x: Double) = x[0] / 2 - 3
                     override fun toString() = "x/2 - 3 = y"   //ПРОВЕРЕНА
                 },
                 object: MathFunction {
-                    override fun func(vararg x: Double): Double = x[0].pow(3) - 0.2 * x[0].pow(2) + 0.5 * x[0] + 1.5
+                    override fun func(vararg x: Double) = x[0].pow(3) - 0.2 * x[0].pow(2) + 0.5 * x[0] + 1.5
                     override fun toString() = "x^3 - 0.2x^2 +0.5x + 1.5 = y"   //ПРОВЕРЕНА
                 },
                 object: MathFunction {
-                    override fun func(vararg x: Double): Double = (4 - Math.E.pow(2 * x[0])) / 3
+                    override fun func(vararg x: Double) = (4 - Math.E.pow(2 * x[0])) / 3
                     override fun toString() = "(4 - e^(2x)) / 3 = y"   //ПРОВЕРЕНА
                 },
                 object: MathFunction {
-                    override fun func(vararg x: Double): Double = sin(x[0])
+                    override fun func(vararg x: Double) = sin(x[0])
                     override fun toString() = "sin(x) = y" //ПРОВЕРЕНА
                 }
             )
             this.systemsOfEquations = setOf(
+                /*
+                Для графика выражать одинаковые переменные, для решения системы - разные
+                Системы уравнений идут наборами по 2
+                */
+                //TODO: добавить системы уравнений
                 object: MathFunction {
-                    override fun func(vararg x: Double) = x[0].pow(2)
-                    override fun toString() = "x2 - x1^2 = 0"
+                    override fun func(vararg x: Double) = -0.5 + x[0]
+                    override fun getPlotDot(vararg x: Double) = 0.5 + x[0]
+                    override fun toString() = "x - y = -0.5"
                 },
                 object: MathFunction {
-                    override fun func(vararg x: Double) = exp(x[0])
-                    override fun toString() = "x2 - e^(x1) = 0"
+                    override fun func(vararg x: Double) = 0.5 - cos(x[0])
+                    override fun toString() = "y + cos(x) = 0.5"
                 }
             )
         }
 
+        /**
+         * Определяет корректность существования корня на заданном промежутке, корректность заданного промежутка, и
+         * определяет вызываемый для решения системы нелинейных уравнений метод.
+         * @param system система уравнений, неизвестные которой нужно найти.
+         * @param borders границы поиска.
+         * @param accuracy точность вычислений.
+         * @param method метод вычислений.
+         * @return результат вычислений.
+         * @throws Exception если не выполняется условие ƒ(a) * ƒ(b) < 0.
+         */
         fun solve(system: List<MathFunction>, borders: Pair<Double, Double>, accuracy: Double,
                   method: SolveMethods): NonLinearEquationAnswer {
             if (borders.first > borders.second) throw IllegalArgumentException("Левая граница должна быть строго меньше правой")
+            system.groupingBy { it }.eachCount().map { if (it.value > 1) throw Exception("Уравнения в системе должно быть различны") }
             if (system.size == 1 && system[0].func(borders.first) * system[0].func(borders.second) >= 0)
                 throw Exception("Не выполняется условие ƒ(a) * ƒ(b) < 0")
             return when (method) {

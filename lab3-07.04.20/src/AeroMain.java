@@ -15,13 +15,23 @@ import javafx.util.Duration;
 import java.awt.*;
 import java.io.IOException;
 
+/**
+ * Управляет взаимодействием с пользователем через графический интерфейс.
+ * @author Артемий Кульбако.
+ * @version 1.1
+ */
 public class AeroMain extends Application {
 
-    private static final Effect blur = new BoxBlur(78, 78, 10);
+    private static final Effect blur = new BoxBlur(40, 40, 10);
     private static final ImageView background = new ImageView();
     private static final Pane layout = new Pane();
     public static Stage stage;
 
+    /**
+     * Инициализирует главную сцену, настраивает её эффекты.
+     * @param stage сцена
+     * @throws IOException при ошибке загрузки внешних ресурсов.
+     */
     @Override public void start(Stage stage) throws IOException {
         AeroMain.stage = stage;
         layout.getChildren().setAll(background, FXMLLoader.load(getClass().getResource("/resources/main.fxml")));
@@ -88,5 +98,9 @@ public class AeroMain extends Application {
                 Color.WHITESMOKE.deriveColor(0, 1, 1, 0.08));
     }
 
+    /**
+     * Точка запуска приложения.
+     * @param args аргументы командной строки.
+     */
     public static void main(String[] args) { launch(args); }
 }
