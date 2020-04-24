@@ -36,7 +36,6 @@ class GUIController: Initializable {
     @FXML private lateinit var systemSwitch: RadioButton
     @FXML private lateinit var eq1Chooser: ComboBox<MathFunction>
     @FXML private lateinit var eq2Chooser: ComboBox<MathFunction>
-    private lateinit var eqChoosers: Array<ComboBox<MathFunction>>
     @FXML private lateinit var methodChooser: ComboBox<SolveMethods>
     @FXML private lateinit var allMethodsSwitch: RadioButton
     @FXML private lateinit var leftBoundLbl: Label
@@ -50,7 +49,8 @@ class GUIController: Initializable {
     private val sysOfEqsMethod = FXCollections.observableArrayList(SolveMethods.ITERATIVE)
     private lateinit var gControl: GraphController
     private val fxEqs = FXCollections.observableArrayList(EquationService.equations)
-    private val fxSysOfEqs = FXCollections.observableArrayList(EquationService.systemsOfEquations)
+    private val fxSysOfEqsX = FXCollections.observableArrayList(EquationService.sysOfEqsWithExpressedX)
+    private val fxSysOfEqsY = FXCollections.observableArrayList(EquationService.sysOfEqsWithExpressedY)
     val RED_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.RED)
     val BLUE_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.DEEPSKYBLUE)
     val GREEN_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.LIGHTGREEN)
@@ -62,16 +62,16 @@ class GUIController: Initializable {
      * @param p1 загруженный внешний ресурс, который может быть использован.
      */
     override fun initialize(p0: URL?, p1: ResourceBundle?) {
-        toolbar.let {
-            it.onMousePressed = EventHandler { mouseEvent: MouseEvent -> it.cursor = Cursor.MOVE }
-            it.onMouseEntered = EventHandler { mouseEvent: MouseEvent -> if (!mouseEvent.isPrimaryButtonDown) { it.cursor = Cursor.HAND } }
-            it.onMouseExited = EventHandler { mouseEvent: MouseEvent -> if (!mouseEvent.isPrimaryButtonDown) { toolbar.cursor = Cursor.DEFAULT } }
+        toolbar.apply {
+            this.onMousePressed = EventHandler { mouseEvent: MouseEvent -> this.cursor = Cursor.MOVE }
+            this.onMouseEntered = EventHandler { mouseEvent: MouseEvent -> if (!mouseEvent.isPrimaryButtonDown) { this.cursor = Cursor.HAND } }
+            this.onMouseExited = EventHandler { mouseEvent: MouseEvent -> if (!mouseEvent.isPrimaryButtonDown) { toolbar.cursor = Cursor.DEFAULT } }
         }
         arrayOf(eq1Chooser, eq2Chooser, methodChooser, leftBoundInput, rightBoundInput, infelicityInput,
             systemSwitch, allMethodsSwitch).forEach {
             it.focusedProperty().addListener { _, _, newValue -> it.effect = if (newValue!!) BLUE_LIGHT else null }
         }
-        eqChoosers = arrayOf(eq1Chooser, eq2Chooser).apply { this.forEach { it.items = fxEqs } }
+        eq1Chooser.items = fxEqs
         methodChooser.items = eqsMethods
         FXMLLoader(javaClass.getResource("/resources/graph.fxml")).apply {
             mainPane.right = this.load()
@@ -88,14 +88,15 @@ class GUIController: Initializable {
     @FXML private fun systemSwitchChanged() {
         if (systemSwitch.isSelected) {
             eq2Chooser.isDisable = false
-            eqChoosers.forEach { it.items = this.fxSysOfEqs }
+            eq1Chooser.items = fxSysOfEqsX
+            eq2Chooser.items = fxSysOfEqsY
             methodChooser.items = sysOfEqsMethod
             leftBoundLbl.text = "x1(0)"
             rightBoundLbl.text = "x2(0)"
             allMethodsSwitch.isDisable = true
         } else {
             eq2Chooser.isDisable = true
-            eqChoosers.forEach { it.items = this.fxEqs }
+            eq1Chooser.items = fxEqs
             methodChooser.items = eqsMethods
             leftBoundLbl.text = "левая гр."
             rightBoundLbl.text = "правая гр."

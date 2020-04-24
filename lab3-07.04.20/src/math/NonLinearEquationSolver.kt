@@ -68,6 +68,7 @@ internal class NonLinearEquationSolver {
      * @param accuracy точность вычислений.
      * @return результат вычислений.
      * @throws IllegalCallerException если количество уравнений в системе меньше 1 или больше 2.
+     * @throws Exception если не выполняется условие сходимости метода.
      */
     internal fun iterativeMethod(system: List<MathFunction>, borders: Pair<Double, Double>,
                                  accuracy: Double): NonLinearEquationAnswer {
@@ -75,13 +76,17 @@ internal class NonLinearEquationSolver {
         fun isAccuracyAchieve(oldX: DoubleArray, newX: DoubleArray) =
             oldX.zip(newX) { x, y -> abs(x - y) }.toDoubleArray().max()!! >= accuracy
 
+        fun checkConvergence(vararg x: Double) =
+            x.mapIndexed { j, it -> abs(findDerivative(system[j], it, 1)) }.max()!!.apply {
+                if (this < 1) return this else throw Exception("Не выполняется условие сходимости метода")
+            }
+
         var i = 0
         when (system.size) {
             1 -> {
                 val derA = findDerivative(system[0], borders.first, 1)
                 val derB = findDerivative(system[0], borders.second, 1)
-                val maxDer = maxOf(derA, derB)
-                if (maxDer >= 1) throw Exception("Не выполняется условие сходимости метода")
+                val maxDer = checkConvergence(derA, derB)
                 var x = maxDer
                 val lambda = -1 / maxDer
                 do {
@@ -93,12 +98,11 @@ internal class NonLinearEquationSolver {
             }
             2 -> {
                 var prevX: DoubleArray
-                val newX = doubleArrayOf(borders.first, borders.second)
+                var newX = doubleArrayOf(borders.first, borders.second)
                 do {
                     i++
                     prevX = newX.clone()
-                    newX[0] = system[0].func(prevX[1])
-                    newX[1] = system[1].func(prevX[0])
+                    newX = doubleArrayOf(system[0].func(prevX[1]), system[1].func(prevX[0]))
                 } while (isAccuracyAchieve(prevX, newX) && i <= MAX_ITERS)
                 return NonLinearEquationAnswer(Pair(newX[0], newX[1]), i, i == MAX_ITERS)
             }

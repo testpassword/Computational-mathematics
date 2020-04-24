@@ -5,7 +5,7 @@ import kotlin.math.*
 /**
  * Предоставляет единую точку доступа к экземпляру класса {@see NonLinearEquationSolver}.
  * @author Артемий Кульбако.
- * @version 1.3
+ * @version 1.4
  */
 class EquationService {
 
@@ -16,20 +16,22 @@ class EquationService {
      * @property ITERATIVE метод простых итераций.
      */
     enum class SolveMethods {
-        BISECTION { override fun toString(): String { return "половинного деления" } },
-        TANGENTS { override fun toString(): String { return "касательных" } },
-        ITERATIVE { override fun toString(): String { return "итерационный" } }
+        BISECTION { override fun toString() = "половинного деления" },
+        TANGENTS { override fun toString() = "касательных" },
+        ITERATIVE { override fun toString() = "итерационный" }
     }
 
     /**
      * @property equations нелинейные уравнения с одной неизвестной переменной.
-     * @property systemsOfEquations системы нелинейных уравнений с двумя неизвестными переменными.
+     * @property sysOfEqsWithExpressedX уравнения для систем, где выражен X.
+     * @property sysOfEqsWithExpressedY уравнения для систем, где выражен Y.
      */
     companion object {
 
         private val solver = NonLinearEquationSolver()
         val equations: Set<MathFunction>
-        val systemsOfEquations: Set<MathFunction>
+        val sysOfEqsWithExpressedX: Set<MathFunction> //уравнение, где в системе выражен X
+        val sysOfEqsWithExpressedY: Set<MathFunction> //уравнение, где в системе выражен Y
 
         init {
             this.equations = setOf(
@@ -50,20 +52,35 @@ class EquationService {
                     override fun toString() = "sin(x) = y" //ПРОВЕРЕНА
                 }
             )
-            this.systemsOfEquations = setOf(
-                /*
-                Для графика выражать одинаковые переменные, для решения системы - разные
-                Системы уравнений идут наборами по 2
-                */
-                //TODO: добавить системы уравнений
+            /*
+            Для графика выражать одинаковые переменные (y), для решения системы - разные
+            Системы уравнений идут наборами по 2
+            //НЕ ЗАПУСКАТЬ! 1x с 3y; 2x с 1y
+            */
+            sysOfEqsWithExpressedX = setOf(
                 object: MathFunction {
                     override fun func(vararg x: Double) = -0.5 + x[0]
                     override fun getPlotDot(vararg x: Double) = 0.5 + x[0]
                     override fun toString() = "x - y = -0.5"
                 },
                 object: MathFunction {
+                    override fun func(vararg x: Double) = E.pow(x[0])
+                    override fun getPlotDot(vararg x: Double) = ln(x[0])
+                    override fun toString() = "x = e^y"
+                }
+            )
+            sysOfEqsWithExpressedY = setOf(
+                object: MathFunction {
                     override fun func(vararg x: Double) = 0.5 - cos(x[0])
                     override fun toString() = "y + cos(x) = 0.5"
+                },
+                object: MathFunction {
+                    override fun func(vararg x: Double) = (x[0] + 2) / 6
+                    override fun toString() = "6y - 2 = x"
+                },
+                object: MathFunction {
+                    override fun func(vararg x: Double) = -0.3 * x[0].pow(3) - 1
+                    override fun toString() = "-0.3x^3 - 1 = y"
                 }
             )
         }
