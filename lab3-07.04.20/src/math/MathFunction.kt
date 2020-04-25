@@ -5,7 +5,6 @@ package math
  * @author Артемий Кульбако.
  * @version 1.3
  */
-@FunctionalInterface
 interface MathFunction {
 
     /**

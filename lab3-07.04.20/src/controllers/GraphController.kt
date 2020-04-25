@@ -42,26 +42,21 @@ class GraphController: Initializable {
             series.data.add(XYChart.Data(a, equation.getPlotDot(a)))
             a += (borders.second - borders.first) / precision
         }
-        (canvas.xAxis as NumberAxis).apply {
-            this.lowerBound = borders.first
-            this.upperBound = borders.second
-            this.isAutoRanging = false
-        }
-        (canvas.yAxis as NumberAxis).apply {
-            this.lowerBound = borders.first
-            this.upperBound = borders.second
-            this.isAutoRanging = false
+        arrayOf(canvas.xAxis, canvas.yAxis).map {
+            (it as NumberAxis).let {
+                it.lowerBound = borders.first
+                it.upperBound = borders.second
+                it.isAutoRanging = false
+            }
         }
         canvas.data.add(series)
     }
 
-    /**
-     * Уничтожает старое изображение на графике.
-     */
+    /** Уничтожает старое изображение на графике. */
     fun clear() = this.canvas.data.clear()
 
     /**
-     * Рисует точка на графике.
+     * Рисует точку на графике.
      * @param x координаты точки.
      * @param y координата точки.
      * @param color цвет точки. По-умолчанию {@see Color.RED}.

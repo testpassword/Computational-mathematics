@@ -51,7 +51,7 @@ class GUIController: Initializable {
     private val fxEqs = FXCollections.observableArrayList(EquationService.equations)
     private val fxSysOfEqsX = FXCollections.observableArrayList(EquationService.sysOfEqsWithExpressedX)
     private val fxSysOfEqsY = FXCollections.observableArrayList(EquationService.sysOfEqsWithExpressedY)
-    val RED_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.RED)
+    private val RED_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.RED)
     val BLUE_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.DEEPSKYBLUE)
     val GREEN_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.LIGHTGREEN)
 
@@ -62,12 +62,12 @@ class GUIController: Initializable {
      * @param p1 загруженный внешний ресурс, который может быть использован.
      */
     override fun initialize(p0: URL?, p1: ResourceBundle?) {
-        toolbar.apply {
-            this.onMousePressed = EventHandler { mouseEvent: MouseEvent -> this.cursor = Cursor.MOVE }
-            this.onMouseEntered = EventHandler { mouseEvent: MouseEvent -> if (!mouseEvent.isPrimaryButtonDown) { this.cursor = Cursor.HAND } }
-            this.onMouseExited = EventHandler { mouseEvent: MouseEvent -> if (!mouseEvent.isPrimaryButtonDown) { toolbar.cursor = Cursor.DEFAULT } }
+        toolbar.let {
+            it.onMousePressed = EventHandler { mouseEvent: MouseEvent -> it.cursor = Cursor.MOVE }
+            it.onMouseEntered = EventHandler { mouseEvent: MouseEvent -> if (!mouseEvent.isPrimaryButtonDown) { it.cursor = Cursor.HAND } }
+            it.onMouseExited = EventHandler { mouseEvent: MouseEvent -> if (!mouseEvent.isPrimaryButtonDown) { toolbar.cursor = Cursor.DEFAULT } }
         }
-        arrayOf(eq1Chooser, eq2Chooser, methodChooser, leftBoundInput, rightBoundInput, infelicityInput,
+        sequenceOf(eq1Chooser, eq2Chooser, methodChooser, leftBoundInput, rightBoundInput, infelicityInput,
             systemSwitch, allMethodsSwitch).forEach {
             it.focusedProperty().addListener { _, _, newValue -> it.effect = if (newValue!!) BLUE_LIGHT else null }
         }
@@ -79,11 +79,14 @@ class GUIController: Initializable {
         }
     }
 
-    @FXML private fun minimizeWindow() { AeroMain.stage.isIconified = true }
+    /** Минимизирует окно программы.*/
+    @FXML fun minimizeWindow() { AeroMain.stage.isIconified = true }
 
-    @FXML private fun closeProgram() = Platform.exit()
+    /** Завершает работу программы.*/
+    @FXML fun closeProgram() = Platform.exit()
 
-    @FXML private fun showCredits() = Desktop.getDesktop().browse(URI("https://github.com/testpassword"))
+    /** Открывает профиль разработчика на github через стандартный веб-браузер в системе.*/
+    @FXML fun showCredits() = Desktop.getDesktop().browse(URI("https://github.com/testpassword"))
 
     @FXML private fun systemSwitchChanged() {
         if (systemSwitch.isSelected) {
