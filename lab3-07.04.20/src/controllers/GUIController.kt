@@ -14,8 +14,8 @@ import javafx.scene.input.MouseEvent
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.HBox
 import javafx.scene.paint.Color
-import math.EquationService
-import math.EquationService.SolveMethods
+import math.MathFunctionService
+import math.MathFunctionService.SolveMethods
 import math.MathFunction
 import java.awt.Desktop
 import java.net.*
@@ -45,23 +45,23 @@ class GUIController: Initializable {
     @FXML private lateinit var rightBoundInput: TextField
     @FXML private lateinit var infelicityInput: TextField
     @FXML private lateinit var mainPane: BorderPane
-    private val eqsMethods = FXCollections.observableArrayList(SolveMethods.values().toList())
-    private val sysOfEqsMethod = FXCollections.observableArrayList(SolveMethods.ITERATIVE)
+    private val fxMethods = FXCollections.observableArrayList(SolveMethods.values().toList())
+    private val fxSysMethods = FXCollections.observableArrayList(SolveMethods.ITERATIVE)
     private lateinit var gControl: GraphController
-    private val fxEqs = FXCollections.observableArrayList(EquationService.equations)
-    private val fxSysOfEqsX = FXCollections.observableArrayList(EquationService.sysOfEqsWithExpressedX)
-    private val fxSysOfEqsY = FXCollections.observableArrayList(EquationService.sysOfEqsWithExpressedY)
-    private val RED_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.RED)
+    private val fxEqs = FXCollections.observableArrayList(MathFunctionService.equations)
+    private val fxSysOfEqsX = FXCollections.observableArrayList(MathFunctionService.sysOfEqsWithExpressedX)
+    private val fxSysOfEqsY = FXCollections.observableArrayList(MathFunctionService.sysOfEqsWithExpressedY)
+    val RED_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.RED)
     val BLUE_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.DEEPSKYBLUE)
     val GREEN_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.LIGHTGREEN)
 
     /**
      * Инициализирует экземпляр класс GUIController, навешивая на различные его элементы обработчики событий и эффекты
      * постобработки.
-     * @param p0 адрес внешнего ресурса, который может быть загружен.
-     * @param p1 загруженный внешний ресурс, который может быть использован.
+     * @param url адрес внешнего ресурса, который может быть загружен.
+     * @param bundle загруженный внешний ресурс, который может быть использован.
      */
-    override fun initialize(p0: URL?, p1: ResourceBundle?) {
+    override fun initialize(url: URL?, bundle: ResourceBundle?) {
         toolbar.let {
             it.onMousePressed = EventHandler { mouseEvent: MouseEvent -> it.cursor = Cursor.MOVE }
             it.onMouseEntered = EventHandler { mouseEvent: MouseEvent -> if (!mouseEvent.isPrimaryButtonDown) { it.cursor = Cursor.HAND } }
@@ -72,7 +72,7 @@ class GUIController: Initializable {
             it.focusedProperty().addListener { _, _, newValue -> it.effect = if (newValue!!) BLUE_LIGHT else null }
         }
         eq1Chooser.items = fxEqs
-        methodChooser.items = eqsMethods
+        methodChooser.items = fxMethods
         FXMLLoader(javaClass.getResource("/resources/graph.fxml")).apply {
             mainPane.right = this.load()
             gControl = this.getController() as GraphController
@@ -93,14 +93,14 @@ class GUIController: Initializable {
             eq2Chooser.isDisable = false
             eq1Chooser.items = fxSysOfEqsX
             eq2Chooser.items = fxSysOfEqsY
-            methodChooser.items = sysOfEqsMethod
+            methodChooser.items = fxSysMethods
             leftBoundLbl.text = "x1(0)"
             rightBoundLbl.text = "x2(0)"
             allMethodsSwitch.isDisable = true
         } else {
             eq2Chooser.isDisable = true
             eq1Chooser.items = fxEqs
-            methodChooser.items = eqsMethods
+            methodChooser.items = fxMethods
             leftBoundLbl.text = "левая гр."
             rightBoundLbl.text = "правая гр."
             allMethodsSwitch.isDisable = false
@@ -121,8 +121,8 @@ class GUIController: Initializable {
             }
             val accuracy = infelicityInput.text.toDouble().apply { if (this < 0.000001) throw NumberFormatException() }
             val res = if (allMethodsSwitch.isSelected)
-                SolveMethods.values().map { EquationService.solve(selectedEqs, borders, accuracy, it) }.toTypedArray()
-            else arrayOf(EquationService.solve(selectedEqs, borders, accuracy, methodChooser.value))
+                SolveMethods.values().map { MathFunctionService.solve(selectedEqs, borders, accuracy, it) }.toTypedArray()
+            else arrayOf(MathFunctionService.solve(selectedEqs, borders, accuracy, methodChooser.value))
             gControl.clear()
             if (selectedEqs.size == 1) gControl.drawLine(selectedEqs[0], borders) else selectedEqs.forEach { gControl.drawLine(it) }
             res.forEach {

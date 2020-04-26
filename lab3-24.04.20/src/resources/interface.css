@@ -2,6 +2,10 @@
     -fx-background-color: rgba(0, 0, 0, 0.35);
 }
 
+.unit {
+    -fx-background-color: rgba(1, 1, 1, 0.7);
+}
+
 .root * {
     -fx-font-size: 1.2em;
     -fx-text-fill: #ffffff;

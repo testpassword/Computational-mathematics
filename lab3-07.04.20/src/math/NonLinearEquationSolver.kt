@@ -31,7 +31,7 @@ internal class NonLinearEquationSolver {
             val leftFuncValue = f.func(left)
             xFuncValue = f.func(x)
             if (leftFuncValue * xFuncValue > 0) left = x else right = x
-        } while (((right - left) > accuracy || abs(xFuncValue) > accuracy) && i <= MAX_ITERS)
+        } while (((right - left) > accuracy || abs(xFuncValue) > accuracy) && i < MAX_ITERS)
         return NonLinearEquationAnswer(Pair(x, xFuncValue), i, i == MAX_ITERS)
     }
 
@@ -57,7 +57,7 @@ internal class NonLinearEquationSolver {
             xFuncValue = f.func(x)
             val dX = findDerivative(f, x, 1)
             x -= xFuncValue / dX
-        } while ((abs(xFuncValue) > accuracy) && i <= MAX_ITERS)
+        } while ((abs(xFuncValue) > accuracy) && i < MAX_ITERS)
         return NonLinearEquationAnswer(Pair(x, xFuncValue), i, i == MAX_ITERS)
     }
 
@@ -93,7 +93,7 @@ internal class NonLinearEquationSolver {
                     i++
                     val previousX = x
                     x += lambda * system[0].func(x)
-                } while (abs(x - previousX) >= accuracy && i <= MAX_ITERS)
+                } while (abs(x - previousX) >= accuracy && i < MAX_ITERS)
                 return NonLinearEquationAnswer(Pair(x, system[0].func(x)), i, i == MAX_ITERS)
             }
             2 -> {
@@ -103,7 +103,7 @@ internal class NonLinearEquationSolver {
                     i++
                     prevX = newX.clone()
                     newX = doubleArrayOf(system[0].func(prevX[1]), system[1].func(prevX[0]))
-                } while (isAccuracyAchieve(prevX, newX) && i <= MAX_ITERS)
+                } while (isAccuracyAchieve(prevX, newX) && i < MAX_ITERS)
                 return NonLinearEquationAnswer(Pair(newX[0], newX[1]), i, i == MAX_ITERS)
             }
             else -> throw IllegalCallerException("Решение систем для более чем двух пока невозможно")

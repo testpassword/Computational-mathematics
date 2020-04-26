@@ -6,12 +6,13 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
 <BorderPane fx:id="mainPane" maxHeight="2160.0" maxWidth="3840.0" minHeight="576.0" minWidth="1024.0" prefHeight="648.0" prefWidth="1152.0" stylesheets="@interface.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GUIController">
    <bottom>
       <HBox fx:id="toolbar" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="bar" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#showResult" prefHeight="46.0" prefWidth="127.0" text="Решить">
+            <Button mnemonicParsing="false" onAction="#showResult" prefHeight="46.0" text="Построить график">
                <effect>
                   <DropShadow height="40.0" radius="24.5" width="60.0">
                      <color>
@@ -32,7 +33,7 @@
                   </ImageView>
                </graphic>
                <HBox.margin>
-                  <Insets left="800.0" />
+                  <Insets left="770.0" />
                </HBox.margin>
             </Button>
             <Button alignment="CENTER" contentDisplay="CENTER" layoutX="1196.0" layoutY="41.0" mnemonicParsing="false" onAction="#minimizeWindow" styleClass="minimize-button">
@@ -70,9 +71,43 @@
    </bottom>
    <right>
       <!--место для графика-->
+      <VBox fx:id="graphPlaceholder">
+         <children>
+            <HBox alignment="CENTER" disable="true" prefHeight="28.0" prefWidth="200.0" styleClass="unit">
+               <children>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="50.0" prefWidth="98.0" text="X">
+                     <graphic>
+                        <TextField alignment="CENTER" prefHeight="30.0" prefWidth="60.0" promptText="число" />
+                     </graphic>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" text="=&gt;">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
+                  <Label contentDisplay="RIGHT" layoutX="49.0" layoutY="10.0" prefHeight="50.0" prefWidth="25.0" text="Y" textFill="#bd1d1d">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </right>
    <left>
-      <VBox alignment="CENTER" fillWidth="false" prefHeight="548.0" prefWidth="576.0" spacing="10.0" styleClass="control-pane" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="548.0" prefWidth="576.0" styleClass="control-pane" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="450.0" spacing="25.0">
                <children>
@@ -94,7 +129,7 @@
                   </Label>
                   <Label layoutX="15.0" layoutY="15.0" text="правая гр.">
                      <graphic>
-                        <TextField fx:id="rightBoundInput" prefHeight="30.0" prefWidth="110.0" promptText="число" />
+                        <TextField fx:id="rightBoundInput" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="110.0" promptText="число" />
                      </graphic>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -104,10 +139,25 @@
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding></HBox>
-            <TextArea fx:id="outputArea" prefHeight="160.0" prefWidth="440.0" />
+            <Label alignment="CENTER" text="Количество точек:">
+               <graphic>
+                  <TextField fx:id="pointsAmountFld" alignment="CENTER" prefHeight="30.0" prefWidth="60.0" promptText="[1-20]" />
+               </graphic>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Label>
+            <TableView fx:id="pointsTable" prefHeight="156.0" prefWidth="440.0">
+              <columns>
+                <TableColumn editable="false" prefWidth="75.0" sortable="false" text="X" />
+                <TableColumn prefWidth="75.0" sortable="false" text="Y" />
+              </columns>
+            </TableView>
+            <Separator prefHeight="28.0" prefWidth="440.0" />
+            <TextArea fx:id="outputArea" editable="false" prefHeight="160.0" prefWidth="440.0" promptText="здесь будет ответ" />
          </children>
          <padding>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            <Insets bottom="30.0" left="50.0" right="50.0" top="30.0" />
          </padding></VBox>
    </left>
 </BorderPane>
