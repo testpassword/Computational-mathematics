@@ -14,8 +14,8 @@ import javafx.scene.input.MouseEvent
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.HBox
 import javafx.scene.paint.Color
-import math.MathFunctionService
-import math.MathFunctionService.SolveMethods
+import math.NLEquationService
+import math.NLEquationService.SolveMethods
 import math.MathFunction
 import java.awt.Desktop
 import java.net.*
@@ -48,9 +48,9 @@ class GUIController: Initializable {
     private val fxMethods = FXCollections.observableArrayList(SolveMethods.values().toList())
     private val fxSysMethods = FXCollections.observableArrayList(SolveMethods.ITERATIVE)
     private lateinit var gControl: GraphController
-    private val fxEqs = FXCollections.observableArrayList(MathFunctionService.equations)
-    private val fxSysOfEqsX = FXCollections.observableArrayList(MathFunctionService.sysOfEqsWithExpressedX)
-    private val fxSysOfEqsY = FXCollections.observableArrayList(MathFunctionService.sysOfEqsWithExpressedY)
+    private val fxEqs = FXCollections.observableArrayList(NLEquationService.equations)
+    private val fxSysOfEqsX = FXCollections.observableArrayList(NLEquationService.sysOfEqsWithExpressedX)
+    private val fxSysOfEqsY = FXCollections.observableArrayList(NLEquationService.sysOfEqsWithExpressedY)
     val RED_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.RED)
     val BLUE_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.DEEPSKYBLUE)
     val GREEN_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.LIGHTGREEN)
@@ -119,10 +119,13 @@ class GUIController: Initializable {
                 if (this.first > this.second) throw IllegalArgumentException()
                 if (this.first > MAX || this.second > MAX) throw SizeLimitExceededException()
             }
-            val accuracy = infelicityInput.text.toDouble().apply { if (this < 0.000001) throw NumberFormatException() }
+            val accuracy = infelicityInput.text.toDouble().let {
+                if (it in 0.000001..1.0) it
+                else throw NumberFormatException()
+            }
             val res = if (allMethodsSwitch.isSelected)
-                SolveMethods.values().map { MathFunctionService.solve(selectedEqs, borders, accuracy, it) }.toTypedArray()
-            else arrayOf(MathFunctionService.solve(selectedEqs, borders, accuracy, methodChooser.value))
+                SolveMethods.values().map { NLEquationService.solve(selectedEqs, borders, accuracy, it) }.toTypedArray()
+            else arrayOf(NLEquationService.solve(selectedEqs, borders, accuracy, methodChooser.value))
             gControl.clear()
             if (selectedEqs.size == 1) gControl.drawLine(selectedEqs[0], borders) else selectedEqs.forEach { gControl.drawLine(it) }
             res.forEach {

@@ -2,10 +2,12 @@ package controllers
 
 import javafx.fxml.FXML
 import javafx.fxml.Initializable
+import javafx.geometry.Point2D
 import javafx.scene.chart.*
 import javafx.scene.paint.Color
 import javafx.scene.shape.Circle
 import math.MathFunction
+import math.Point
 import java.net.URL
 import java.util.*
 
@@ -34,7 +36,7 @@ class GraphController: Initializable {
      * @param precision количество точек, по которым будет построен график. Для прямых линий не играет роли, но может
      * быть важен для ломаных. По-умолчанию = 666.
      */
-    fun drawLine(equation: MathFunction, borders: Pair<Double, Double> = Pair(-5.0, 5.0), precision: Int = 666) {
+    fun drawLine(equation: MathFunction, borders: Pair<Double, Double> = Pair(-10.0, 10.0), precision: Int = 666) {
         val series = XYChart.Series<Double, Double>()
         var a = borders.first
         val b = borders.second
@@ -46,7 +48,6 @@ class GraphController: Initializable {
             (it as NumberAxis).let {
                 it.lowerBound = borders.first
                 it.upperBound = borders.second
-                it.isAutoRanging = false
             }
         }
         canvas.data.add(series)
@@ -57,10 +58,9 @@ class GraphController: Initializable {
 
     /**
      * Рисует точку на графике.
-     * @param x координаты точки.
-     * @param y координата точки.
+     * @param p точка, которую нужно нарисовать.
      * @param color цвет точки. По-умолчанию {@see Color.RED}.
      */
-    fun drawPoint(x: Double, y: Double, color: Color = Color.RED) = this.canvas.data
-        .add(XYChart.Series<Double, Double>().apply { this.data.add(XYChart.Data(x,y).apply { this.node = Circle(3.0, color) }) })
+    fun drawPoint(p: Point, color: Color = Color.RED) = this.canvas.data
+        .add(XYChart.Series<Double, Double>().apply { this.data.add(XYChart.Data(p.x, p.y).apply { this.node = Circle(3.0, color) }) })
 }

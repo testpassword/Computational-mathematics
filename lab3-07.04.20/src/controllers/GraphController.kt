@@ -42,11 +42,10 @@ class GraphController: Initializable {
             series.data.add(XYChart.Data(a, equation.getPlotDot(a)))
             a += (borders.second - borders.first) / precision
         }
-        arrayOf(canvas.xAxis, canvas.yAxis).map {
-            (it as NumberAxis).let {
-                it.lowerBound = borders.first
-                it.upperBound = borders.second
-                it.isAutoRanging = false
+        sequenceOf(canvas.xAxis, canvas.yAxis).map {
+            (it as NumberAxis).let { axis ->
+                axis.lowerBound = borders.first
+                axis.upperBound = borders.second
             }
         }
         canvas.data.add(series)

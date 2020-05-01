@@ -43,19 +43,17 @@ internal class NonLinearEquationSolver {
      * @return результат вычислений.
      */
     internal fun tangentsMethod(f: MathFunction, borders: Pair<Double, Double>, accuracy: Double): NonLinearEquationAnswer {
-        val left = f.func(borders.first) * findDerivative(f, borders.first, 2)
-        val right = f.func(borders.first) * findDerivative(f, borders.first, 2)
-        var x = when {
-            left > 0 -> left
-            right > 0 -> right
-            else -> (left + right) / 2
-        }
+
+        val firstApproach = {it: Double -> f.func(it) * f.findDerivative(it, 2) }
+        val left = firstApproach(borders.first)
+        val right = firstApproach(borders.second)
+        var x = borders.toList().max()!!.let { if (it > 0 ) it else (left + right) / 2 }
         var xFuncValue: Double
         var i = 0
         do {
             i++
             xFuncValue = f.func(x)
-            val dX = findDerivative(f, x, 1)
+            val dX = f.findDerivative(x, 1)
             x -= xFuncValue / dX
         } while ((abs(xFuncValue) > accuracy) && i < MAX_ITERS)
         return NonLinearEquationAnswer(Pair(x, xFuncValue), i, i == MAX_ITERS)
@@ -76,17 +74,14 @@ internal class NonLinearEquationSolver {
         fun isAccuracyAchieve(oldX: DoubleArray, newX: DoubleArray) =
             oldX.zip(newX) { x, y -> abs(x - y) }.toDoubleArray().max()!! >= accuracy
 
-        fun checkConvergence(vararg x: Double) =
-            x.mapIndexed { j, it -> abs(findDerivative(system[j], it, 1)) }.max()!!.apply {
-                if (this < 1) return this else throw Exception("Не выполняется условие сходимости метода")
-            }
-
         var i = 0
         when (system.size) {
             1 -> {
-                val derA = findDerivative(system[0], borders.first, 1)
-                val derB = findDerivative(system[0], borders.second, 1)
-                val maxDer = checkConvergence(derA, derB)
+                val derA = system[0].findDerivative(borders.first, 1)
+                val derB = system[0].findDerivative(borders.second, 1)
+                val maxDer = sequenceOf(derA, derB).max()!!.let {
+                    if (it < 1) it else throw Exception("Не выполняется условие сходимости метода")
+                }
                 var x = maxDer
                 val lambda = -1 / maxDer
                 do {
@@ -112,17 +107,16 @@ internal class NonLinearEquationSolver {
 
     /**
      * Вычисляет производную функции.
-     * @param f дифференцируемая функция.
      * @param x точка дифференцирования.
      * @param order порядок производной.
      * @return результат дифференцирования в точке x.
      * @throws IllegalArgumentException если порядок производной меньше 1 или больше 2.
      */
-    fun findDerivative(f: MathFunction, x: Double, order: Int): Double {
+    internal fun MathFunction.findDerivative(x: Double, order: Int): Double {
         val h = 0.0001
         return when (order) {
-            1 -> (f.func(x + h) - f.func(x - h)) / (2 * h)
-            2 -> (f.func(x + h) - 2 * f.func(x) + f.func(x - h)) / h.pow(2)
+            1 -> (this.func(x + h) - this.func(x - h)) / (2 * h)
+            2 -> (this.func(x + h) - 2 * this.func(x) + this.func(x - h)) / h.pow(2)
             else -> throw Exception("Метод расчёта производных этого порядка не реализован")
         }
     }

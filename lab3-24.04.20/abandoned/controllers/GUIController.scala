@@ -14,7 +14,7 @@ import javafx.scene.Cursor
 import javafx.scene.control.{ComboBox, TableView, TextArea, TextField}
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.{HBox, VBox}
-import math.{MathFunction, MathFunctionService}
+import math.{MathFunction, InterpolationService}
 
 /**
  * Управляет взаимодействием с пользователем посредством графического интерфейса.
@@ -29,7 +29,7 @@ class GUIController extends Initializable {
   //TODO: задать настоящие типы
   @FXML private var toolbar: HBox = _
   @FXML private var gControl: GraphController = _
-  @FXML private var methodChooser: ComboBox[MathFunctionService.SolveMethods] = _
+  @FXML private var methodChooser: ComboBox[InterpolationService.SolveMethods] = _
   @FXML private var funcChooser: ComboBox[MathFunction] = _
   @FXML private var leftBoundInput: TextField = _
   @FXML private var rightBoundInput: TextField = _
@@ -37,8 +37,8 @@ class GUIController extends Initializable {
   @FXML private var pointsAmountFld: TextField = _
   @FXML private var pointsTable: TableView[Any] = _
   @FXML private var graphPlaceholder: VBox = _
-  private val fxMethods = FXCollections.observableArrayList(MathFunctionService.SolveMethods.NEWTON_POLYNOMIAL)
-  private val fxEqs = FXCollections.observableArrayList(MathFunctionService.equations)
+  private val fxMethods = FXCollections.observableArrayList(InterpolationService.SolveMethods.NEWTON_POLYNOMIAL)
+  private val fxEqs = FXCollections.observableArrayList(InterpolationService.equations)
   val RED_LIGHT = new DropShadow(25.0, 0.0, 0.0, Color.RED)
   val BLUE_LIGHT = new DropShadow(25.0, 0.0, 0.0, Color.DEEPSKYBLUE)
   val GREEN_LIGHT = new DropShadow(25.0, 0.0, 0.0, Color.LIGHTGREEN)
@@ -104,7 +104,7 @@ class GUIController extends Initializable {
       val f = funcChooser.getValue
       val borders = (leftBoundInput.getText.toDouble, rightBoundInput.getText.toDouble)
       val n = pointsAmountFld.getText.toInt
-      val res = MathFunctionService.solve()
+      val res = InterpolationService.solve()
       gControl.clear()
       gControl.drawLine(f)
       /*
