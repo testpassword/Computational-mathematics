@@ -42,7 +42,7 @@ class GUIController: Initializable {
     @FXML private lateinit var toolbar: HBox
     @FXML private lateinit var gControl: GraphController
     @FXML private lateinit var methodChooser: ComboBox<SolveMethods>
-    @FXML private lateinit var funcChooser: ComboBox<MathFunction>
+    @FXML private lateinit var funcChooser: ComboBox<MathFunction<Double>>
     @FXML private lateinit var leftBoundInput: TextField
     @FXML private lateinit var rightBoundInput: TextField
     @FXML private lateinit var outputArea: TextArea
@@ -59,8 +59,8 @@ class GUIController: Initializable {
     val RED_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.RED)
     val BLUE_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.DEEPSKYBLUE)
     val GREEN_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.LIGHTGREEN)
-    private var func: MathFunction? = null
-    private var approxFunc: MathFunction? = null
+    private var func: MathFunction<Double>? = null
+    private var approxFunc: MathFunction<Double>? = null
     private var dots: List<Point>? = null
     companion object { private var linesCounter = 1 }
 
@@ -78,7 +78,7 @@ class GUIController: Initializable {
         }
         sequenceOf(methodChooser, funcChooser, leftBoundInput, rightBoundInput, pointsAmountFld,
             pointsTable, xInput, yOutput).forEach {
-            it.focusedProperty().addListener { _, _, newValue -> it.effect = if (newValue!!) BLUE_LIGHT else null }
+            it.focusedProperty().addListener { _, _, newVal -> it.effect = if (newVal!!) BLUE_LIGHT else null }
         }
         val resetDots = {
             dots?.let {
@@ -95,17 +95,17 @@ class GUIController: Initializable {
             it.textProperty().addListener {_, _, _ -> resetDots() }
         }
         sequenceOf(leftBoundInput, rightBoundInput, xInput).forEach {
-            it.textProperty().addListener{ _, oldValue, newValue ->
-                if (!newValue.matches(Regex("-?\\d{0,2}([.]\\d{0,6})?"))) {
+            it.textProperty().addListener{ _, oldVal, newVal ->
+                if (!newVal.matches(Regex("-?\\d{0,2}([.]\\d{0,6})?"))) {
                     printMessage(RED_LIGHT, "Поле должны быть представлены числом", "Максимальная точность - 6 знаков после запятой")
-                    it.text = oldValue
+                    it.text = oldVal
                 }
             }
         }
-        pointsAmountFld.textProperty().addListener{ _, oldValue, newValue ->
-            if (!newValue.matches(Regex("^$|([1-9]|1[013])$"))) {
+        pointsAmountFld.textProperty().addListener{ _, oldVal, newVal ->
+            if (!newVal.matches(Regex("^$|([1-9]|1[013])$"))) {
                 printMessage(RED_LIGHT, "Поле должны быть представлено числом от 1 до 13")
-                pointsAmountFld.text = oldValue
+                pointsAmountFld.text = oldVal
             }
         }
         xCol.cellValueFactory = PropertyValueFactory("x")
@@ -119,12 +119,17 @@ class GUIController: Initializable {
                 interpolationControl.isDisable = true
             }
         }
-        xInput.textProperty().addListener { _, _, newVal ->
+        xInput.textProperty().addListener { _, oldVal, newVal ->
             val x = newVal.toDouble()
-            val y = approxFunc!!.func(x)
-            yOutput.text = y.toString()
-            val p = Point(x, y)
-            redrawGraph(Pair(dots!!.min()!!.x, dots!!.max()!!.x), p)
+            if (x <= dots!!.max()!!.x) {
+                val y = approxFunc!!.func(x)
+                yOutput.text = y.toString()
+                val p = Point(x, y)
+                redrawGraph(Pair(dots!!.min()!!.x, dots!!.max()!!.x), p)
+            } else {
+                printMessage(RED_LIGHT, "x не должно быть больше правого значения интервала")
+                pointsAmountFld.text = oldVal
+            }
         }
         methodChooser.items = fxMethods
         funcChooser.items = fxEqs
@@ -173,6 +178,7 @@ class GUIController: Initializable {
             this.approxFunc = InterpolationService.solve(method, dots!!)
             redrawGraph(borders)
             interpolationControl.isDisable = false
+            printMessage(GREEN_LIGHT, "Аппроксимирующая функция получена")
         } catch (e: Exception) {
             when (e) {
                 is NumberFormatException -> printMessage(RED_LIGHT, "Одно из полей не заполнено или заполнено неверно",

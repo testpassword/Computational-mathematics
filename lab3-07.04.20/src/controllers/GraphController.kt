@@ -34,7 +34,7 @@ class GraphController: Initializable {
      * @param precision количество точек, по которым будет построен график. Для прямых линий не играет роли, но может
      * быть важен для ломаных. По-умолчанию = 666.
      */
-    fun drawLine(equation: MathFunction, borders: Pair<Double, Double> = Pair(-5.0, 5.0), precision: Int = 666) {
+    fun drawLine(equation: MathFunction<Double>, borders: Pair<Double, Double> = Pair(-5.0, 5.0), precision: Int = 666) {
         val series = XYChart.Series<Double, Double>()
         var a = borders.first
         val b = borders.second

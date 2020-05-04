@@ -19,7 +19,7 @@ internal class NonLinearEquationSolver {
      * @param accuracy точность вычислений.
      * @return результат вычислений.
      */
-    internal fun bisectionMethod(f: MathFunction, borders: Pair<Double, Double>, accuracy: Double): NonLinearEquationAnswer {
+    internal fun bisectionMethod(f: MathFunction<Double>, borders: Pair<Double, Double>, accuracy: Double): NonLinearEquationAnswer {
         var left = borders.first
         var right = borders.second
         var x: Double
@@ -42,7 +42,7 @@ internal class NonLinearEquationSolver {
      * @param accuracy точность вычислений.
      * @return результат вычислений.
      */
-    internal fun tangentsMethod(f: MathFunction, borders: Pair<Double, Double>, accuracy: Double): NonLinearEquationAnswer {
+    internal fun tangentsMethod(f: MathFunction<Double>, borders: Pair<Double, Double>, accuracy: Double): NonLinearEquationAnswer {
 
         val firstApproach = {it: Double -> f.func(it) * f.findDerivative(it, 2) }
         val left = firstApproach(borders.first)
@@ -68,7 +68,7 @@ internal class NonLinearEquationSolver {
      * @throws IllegalCallerException если количество уравнений в системе меньше 1 или больше 2.
      * @throws Exception если не выполняется условие сходимости метода.
      */
-    internal fun iterativeMethod(system: List<MathFunction>, borders: Pair<Double, Double>,
+    internal fun iterativeMethod(system: List<MathFunction<Double>>, borders: Pair<Double, Double>,
                                  accuracy: Double): NonLinearEquationAnswer {
 
         fun isAccuracyAchieve(oldX: DoubleArray, newX: DoubleArray) =
@@ -79,9 +79,7 @@ internal class NonLinearEquationSolver {
             1 -> {
                 val derA = system[0].findDerivative(borders.first, 1)
                 val derB = system[0].findDerivative(borders.second, 1)
-                val maxDer = sequenceOf(derA, derB).max()!!.let {
-                    if (it < 1) it else throw Exception("Не выполняется условие сходимости метода")
-                }
+                val maxDer = sequenceOf(derA, derB).max()!!
                 var x = maxDer
                 val lambda = -1 / maxDer
                 do {
@@ -112,7 +110,7 @@ internal class NonLinearEquationSolver {
      * @return результат дифференцирования в точке x.
      * @throws IllegalArgumentException если порядок производной меньше 1 или больше 2.
      */
-    internal fun MathFunction.findDerivative(x: Double, order: Int): Double {
+    internal fun MathFunction<Double>.findDerivative(x: Double, order: Int): Double {
         val h = 0.0001
         return when (order) {
             1 -> (this.func(x + h) - this.func(x - h)) / (2 * h)

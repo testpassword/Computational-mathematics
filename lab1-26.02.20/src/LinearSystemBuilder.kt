@@ -18,27 +18,29 @@ class LinearSystemBuilder {
      * @see BufferedReader
      * @param reader служит для чтения данных.
      * @return созданную из потока данных СЛАУ.
-     * @throws NumberFormatException если не удаётся распарсить данные; если размер матрицы не принаджлежит промежутку allowedSize.
+     * @throws NumberFormatException если не удаётся распарсить данные; если размер матрицы не принадлежит промежутку allowedSize.
      */
     fun read(reader: BufferedReader): LinearSystem {
-        val rawNumbers = mutableListOf<MutableList<Double>>()
         val size = reader.readLine().trim().toInt()
         if (size !in allowedSize) throw NumberFormatException()
-        for (i in 1..size) {
-            val equation = reader.readLine().trim().split(" ")
-            if (equation.size == size + 1) rawNumbers.add(equation.map { number -> number.toDouble() }.toMutableList())
-            else throw Exception("Для уравнения №$i не задано решение или пропущен один из аргументов.")
-        }
+        val strings = mutableListOf<String>()
+        for (i in 1..size) strings.add(reader.readLine())
+        val rawNumbers = strings.mapIndexed {i, line ->
+            line.split(" ").let {
+                if (it.size != size + 1) throw Exception("Для уравнения №$i не задано решение или пропущен один из аргументов.")
+                else it
+            }.map {it.toDouble() }.toMutableList()
+        }.toMutableList()
         val v = rawNumbers.map { it.last() }.toDoubleArray()
         rawNumbers.map { it.removeLast() }
         return LinearSystem(rawNumbers.map { it.toDoubleArray() }.toTypedArray(), v)
     }
 
     /**
-     * Создаёт матрицу, заполненную случайными коэффицентами.
+     * Создаёт матрицу, заполненную случайными коэффициентами.
      * @param size размер случайной матрицы.
-     * @return СЛАУ с случайно-сгенерированными коэффицентами.
-     * @throws NumberFormatException если размер матрицы не принаджлежит промежутку allowedSize.
+     * @return СЛАУ с случайно-сгенерированными коэффициентами.
+     * @throws NumberFormatException если размер матрицы не принадлежит промежутку allowedSize.
      */
     fun generateRandom(size: Int, isDiagPrev: Boolean): LinearSystem {
         if (size !in allowedSize) throw NumberFormatException()

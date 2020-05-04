@@ -14,9 +14,9 @@ import javafx.scene.input.MouseEvent
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.HBox
 import javafx.scene.paint.Color
+import math.MathFunction
 import math.NLEquationService
 import math.NLEquationService.SolveMethods
-import math.MathFunction
 import java.awt.Desktop
 import java.net.*
 import java.util.*
@@ -34,8 +34,8 @@ class GUIController: Initializable {
 
     @FXML private lateinit var toolbar: HBox
     @FXML private lateinit var systemSwitch: RadioButton
-    @FXML private lateinit var eq1Chooser: ComboBox<MathFunction>
-    @FXML private lateinit var eq2Chooser: ComboBox<MathFunction>
+    @FXML private lateinit var eq1Chooser: ComboBox<MathFunction<Double>>
+    @FXML private lateinit var eq2Chooser: ComboBox<MathFunction<Double>>
     @FXML private lateinit var methodChooser: ComboBox<SolveMethods>
     @FXML private lateinit var allMethodsSwitch: RadioButton
     @FXML private lateinit var leftBoundLbl: Label
