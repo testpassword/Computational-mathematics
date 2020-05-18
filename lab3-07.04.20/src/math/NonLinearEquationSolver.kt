@@ -99,7 +99,7 @@ internal class NonLinearEquationSolver {
                 } while (isAccuracyAchieve(prevX, newX) && i < MAX_ITERS)
                 return NonLinearEquationAnswer(Pair(newX[0], newX[1]), i, i == MAX_ITERS)
             }
-            else -> throw IllegalCallerException("Решение систем для более чем двух пока невозможно")
+            else -> throw IllegalArgumentException("Решение систем для более чем двух пока невозможно")
         }
     }
 

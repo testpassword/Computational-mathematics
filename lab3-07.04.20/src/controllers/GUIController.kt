@@ -80,7 +80,7 @@ class GUIController: Initializable {
     }
 
     /** Минимизирует окно программы.*/
-    @FXML fun minimizeWindow() { AeroMain.stage.isIconified = true }
+    @FXML fun minimizeWindow() { AeroMain.stage!!.isIconified = true }
 
     /** Завершает работу программы.*/
     @FXML fun closeProgram() = Platform.exit()

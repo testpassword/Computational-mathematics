@@ -115,8 +115,10 @@ class GUIController: Initializable {
             it.setOnEditCommit { event ->
                 if (!event.newValue.toString().matches(Regex("-?\\d{0,2}([.]\\d{0,2})?")))
                     printMessage(RED_LIGHT, "Поле должны быть представлены числом", "Максимальная точность - 2 знака")
-                (event.tableView.items[event.tablePosition.row]).y = event.newValue
-                interpolationControl.isDisable = true
+                else {
+                    (event.tableView.items[event.tablePosition.row]).y = event.newValue
+                    interpolationControl.isDisable = true
+                }
             }
         }
         xInput.textProperty().addListener { _, oldVal, newVal ->
@@ -140,7 +142,7 @@ class GUIController: Initializable {
     }
 
     /** Минимизирует окно программы.*/
-    @FXML fun minimizeWindow() { AeroMain.stage.isIconified = true }
+    @FXML fun minimizeWindow() { AeroMain.stage!!.isIconified = true }
 
     /** Завершает работу программы.*/
     @FXML fun closeProgram() = Platform.exit()
