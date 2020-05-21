@@ -72,10 +72,10 @@ class AeroMain : Application() {
             y = stage.y - mouseEvent.screenY
         }
         var inDrag = false
-        byNode.onMouseReleased = EventHandler { mouseEvent: MouseEvent? ->
+        byNode.onMouseReleased = EventHandler {
             if (inDrag) {
                 stage.hide()
-                val pause = Timeline(KeyFrame(Duration.millis(5.0), EventHandler { event: ActionEvent? ->
+                val pause = Timeline(KeyFrame(Duration.millis(5.0), EventHandler { _: ActionEvent? ->
                             background.image = redrawBackground(stage)
                             layout.children[0] = background
                             stage.show()

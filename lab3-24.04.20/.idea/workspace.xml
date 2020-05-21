@@ -8,51 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23b90327-70bf-4da7-a40d-cb09ae03d430" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/AeroMain$Companion.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/AeroMain$makeDraggable$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/AeroMain$makeDraggable$2$pause$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/AeroMain$makeDraggable$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/AeroMain$makeDraggable$3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab3-07.04.20/src/AeroMain.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AeroMain.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../online-course/Screenshot_2020-05-14 Лабораторная работа №9 Лабораторная работа №9 NUMMETH Содержание Национальная платформа открытого обр[...].png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../online-course/Screenshot_2020-05-14 Тест №15 Контрольный тест по теме 15 NUMMETH Содержание Национальная платформа открытого образования.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2-21.03.20/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2-21.03.20/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2-21.03.20/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2-21.03.20/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2-21.03.20/lab2-21.03.20.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2-21.03.20/lab2-21.03.20.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2-21.03.20/out/production/lab2-21.03.20/Main$Companion$functions$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2-21.03.20/out/production/lab2-21.03.20/Main$Companion$functions$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2-21.03.20/out/production/lab2-21.03.20/Main$Companion$functions$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2-21.03.20/out/production/lab2-21.03.20/Main$Companion$functions$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2-21.03.20/out/production/lab2-21.03.20/Main$Companion$functions$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2-21.03.20/out/production/lab2-21.03.20/Main$Companion$functions$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2-21.03.20/out/production/lab2-21.03.20/Main$Companion$functions$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2-21.03.20/out/production/lab2-21.03.20/Main$Companion$functions$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2-21.03.20/out/production/lab2-21.03.20/Main$Companion$functions$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2-21.03.20/out/production/lab2-21.03.20/Main$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2-21.03.20/out/production/lab2-21.03.20/Main$Companion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2-21.03.20/out/production/lab2-21.03.20/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2-21.03.20/out/production/lab2-21.03.20/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2-21.03.20/out/production/lab2-21.03.20/controllers/GUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2-21.03.20/out/production/lab2-21.03.20/controllers/GUIController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab2-21.03.20/out/production/lab2-21.03.20/controllers/ShellControllerKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2-21.03.20/out/production/lab2-21.03.20/controllers/ShellControllerKt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-07.04.20/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/lab3-07.04.20.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-07.04.20/lab3-07.04.20.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/AeroMain$Delta.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/AeroMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/AeroMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/controllers/GUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/controllers/GUIController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/math/MathFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/math/MathFunction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/math/NonLinearEquationSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/math/NonLinearEquationSolver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/src/AeroMain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/src/controllers/GUIController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-07.04.20/src/controllers/GUIController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/src/math/NonLinearEquationSolver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-07.04.20/src/math/NonLinearEquationSolver.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3-24.04.20.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lab3-24.04.20.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3-24.04.20/AeroMain$Delta.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3-24.04.20/AeroMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab3-24.04.20/AeroMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3-24.04.20/controllers/GUIController$initialize$$inlined$forEach$lambda$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab3-24.04.20/controllers/GUIController$initialize$$inlined$forEach$lambda$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3-24.04.20/controllers/GUIController$initialize$$inlined$let$lambda$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab3-24.04.20/controllers/GUIController$initialize$$inlined$let$lambda$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3-24.04.20/controllers/GUIController$initialize$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab3-24.04.20/controllers/GUIController$initialize$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3-24.04.20/controllers/GUIController$initialize$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab3-24.04.20/controllers/GUIController$initialize$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3-24.04.20/controllers/GUIController$initialize$resetDots$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab3-24.04.20/controllers/GUIController$initialize$resetDots$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3-24.04.20/controllers/GUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab3-24.04.20/controllers/GUIController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3-24.04.20/math/MathFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab3-24.04.20/math/MathFunction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AeroMain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/GUIController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/GUIController.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,6 +128,8 @@
       <workItem from="1589802251877" duration="2961000" />
       <workItem from="1589814189799" duration="7549000" />
       <workItem from="1589834084673" duration="184000" />
+      <workItem from="1589871035864" duration="2443000" />
+      <workItem from="1589970680826" duration="92000" />
     </task>
     <servers />
   </component>

@@ -45,7 +45,7 @@ class GUIController: Initializable {
     @FXML private lateinit var rightBoundInput: TextField
     @FXML private lateinit var infelicityInput: TextField
     @FXML private lateinit var mainPane: BorderPane
-    private val fxMethods = FXCollections.observableArrayList(SolveMethods.values().toList())
+    private val fxMethods = FXCollections.observableArrayList(SolveMethods.BISECTION, SolveMethods.TANGENTS)
     private val fxSysMethods = FXCollections.observableArrayList(SolveMethods.ITERATIVE)
     private lateinit var gControl: GraphController
     private val fxEqs = FXCollections.observableArrayList(NLEquationService.equations)
@@ -124,7 +124,7 @@ class GUIController: Initializable {
                 else throw NumberFormatException()
             }
             val res = if (allMethodsSwitch.isSelected)
-                SolveMethods.values().map { NLEquationService.solve(selectedEqs, borders, accuracy, it) }.toTypedArray()
+                fxMethods.map { NLEquationService.solve(selectedEqs, borders, accuracy, it) }.toTypedArray()
             else arrayOf(NLEquationService.solve(selectedEqs, borders, accuracy, methodChooser.value))
             gControl.clear()
             if (selectedEqs.size == 1) gControl.drawLine(selectedEqs[0], borders) else selectedEqs.forEach { gControl.drawLine(it) }

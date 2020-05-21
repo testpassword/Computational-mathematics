@@ -34,10 +34,6 @@ object NLEquationService {
     init {
         this.equations = setOf(
             object: MathFunction<Double> {
-                override fun func(vararg x: Double?) = x[0]!! / 2 - 3
-                override fun toString() = "x/2 - 3 = y"   //ПРОВЕРЕНА
-            },
-            object: MathFunction<Double> {
                 override fun func(vararg x: Double?) = x[0]!!.pow(3) - 0.2 * x[0]!!.pow(2) + 0.5 * x[0]!! + 1.5
                 override fun toString() = "x^3 - 0.2x^2 +0.5x + 1.5 = y"   //ПРОВЕРЕНА
             },
@@ -48,37 +44,29 @@ object NLEquationService {
             object: MathFunction<Double> {
                 override fun func(vararg x: Double?) = sin(x[0]!!)
                 override fun toString() = "sin(x) = y" //ПРОВЕРЕНА
-            },
-            object: MathFunction<Double> {
-                override fun func(vararg x: Double?) = 7 - 5 * x[0]!!
-                override fun toString() = "5x + y = 7" //ПРОВЕРЕНА
             }
         )
         /*
         Для графика выражать одинаковые переменные (y), для решения системы - разные
         Системы уравнений идут наборами по 2
-        //НЕ ЗАПУСКАТЬ! 1x с 3y; 2x с 1y
+        //НЕ ЗАПУСКАТЬ! 1x с 2y
         */
         sysOfEqsWithExpressedX = setOf(
-            object: MathFunction<Double> {
-                override fun func(vararg x: Double?) = -0.5 + x[0]!!
-                override fun getPlotDot(vararg x: Double?) = 0.5 + x[0]!!
-                override fun toString() = "x - y = -0.5"
-            },
             object: MathFunction<Double> {
                 override fun func(vararg x: Double?) = E.pow(x[0]!!)
                 override fun getPlotDot(vararg x: Double?) = ln(x[0]!!)
                 override fun toString() = "x = e^y"
+            },
+            object: MathFunction<Double> {
+                override fun func(vararg x: Double?) = sqrt(5 - x[0]!!)
+                override fun getPlotDot(vararg x: Double?) = 5 - x[0]!!.pow(2)
+                override fun toString() = "x^2 + y = 5"
             }
         )
         sysOfEqsWithExpressedY = setOf(
             object: MathFunction<Double> {
                 override fun func(vararg x: Double?) = 0.5 - cos(x[0]!!)
                 override fun toString() = "y + cos(x) = 0.5"
-            },
-            object: MathFunction<Double> {
-                override fun func(vararg x: Double?) = (x[0]!! + 2) / 6
-                override fun toString() = "6y - 2 = x"
             },
             object: MathFunction<Double> {
                 override fun func(vararg x: Double?) = -0.3 * x[0]!!.pow(3) - 1
@@ -99,7 +87,7 @@ object NLEquationService {
      */
     fun solve(system: List<MathFunction<Double>>, borders: Pair<Double, Double>, accuracy: Double,
               method: SolveMethods): NonLinearEquationAnswer {
-        if (borders.first > borders.second) throw IllegalArgumentException("Левая граница должна быть строго меньше правой")
+        if (borders.first >= borders.second) throw ArithmeticException("Левая граница должна быть строго меньше правой")
         system.groupingBy { it }.eachCount().map { if (it.value > 1) throw Exception("Уравнения в системе должно быть различны") }
         if (system.size == 1 && system[0].func(borders.first) * system[0].func(borders.second) >= 0)
             throw Exception("Не выполняется условие ƒ(a) * ƒ(b) < 0")

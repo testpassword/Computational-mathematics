@@ -10,7 +10,7 @@ import kotlin.math.*
  */
 internal class NonLinearEquationSolver {
 
-    var MAX_ITERS = 100_000_000
+    var MAX_ITERS = 10_000_000
 
     /**
      * Решает нелинейное уравнение методом половинного деления.
@@ -65,7 +65,7 @@ internal class NonLinearEquationSolver {
      * @param borders начальные приближения.
      * @param accuracy точность вычислений.
      * @return результат вычислений.
-     * @throws IllegalCallerException если количество уравнений в системе меньше 1 или больше 2.
+     * @throws IllegalArgumentException если количество уравнений в системе меньше 1 или больше 2.
      * @throws Exception если не выполняется условие сходимости метода.
      */
     internal fun iterativeMethod(system: List<MathFunction<Double>>, borders: Pair<Double, Double>,
@@ -80,6 +80,7 @@ internal class NonLinearEquationSolver {
                 val derA = system[0].findDerivative(borders.first, 1)
                 val derB = system[0].findDerivative(borders.second, 1)
                 val maxDer = sequenceOf(derA, derB).max()!!
+                if (maxDer >= 1) throw Exception("Не выполняется условие сходимости метода")
                 var x = maxDer
                 val lambda = -1 / maxDer
                 do {

@@ -13,7 +13,7 @@ import java.util.*
  * Управляет графиком приложения, представляющим из себя экземпляр класса {@see LineChart}.
  * интерфейса.
  * @author Артемий Кульбако.
- * @version 1.0
+ * @version 1.1
  */
 class GraphController: Initializable {
 
@@ -39,7 +39,8 @@ class GraphController: Initializable {
         var a = borders.first
         val b = borders.second
         while (a <= b) {
-            series.data.add(XYChart.Data(a, equation.getPlotDot(a)))
+            val y = equation.getPlotDot(a)
+            if (!y.isNaN() && !y.isInfinite()) series.data.add(XYChart.Data(a, y))
             a += (borders.second - borders.first) / precision
         }
         sequenceOf(canvas.xAxis, canvas.yAxis).map {
