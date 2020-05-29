@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8705f8d0-062f-412c-bfbe-d8c7d2bfa620" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../lab3-24.04.20/src/Point.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/pugalol.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab4-29.05.20.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AeroMain.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Point.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/GUIController.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/GraphController.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/math/MathFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/graph.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/graph.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/icons/close-b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/icons/close-w.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/icons/info-b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/icons/info-w.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/icons/minimize-b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/icons/minimize-w.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/icons/window-b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/icons/window-w.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/interface.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/main.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/table.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/math/NonLinearEquationAnswer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/math/NonLinearEquationAnswer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/math/NonLinearEquationSolver$iterativeMethod$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/math/NonLinearEquationSolver$iterativeMethod$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/math/NonLinearEquationSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/math/NonLinearEquationSolver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/src/math/NonLinearEquationSolver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-07.04.20/src/math/NonLinearEquationSolver.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/controllers/GUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/controllers/GUIController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods$CUBIC_SPLINE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods$LAGRANGE_POLYNOMIAL.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods$NEWTON_POLYNOMIAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods$NEWTON_POLYNOMIAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$WhenMappings.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$WhenMappings.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$newtonPolynomial$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$newtonPolynomial$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/Point.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/src/AeroMain.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/src/AeroMain.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/src/controllers/GUIController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/src/controllers/GUIController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/src/controllers/GraphController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/src/controllers/GraphController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/src/math/InterpolationService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/src/math/InterpolationService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/src/math/InterpolationSolver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/src/math/InterpolationSolver.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1cYMMuXXsAuvcZs6KTnVgH4ECEe" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="V:\itmo\2 course\computational mathematics\lab4-29.05.20\src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="AeroMain" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AeroMain" />
+      <module name="lab4-29.05.20" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="AeroMain" />
+      <module name="lab4-29.05.20" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8705f8d0-062f-412c-bfbe-d8c7d2bfa620" name="Default Changelist" comment="" />
+      <created>1590701028656</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590701028656</updated>
+      <workItem from="1590701030559" duration="91000" />
+      <workItem from="1590701147365" duration="320000" />
+      <workItem from="1590707809940" duration="35000" />
+      <workItem from="1590743806355" duration="2773000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590744590189">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1590744590189" />
+    <state x="498" y="202" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1590744563807">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="498" y="202" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1590744563807" />
+    <state width="724" height="206" key="GridCell.Tab.0.bottom" timestamp="1590746583393">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="724" height="206" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590746583393" />
+    <state width="724" height="206" key="GridCell.Tab.0.center" timestamp="1590746583393">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="724" height="206" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590746583393" />
+    <state width="724" height="206" key="GridCell.Tab.0.left" timestamp="1590746583393">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="724" height="206" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590746583393" />
+    <state width="724" height="206" key="GridCell.Tab.0.right" timestamp="1590746583393">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="724" height="206" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590746583393" />
+    <state width="428" height="500" key="javadoc.popup.new" timestamp="1590745632025">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="428" height="500" key="javadoc.popup.new/0.0.1536.824@0.0.1536.824" timestamp="1590745632025" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1590743818298">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1590743818298" />
+  </component>
+</project>

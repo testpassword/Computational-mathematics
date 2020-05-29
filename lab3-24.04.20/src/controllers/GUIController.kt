@@ -1,10 +1,8 @@
 package controllers
 
 import AeroMain
+import Point
 import javafx.application.Platform
-import javafx.beans.property.StringProperty
-import javafx.beans.value.ChangeListener
-import javafx.beans.value.ObservableValue
 import javafx.collections.FXCollections
 import javafx.event.EventHandler
 import javafx.fxml.FXML
@@ -22,8 +20,8 @@ import javafx.scene.paint.Color
 import javafx.util.converter.DoubleStringConverter
 import math.InterpolationService
 import math.InterpolationService.SolveMethods
+import math.InterpolationSolver.LeastSquaresType
 import math.MathFunction
-import math.Point
 import java.awt.Desktop
 import java.net.URI
 import java.net.URL
@@ -54,8 +52,10 @@ class GUIController: Initializable {
     @FXML private lateinit var yCol: TableColumn<Point, Double>
     @FXML private lateinit var xInput: TextField
     @FXML private lateinit var yOutput: TextField
-    private val fxMethods = FXCollections.observableArrayList(SolveMethods.NEWTON_POLYNOMIAL)
+    @FXML private lateinit var approxTypeChooser: ComboBox<LeastSquaresType>
+    private val fxMethods = FXCollections.observableArrayList(SolveMethods.values().toList())
     private val fxEqs = FXCollections.observableArrayList(InterpolationService.equations)
+    private val fxApproxTypes = FXCollections.observableArrayList(LeastSquaresType.values().toList())
     val RED_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.RED)
     val BLUE_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.DEEPSKYBLUE)
     val GREEN_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.LIGHTGREEN)
@@ -88,11 +88,14 @@ class GUIController: Initializable {
             pointsTable.items = null
             interpolationControl.isDisable = true
         }
-        sequenceOf(methodChooser, funcChooser).forEach {
-            it.valueProperty().addListener {_, _, _ -> resetDots() }
+        methodChooser.valueProperty().addListener {_, _, newVal ->
+            approxTypeChooser.isDisable = newVal != SolveMethods.LEAST_SQUARES
         }
-        sequenceOf(leftBoundInput, rightBoundInput, pointsAmountFld).forEach {
-            it.textProperty().addListener {_, _, _ -> resetDots() }
+        sequenceOf(methodChooser, funcChooser, leftBoundInput, rightBoundInput, pointsAmountFld).forEach {
+            when (it) {
+                is ComboBox<out Any> -> it.valueProperty().addListener {_, _, _ -> resetDots() }
+                is TextField -> it.textProperty().addListener {_, _, _ -> resetDots() }
+            }
         }
         sequenceOf(leftBoundInput, rightBoundInput, xInput).forEach {
             it.textProperty().addListener{ _, oldVal, newVal ->
@@ -135,6 +138,7 @@ class GUIController: Initializable {
         }
         methodChooser.items = fxMethods
         funcChooser.items = fxEqs
+        approxTypeChooser.items = fxApproxTypes
         FXMLLoader(javaClass.getResource("/resources/graph.fxml")).let {
             mainPane.right = it.load()
             gControl = it.getController() as GraphController
@@ -159,7 +163,7 @@ class GUIController: Initializable {
         outputArea.effect = lightning
     }
 
-    @FXML private fun redrawGraph(borders: Pair<Double, Double>, extraPoints: Point? = null) {
+    @FXML private fun redrawGraph(borders: Pair<Double, Double>, extraPoints: Point? = null) =
         gControl.let {
             it.clear()
             it.drawLine(this.func!!, borders)
@@ -167,7 +171,6 @@ class GUIController: Initializable {
             dots!!.forEach {p -> it.drawPoint(p) }
             if (extraPoints != null) gControl.drawPoint(extraPoints, Color.DARKKHAKI)
         }
-    }
 
     @FXML private fun showResult() {
         try {
@@ -177,7 +180,9 @@ class GUIController: Initializable {
             val n = pointsAmountFld.text.toInt()
             if (this.dots == null) this.dots = InterpolationService.generateDots(this.func!!, borders, n)
             pointsTable.items = FXCollections.observableList(dots)
-            this.approxFunc = InterpolationService.solve(method, dots!!)
+            this.approxFunc = if (approxTypeChooser.isDisabled) {
+                InterpolationService.solve(method, dots!!, null)
+            } else InterpolationService.solve(method, dots!!, approxTypeChooser.value)
             redrawGraph(borders)
             interpolationControl.isDisable = false
             printMessage(GREEN_LIGHT, "Аппроксимирующая функция получена")

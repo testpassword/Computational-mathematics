@@ -97,6 +97,7 @@ internal class NonLinearEquationSolver {
                     i++
                     prevX = newX.clone()
                     newX = doubleArrayOf(system[0].func(prevX[1]), system[1].func(prevX[0]))
+                    if (newX.any { it.isNaN() || it.isInfinite() }) throw Exception("Итерации не сходятся")
                 } while (isAccuracyAchieve(prevX, newX) && i < MAX_ITERS)
                 return NonLinearEquationAnswer(Pair(newX[0], newX[1]), i, i == MAX_ITERS)
             }

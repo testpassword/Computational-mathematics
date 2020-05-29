@@ -1,13 +1,12 @@
 package controllers
 
+import Point
 import javafx.fxml.FXML
 import javafx.fxml.Initializable
-import javafx.geometry.Point2D
 import javafx.scene.chart.*
 import javafx.scene.paint.Color
 import javafx.scene.shape.Circle
 import math.MathFunction
-import math.Point
 import java.net.URL
 import java.util.*
 
@@ -59,7 +58,7 @@ class GraphController: Initializable {
     /**
      * Рисует точку на графике.
      * @param p точка, которую нужно нарисовать.
-     * @param color цвет точки. По-умолчанию {@see Color.RED}.
+     * @param color цвет точки. По-умолчанию {Color.RED}.
      */
     fun drawPoint(p: Point, color: Color = Color.RED) = this.canvas.data
         .add(XYChart.Series<Double, Double>().apply { this.data.add(XYChart.Data(p.x, p.y).apply { this.node = Circle(3.0, color) }) })

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.effect.Bloom?>
+
+<LineChart fx:id="canvas" prefHeight="548.0" prefWidth="576.0" title="y = ƒ(x)" stylesheets="@graph.css"
+           BorderPane.alignment="CENTER" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.GraphController">
+    <xAxis>
+        <NumberAxis label="x" side="BOTTOM">
+            <effect>
+                <Bloom />
+            </effect></NumberAxis>
+    </xAxis>
+    <yAxis>
+        <NumberAxis label="y" side="LEFT">
+            <effect>
+                <Bloom />
+            </effect></NumberAxis>
+    </yAxis>
+</LineChart>

@@ -1,10 +1,9 @@
 package math
 
+import Point
 import math.InterpolationService.SolveMethods.*
-import kotlin.math.E
-import kotlin.math.pow
-import kotlin.math.sin
-import kotlin.math.sqrt
+import math.InterpolationSolver.LeastSquaresType
+import kotlin.math.*
 
 /**
  * Предоставляет единую точку доступа к экземпляру класса {@see NonLinearEquationSolver}.
@@ -17,13 +16,11 @@ object InterpolationService {
     /**
      * Константы, определяющие методы решения системы нелинейных уравнений.
      * @property NEWTON_POLYNOMIAL метод половинного деления.
-     * @property LAGRANGE_POLYNOMIAL метод касательных (метод Ньютона).
-     * @property CUBIC_SPLINE метод простых итераций.
+     * @property LEAST_SQUARES метод наименьших квадратов.
      */
     enum class SolveMethods {
         NEWTON_POLYNOMIAL { override fun toString() = "Интерполирование многочленом Ньютона" },
-        LAGRANGE_POLYNOMIAL { override fun toString() = "Интерполирование многочленом Лагранжа" },
-        CUBIC_SPLINE { override fun toString() = "Интерполирование кубическими сплайнами" }
+        LEAST_SQUARES { override fun toString() = "Аппроксимация методом наименьших квадратов" }
     }
 
     private val solver = InterpolationSolver()
@@ -56,17 +53,14 @@ object InterpolationService {
      * @param points набор точек по котором будет искаться функция.
      * @return аппроксимирующую функцию.
      */
-    fun solve(method: SolveMethods, points: List<Point>) =
+    fun solve(method: SolveMethods, points: List<Point>, type: LeastSquaresType?) =
         when (method) {
             NEWTON_POLYNOMIAL -> solver.newtonPolynomial(points)
-            else -> TODO("Метод не реализован")
+            LEAST_SQUARES -> type!!.approximate(points)
         }
 
     /**
-     * Генерирует n точек на на плоскости для переданного отрезка оси OX.
-     * @param f функция, для вычисления точки y.
-     * @param interval отрезок оси OX, на котором будут генерироваться точки.
-     * @param n количество точек.
+     * Генерирует [n] точек на на плоскости для переданного отрезка [interval] оси OX по правилу [f].
      * @return List<Point>.
      * @throws IllegalArgumentException если [interval.second <= interval.first || (n - 1) <= 0].
      * @throws ArithmeticException если генерируемая точка приняла значение [isNaN] или [isInfinite].
@@ -83,18 +77,4 @@ object InterpolationService {
             Point(x, f.func(x))
         }.toList()
     }
-}
-
-/**
- * Точка на плоскости.
- * @param x координата x.
- * @param y координата y.
- */
-data class Point(var x: Double, var y: Double): Comparable<Point> {
-
-    private fun findHypotenuse() = sqrt(x.pow(2) + y.pow(2))
-
-    override fun toString() = "( $x; $y )"
-
-    override fun compareTo(other: Point) = (findHypotenuse() - other.findHypotenuse()).toInt()
 }
