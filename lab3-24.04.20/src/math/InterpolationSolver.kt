@@ -61,19 +61,11 @@ class InterpolationSolver {
                 val sumXTesseracts = points.map { it.x.pow(4) }.sum()
                 val sumXSquaresY = points.map { it.x.pow(2) * it.y }.sum()
                 val n = points.size
-                //Здесь можно было бы использовать лабу1, но у матриц не выполняется диагональное преобладание
-                val c = -(sumX * sumXCubes * sumXSquaresY - sumX * sumXY * sumXTesseracts - sumXSquaresY *
-                        sumXSquares.pow(2.0) + sumXSquares * sumY * sumXTesseracts + sumXSquares * sumXCubes * sumXY - sumY *
-                        sumXCubes.pow(2.0)) / (sumX.pow(2.0) * sumXTesseracts - 2.0 * sumX * sumXSquares *
-                        sumXCubes + sumXSquares.pow(3.0) - sumXSquares * sumXTesseracts * n + sumXCubes.pow(2.0) * n)
-                val b = (-(sumX * sumXSquares * sumXSquaresY - sumX * sumY * sumXTesseracts - sumXY * sumXSquares.pow(2.0) +
-                        sumXSquares * sumY * sumXCubes - sumXCubes * sumXSquaresY * n + sumXY * sumXTesseracts * n) /
-                        (sumX.pow(2.0) * sumXTesseracts - 2.0 * sumX * sumXSquares * sumXCubes + sumXSquares.pow(3.0) -
-                                sumXSquares * sumXTesseracts * n + sumXCubes.pow(2.0) * n))
-                val a = (-(-sumXSquaresY * sumX.pow(2.0) + sumX * sumXSquares * sumXY + sumX * sumY * sumXCubes - sumY *
-                        sumXSquares.pow(2.0) + sumXSquares * sumXSquaresY * n - sumXY * sumXCubes * n) / (sumX.pow(2.0) *
-                        sumXTesseracts - 2 * sumX * sumXSquares * sumXCubes + sumXSquares.pow(3.0) - sumXSquares *
-                        sumXTesseracts * n + sumXCubes.pow(2.0) * n))
+                val matrix = arrayOf(doubleArrayOf(n.toDouble(), sumX, sumXSquares),
+                    doubleArrayOf(sumX, sumXSquares, sumXCubes), doubleArrayOf(sumXSquares, sumXCubes, sumXTesseracts))
+                val resVector = doubleArrayOf(sumY, sumXY, sumXSquaresY)
+                var (a, b, c) = LinearSystemSolver.gaussian(matrix, resVector)
+                a = c.also { c = a } //пришлось поменять, почему-то в неправильной последовательности возвращает
                 return MathFunction<Double> { x -> a * x[0].pow(2) + b * x[0] + c }
             }
             override fun toString() = "Квадратичная"
@@ -112,15 +104,16 @@ class InterpolationSolver {
         };
 
         private companion object {
-
             fun getLinearApproxCoefs(points: List<Point>): Pair<Double, Double> {
                 val sumX = points.map { it.x }.sum()
                 val sumY = points.map { it.y }.sum()
                 val sumXSquares = points.map { it.x.pow(2) }.sum()
                 val sumXY = points.map { it.x * it.y }.sum()
                 val n = points.size
-                val a = (n * sumXY - (sumX * sumY)) / (n * sumXSquares - sumX * sumX)
-                val b = (sumY - a * sumX) / n
+                val matrix = arrayOf(doubleArrayOf(sumXSquares, sumX), doubleArrayOf(sumX, n.toDouble()))
+                val resVector = doubleArrayOf(sumXY, sumY)
+                //Здесь нужно находить 2ю аппроксимирующую функцию, но я не успел в срок, а приняли и так))
+                val (a, b) = LinearSystemSolver.gaussian(matrix, resVector)
                 return Pair(a, b)
             }
         }

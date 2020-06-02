@@ -40,7 +40,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" text="=&gt;">
+                  <Label alignment="CENTER" text="-&gt;">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font></Label>
@@ -52,7 +52,7 @@
                         <Font size="14.0" />
                      </font>
                      <graphic>
-                        <TextField fx:id="yOutput" editable="false" prefWidth="80.0" promptText="dfdfdf" />
+                        <TextField fx:id="yOutput" editable="false" prefWidth="80.0" promptText="результат" />
                      </graphic>
                   </Label>
                </children>

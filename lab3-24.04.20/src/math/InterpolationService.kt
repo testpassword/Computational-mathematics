@@ -34,7 +34,7 @@ object InterpolationService {
             },
             object: MathFunction<Double> {
                 override fun func(vararg x: Double?) = sin(x[0]!!)
-                override fun toString() = "y = sin(x)"   //ПРОВЕРЕНА
+                override fun toString() = "y = sin(x)"
             },
             object: MathFunction<Double> {
                 override fun func(vararg x: Double?) = 1 / (1 + x[0]!!.pow(2))
