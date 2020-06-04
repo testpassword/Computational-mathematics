@@ -2,60 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8705f8d0-062f-412c-bfbe-d8c7d2bfa620" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../lab3-24.04.20/src/Point.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/pugalol.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab4-29.05.20.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AeroMain.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Point.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/GUIController.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/GraphController.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/math/MathFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/graph.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/graph.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/icons/close-b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/icons/close-w.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/icons/info-b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/icons/info-w.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/icons/minimize-b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/icons/minimize-w.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/icons/window-b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/icons/window-w.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/interface.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/main.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/table.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/math/NonLinearEquationAnswer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/math/NonLinearEquationAnswer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/math/NonLinearEquationSolver$iterativeMethod$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/math/NonLinearEquationSolver$iterativeMethod$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/math/NonLinearEquationSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-07.04.20/out/production/lab3-07.04.20/math/NonLinearEquationSolver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-07.04.20/src/math/NonLinearEquationSolver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-07.04.20/src/math/NonLinearEquationSolver.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/derivative_zip.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/derivativejar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$6.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$7.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/math/Point.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/math/differential/OrdinaryDifferentialService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/math/differential/OrdinaryDifferentialSolver.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/math/interpolation/InterpolationSolver.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/math/interpolation/LinearSystemSolver.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../online-course/Screenshot_2020-06-03 Тест по темам 12-15 Промежуточный тест по темам 12-15 NUMMETH Содержание Национальная платформа откры[...].png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/controllers/GUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/controllers/GUIController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods$CUBIC_SPLINE.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods$LAGRANGE_POLYNOMIAL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods$NEWTON_POLYNOMIAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods$NEWTON_POLYNOMIAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$WhenMappings.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$WhenMappings.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$newtonPolynomial$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$newtonPolynomial$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/Point.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/src/AeroMain.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/src/AeroMain.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/docs/~$чмат_лаб3_отчёт.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/src/Point.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/src/math/Point.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/src/controllers/GUIController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/src/controllers/GUIController.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/src/controllers/GraphController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/src/controllers/GraphController.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/src/math/InterpolationService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/src/math/InterpolationService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/src/math/InterpolationSolver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/src/math/InterpolationSolver.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$$inlined$forEach$lambda$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$$inlined$forEach$lambda$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$$inlined$forEach$lambda$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$$inlined$forEach$lambda$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$$inlined$forEach$lambda$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$$inlined$forEach$lambda$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$$inlined$let$lambda$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$$inlined$let$lambda$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$1$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$resetDots$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$resetDots$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GraphController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GraphController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/resources/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/resources/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/GUIController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/GUIController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/GraphController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/GraphController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +46,13 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -83,22 +69,32 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="math" />
+      <recent name="math.interpolation" />
       <recent name="" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="math.interpolation" />
+      <recent name="math" />
+      <recent name="math.ord_diff" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="V:\itmo\2 course\computational mathematics\lab4-29.05.20\src" />
@@ -134,44 +130,110 @@
       <workItem from="1590701147365" duration="320000" />
       <workItem from="1590707809940" duration="35000" />
       <workItem from="1590743806355" duration="2773000" />
+      <workItem from="1591168446375" duration="17560000" />
+      <workItem from="1591197234175" duration="52000" />
+      <workItem from="1591197310725" duration="25000" />
+      <workItem from="1591268187088" duration="7568000" />
+      <workItem from="1591281728775" duration="9988000" />
+      <workItem from="1591307905497" duration="1046000" />
+      <workItem from="1591308994005" duration="332000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590744590189">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1590744590189" />
-    <state x="498" y="202" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1590744563807">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="351" y="-878" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1591309108344">
+      <screen x="-313" y="-1080" width="2048" height="824" />
     </state>
+    <state x="351" y="-878" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591309108344" />
     <state x="498" y="202" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1590744563807" />
-    <state width="724" height="206" key="GridCell.Tab.0.bottom" timestamp="1590746583393">
+    <state x="491" y="-918" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1591276950477">
+      <screen x="-313" y="-1080" width="2048" height="824" />
+    </state>
+    <state x="491" y="-918" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591276950477" />
+    <state x="419" y="-913" key="FileChooserDialogImpl" timestamp="1591309302719">
+      <screen x="-313" y="-1080" width="2048" height="824" />
+    </state>
+    <state x="419" y="-913" key="FileChooserDialogImpl/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591309302719" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1591169973350" />
+    <state width="1493" height="253" key="GridCell.Tab.0.bottom" timestamp="1591303126386">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="206" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590746583393" />
-    <state width="724" height="206" key="GridCell.Tab.0.center" timestamp="1590746583393">
+    <state width="1493" height="203" key="GridCell.Tab.0.bottom.inPresentationMode" timestamp="1591173175262">
+      <screen x="-313" y="-1080" width="2048" height="824" />
+    </state>
+    <state width="1493" height="203" key="GridCell.Tab.0.bottom.inPresentationMode/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591173175262" />
+    <state width="2004" height="202" key="GridCell.Tab.0.bottom/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591197013715" />
+    <state width="1493" height="253" key="GridCell.Tab.0.bottom/0.0.1536.824/-313.-1080.2048.824@0.0.1536.824" timestamp="1591303126386" />
+    <state width="1493" height="203" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591170892961" />
+    <state width="1493" height="253" key="GridCell.Tab.0.center" timestamp="1591303126386">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="206" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590746583393" />
-    <state width="724" height="206" key="GridCell.Tab.0.left" timestamp="1590746583393">
+    <state width="1493" height="203" key="GridCell.Tab.0.center.inPresentationMode" timestamp="1591173175262">
+      <screen x="-313" y="-1080" width="2048" height="824" />
+    </state>
+    <state width="1493" height="203" key="GridCell.Tab.0.center.inPresentationMode/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591173175262" />
+    <state width="2004" height="202" key="GridCell.Tab.0.center/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591197013715" />
+    <state width="1493" height="253" key="GridCell.Tab.0.center/0.0.1536.824/-313.-1080.2048.824@0.0.1536.824" timestamp="1591303126386" />
+    <state width="1493" height="203" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591170892961" />
+    <state width="1493" height="253" key="GridCell.Tab.0.left" timestamp="1591303126386">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="206" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590746583393" />
-    <state width="724" height="206" key="GridCell.Tab.0.right" timestamp="1590746583393">
+    <state width="1493" height="203" key="GridCell.Tab.0.left.inPresentationMode" timestamp="1591173175262">
+      <screen x="-313" y="-1080" width="2048" height="824" />
+    </state>
+    <state width="1493" height="203" key="GridCell.Tab.0.left.inPresentationMode/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591173175262" />
+    <state width="2004" height="202" key="GridCell.Tab.0.left/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591197013714" />
+    <state width="1493" height="253" key="GridCell.Tab.0.left/0.0.1536.824/-313.-1080.2048.824@0.0.1536.824" timestamp="1591303126386" />
+    <state width="1493" height="203" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591170892961" />
+    <state width="1493" height="253" key="GridCell.Tab.0.right" timestamp="1591303126386">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="206" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590746583393" />
+    <state width="1493" height="203" key="GridCell.Tab.0.right.inPresentationMode" timestamp="1591173175262">
+      <screen x="-313" y="-1080" width="2048" height="824" />
+    </state>
+    <state width="1493" height="203" key="GridCell.Tab.0.right.inPresentationMode/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591173175262" />
+    <state width="2004" height="202" key="GridCell.Tab.0.right/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591197013715" />
+    <state width="1493" height="253" key="GridCell.Tab.0.right/0.0.1536.824/-313.-1080.2048.824@0.0.1536.824" timestamp="1591303126386" />
+    <state width="1493" height="203" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591170892961" />
+    <state width="1493" height="253" key="GridCell.Tab.1.bottom" timestamp="1591303126387">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="253" key="GridCell.Tab.1.bottom/0.0.1536.824/-313.-1080.2048.824@0.0.1536.824" timestamp="1591303126387" />
+    <state width="1493" height="253" key="GridCell.Tab.1.center" timestamp="1591303126387">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="253" key="GridCell.Tab.1.center/0.0.1536.824/-313.-1080.2048.824@0.0.1536.824" timestamp="1591303126387" />
+    <state width="1493" height="253" key="GridCell.Tab.1.left" timestamp="1591303126387">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="253" key="GridCell.Tab.1.left/0.0.1536.824/-313.-1080.2048.824@0.0.1536.824" timestamp="1591303126387" />
+    <state width="1493" height="253" key="GridCell.Tab.1.right" timestamp="1591303126387">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="253" key="GridCell.Tab.1.right/0.0.1536.824/-313.-1080.2048.824@0.0.1536.824" timestamp="1591303126387" />
+    <state x="153" y="-1020" width="1177" height="685" key="SettingsEditor" timestamp="1591309308928">
+      <screen x="-313" y="-1080" width="2048" height="824" />
+    </state>
+    <state x="153" y="-1020" width="1177" height="685" key="SettingsEditor/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591309308928" />
     <state width="428" height="500" key="javadoc.popup.new" timestamp="1590745632025">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="428" height="500" key="javadoc.popup.new/0.0.1536.824@0.0.1536.824" timestamp="1590745632025" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1590743818298">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1591289973177">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="254" y="-893" key="run.anything.popup/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591178255315" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824/-313.-1080.2048.824@0.0.1536.824" timestamp="1591289973177" />
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1590743818298" />
   </component>
 </project>

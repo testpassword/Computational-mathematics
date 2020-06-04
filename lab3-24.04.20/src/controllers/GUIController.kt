@@ -1,7 +1,7 @@
 package controllers
 
 import AeroMain
-import Point
+import math.Point
 import javafx.application.Platform
 import javafx.collections.FXCollections
 import javafx.event.EventHandler

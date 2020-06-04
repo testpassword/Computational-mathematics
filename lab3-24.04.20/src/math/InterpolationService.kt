@@ -1,6 +1,5 @@
 package math
 
-import Point
 import math.InterpolationService.SolveMethods.*
 import math.InterpolationSolver.LeastSquaresType
 import kotlin.math.*
@@ -61,7 +60,7 @@ object InterpolationService {
 
     /**
      * Генерирует [n] точек на на плоскости для переданного отрезка [interval] оси OX по правилу [f].
-     * @return List<Point>.
+     * @return List<math.Point>.
      * @throws IllegalArgumentException если [interval.second <= interval.first || (n - 1) <= 0].
      * @throws ArithmeticException если генерируемая точка приняла значение [isNaN] или [isInfinite].
      */

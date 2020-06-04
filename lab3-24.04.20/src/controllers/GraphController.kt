@@ -1,6 +1,6 @@
 package controllers
 
-import Point
+import math.Point
 import javafx.fxml.FXML
 import javafx.fxml.Initializable
 import javafx.scene.chart.*

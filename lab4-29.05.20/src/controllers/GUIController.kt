@@ -1,7 +1,6 @@
 package controllers
 
 import AeroMain
-import Point
 import javafx.application.Platform
 import javafx.collections.FXCollections
 import javafx.event.EventHandler
@@ -10,19 +9,19 @@ import javafx.fxml.FXMLLoader
 import javafx.fxml.Initializable
 import javafx.scene.Cursor
 import javafx.scene.control.*
-import javafx.scene.control.cell.PropertyValueFactory
-import javafx.scene.control.cell.TextFieldTableCell
 import javafx.scene.effect.DropShadow
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.HBox
 import javafx.scene.paint.Color
-import javafx.util.converter.DoubleStringConverter
-import math.MathFunction
+import math.*
+import math.differential.OrdinaryDifferentialService
+import math.differential.OrdinaryDifferentialSolver
+import math.interpolation.InterpolationSolver
 import java.awt.Desktop
-import java.net.URI
-import java.net.URL
+import java.net.*
 import java.util.*
+import kotlin.Exception
 
 /**
  * Управляет взаимодействием с пользователем посредством графического интерфейса.
@@ -34,9 +33,12 @@ import java.util.*
  */
 class GUIController: Initializable {
 
+    val RED_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.RED)
+    val BLUE_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.DEEPSKYBLUE)
+    val GREEN_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.LIGHTGREEN)
     @FXML private lateinit var toolbar: HBox
     @FXML private lateinit var gControl: GraphController
-    @FXML private lateinit var methodChooser: ComboBox<String>
+    @FXML private lateinit var methodChooser: ComboBox<OrdinaryDifferentialSolver>
     @FXML private lateinit var funcChooser: ComboBox<MathFunction<Double>>
     @FXML private lateinit var leftBoundInput: TextField
     @FXML private lateinit var rightBoundInput: TextField
@@ -47,11 +49,9 @@ class GUIController: Initializable {
     @FXML private lateinit var interpolationControl: HBox
     @FXML private lateinit var xInput: TextField
     @FXML private lateinit var yOutput: TextField
-    val RED_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.RED)
-    val BLUE_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.DEEPSKYBLUE)
-    val GREEN_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.LIGHTGREEN)
-    private var func: MathFunction<Double>? = null
-    private var approxFunc: MathFunction<Double>? = null
+    private lateinit var method: OrdinaryDifferentialSolver
+    private lateinit var func: MathFunction<Double>
+    private lateinit var approxFunc: MathFunction<Double>
     private var dots: List<Point>? = null
     companion object { private var linesCounter = 1 }
 
@@ -84,27 +84,36 @@ class GUIController: Initializable {
                 is TextField -> it.textProperty().addListener {_, _, _ -> resetDots() }
             }
         }
-        //TODO: listener точности
         sequenceOf(leftBoundInput, rightBoundInput, leftBoundValInput, xInput).forEach {
             it.textProperty().addListener{ _, oldVal, newVal ->
                 if (!newVal.matches(Regex("-?\\d{0,2}([.]\\d{0,6})?"))) {
                     printMessage(RED_LIGHT, "Поле должны быть представлены числом", "Максимальная точность - 6 знаков после запятой")
+                    println(oldVal)
                     it.text = oldVal
                 }
             }
         }
         xInput.textProperty().addListener { _, oldVal, newVal ->
             val x = newVal.toDouble()
-            if (x <= dots!!.max()!!.x) {
-                val y = approxFunc!!.func(x)
+            val min = dots!!.min()!!.x
+            val max = dots!!.max()!!.x
+            if (x in min..max) {
+                val y = approxFunc.func(x)
                 yOutput.text = y.toString()
                 val p = Point(x, y)
-                redrawGraph(Pair(dots!!.min()!!.x, dots!!.max()!!.x), p)
+                redrawGraph(Pair(min, max), p)
             } else {
-                printMessage(RED_LIGHT, "x не должно быть больше правого значения интервала")
+                printMessage(RED_LIGHT, "x должно быть в интервале [${leftBoundInput.text} ; ${rightBoundInput.text}]")
+                xInput.text = oldVal
             }
         }
+        methodChooser.valueProperty().addListener {
+                _, _, _ -> method = methodChooser.value }
+        funcChooser.valueProperty().addListener {
+                _, _, _ -> func = funcChooser.value }
         //TODO: методы и уравнения
+        funcChooser.items = FXCollections.observableList(OrdinaryDifferentialService.equations)
+        methodChooser.items = FXCollections.observableList(OrdinaryDifferentialSolver.values().toList())
         FXMLLoader(javaClass.getResource("/resources/graph.fxml")).let {
             mainPane.right = it.load()
             gControl = it.getController() as GraphController
@@ -129,14 +138,32 @@ class GUIController: Initializable {
         outputArea.effect = lightning
     }
 
-    @FXML private fun redrawGraph(borders: Pair<Double, Double>, extraPoints: Point? = null) =
+    private fun redrawGraph(borders: Pair<Double, Double>, extraPoint: Point? = null) =
         gControl.let {
             it.clear()
-            it.drawLine(this.func!!, borders)
-            it.drawLine(this.approxFunc!!, borders)
+            //it.drawLine(this.func, borders)
+            it.drawLine(this.approxFunc, borders)
             dots!!.forEach {p -> it.drawPoint(p) }
-            if (extraPoints != null) gControl.drawPoint(extraPoints, Color.DARKKHAKI)
+            if (extraPoint != null) gControl.drawPoint(extraPoint, Color.DARKKHAKI)
         }
 
-    @FXML private fun showResult() { }
+    @FXML private fun showResult() {
+        try {
+            val x0 = leftBoundInput.text.toDouble()
+            val xn = rightBoundInput.text.toDouble()
+            val y0 = leftBoundValInput.text.toDouble()
+            if (x0 >= xn) throw Exception("x0 =$x0 должно быть меньше xn=$xn")
+            val accuracy = accInput.text.toDouble().let {
+                if (it <= 0) {
+                    printMessage(RED_LIGHT, "Точность должна быть строго больше 0", "Мы поправили её за вас 🥰")
+                    it.coerceAtLeast(0.01)
+                } else it
+            }
+            if (((xn - x0) / accuracy) > 50) throw Exception("Сильно много точек, JavaFX не поймёт 😭")
+            this.dots = OrdinaryDifferentialSolver.EULER.solve(this.func, Point(x0, y0), accuracy, (x0..xn))
+            this.approxFunc = InterpolationSolver.newtonPolynomial(this.dots!!)
+            redrawGraph(Pair(x0, xn))
+            //TODO: разблокировать расчёт в другой точке
+        } catch (e: Exception) { printMessage(RED_LIGHT, e.localizedMessage) }
+    }
 }
