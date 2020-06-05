@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.effect.Bloom?>
 
-<LineChart fx:id="canvas" prefHeight="548.0" prefWidth="576.0" title="y = ƒ(x)" stylesheets="@graph.css"
-           BorderPane.alignment="CENTER" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.GraphController">
+<LineChart fx:id="canvas" prefHeight="548.0" prefWidth="576.0" stylesheets="@graph.css" title="y' = ƒ(x)" BorderPane.alignment="CENTER" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.2-internal" fx:controller="controllers.GraphController">
     <xAxis>
         <NumberAxis label="x" side="BOTTOM">
             <effect>

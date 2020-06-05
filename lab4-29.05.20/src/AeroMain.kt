@@ -2,7 +2,6 @@ import javafx.animation.KeyFrame
 import javafx.animation.Timeline
 import javafx.application.Application
 import javafx.application.Platform
-import javafx.beans.property.SimpleBooleanProperty
 import javafx.embed.swing.SwingFXUtils
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
@@ -31,8 +30,7 @@ import java.io.IOException
  */
 class AeroMain: Application() {
     /**
-     * Инициализирует главную сцену, настраивает её эффекты.
-     * @param stage сцена
+     * Инициализирует главную сцену [stage], настраивает её эффекты.
      * @throws IOException при ошибке загрузки внешних ресурсов.
      */
     @Throws(IOException::class)
@@ -102,10 +100,7 @@ class AeroMain: Application() {
         private val layout = Pane()
         var stage: Stage? = null
 
-        /**
-         * Точка запуска приложения.
-         * @param args аргументы командной строки.
-         */
+        /** Точка запуска приложения, с аргументами командной строки [args].*/
         @JvmStatic
         fun main(args: Array<String>) = launch(AeroMain::class.java)
     }

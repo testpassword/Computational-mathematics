@@ -20,7 +20,5 @@ public interface MathFunction<N extends Number> {
      * @param x неизвестные переменные функции.
      * @return значение y точки.
      */
-    default N getPlotDot(N ...x) {
-        return func(x);
-    }
+    default N getPlotDot(N ...x) { return func(x); }
 }

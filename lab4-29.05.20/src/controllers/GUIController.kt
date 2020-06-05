@@ -7,6 +7,7 @@ import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.fxml.Initializable
+import javafx.geometry.Point2D
 import javafx.scene.Cursor
 import javafx.scene.control.*
 import javafx.scene.effect.DropShadow
@@ -14,10 +15,11 @@ import javafx.scene.input.MouseEvent
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.HBox
 import javafx.scene.paint.Color
-import math.*
-import math.differential.OrdinaryDifferentialService
+import math.MathFunction
 import math.differential.OrdinaryDifferentialSolver
 import math.interpolation.InterpolationSolver
+import org.mariuszgromada.math.mxparser.Argument
+import org.mariuszgromada.math.mxparser.Expression
 import java.awt.Desktop
 import java.net.*
 import java.util.*
@@ -29,17 +31,20 @@ import kotlin.Exception
  * @property GREEN_LIGHT эффект красного свечения по контуру объекта; может быть применён к объекту {@see Node}.
  * @property BLUE_LIGHT эффект красного свечения по контуру объекта; может быть применён к объекту {@see Node}.
  * @author Артемий Кульбако.
- * @version 1.0
+ * @version 1.5
  */
 class GUIController: Initializable {
 
-    val RED_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.RED)
-    val BLUE_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.DEEPSKYBLUE)
-    val GREEN_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.LIGHTGREEN)
+    companion object {
+        val RED_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.RED)
+        val BLUE_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.DEEPSKYBLUE)
+        val GREEN_LIGHT = DropShadow(25.0, 0.0, 0.0, Color.LIGHTGREEN)
+        private var linesCounter = 1
+    }
     @FXML private lateinit var toolbar: HBox
     @FXML private lateinit var gControl: GraphController
     @FXML private lateinit var methodChooser: ComboBox<OrdinaryDifferentialSolver>
-    @FXML private lateinit var funcChooser: ComboBox<MathFunction<Double>>
+    @FXML private lateinit var funcInput: TextField
     @FXML private lateinit var leftBoundInput: TextField
     @FXML private lateinit var rightBoundInput: TextField
     @FXML private lateinit var leftBoundValInput: TextField
@@ -50,13 +55,11 @@ class GUIController: Initializable {
     @FXML private lateinit var xInput: TextField
     @FXML private lateinit var yOutput: TextField
     private lateinit var method: OrdinaryDifferentialSolver
-    private lateinit var func: MathFunction<Double>
     private lateinit var approxFunc: MathFunction<Double>
-    private var dots: List<Point>? = null
-    companion object { private var linesCounter = 1 }
+    private var dots: List<Point2D>? = null
 
     /**
-     * Инициализирует экземпляр класс GUIController, навешивая на различные его элементы обработчики событий и эффекты
+     * Инициализирует экземпляр класс [GUIController], навешивая на различные его элементы обработчики событий и эффекты
      * постобработки.
      * @param url адрес внешнего ресурса, который может быть загружен.
      * @param bundle внешний ресурс, который может быть использован.
@@ -67,9 +70,10 @@ class GUIController: Initializable {
             it.onMouseEntered = EventHandler { mouseEvent: MouseEvent -> if (!mouseEvent.isPrimaryButtonDown) { it.cursor = Cursor.HAND } }
             it.onMouseExited = EventHandler { mouseEvent: MouseEvent -> if (!mouseEvent.isPrimaryButtonDown) { toolbar.cursor = Cursor.DEFAULT } }
         }
-        sequenceOf(methodChooser, funcChooser, leftBoundInput, rightBoundInput, leftBoundValInput, accInput,
-            xInput, yOutput).forEach {
-            it.focusedProperty().addListener { _, _, newVal -> it.effect = if (newVal!!) BLUE_LIGHT else null }
+        sequenceOf(methodChooser, funcInput, leftBoundInput, rightBoundInput, leftBoundValInput, accInput, xInput,
+            yOutput).forEach {
+            it.focusedProperty().addListener { _, _, newVal ->
+                it.effect = if (newVal!!) BLUE_LIGHT else null }
         }
         val resetDots = {
             dots?.let {
@@ -78,7 +82,7 @@ class GUIController: Initializable {
             }
             interpolationControl.isDisable = true
         }
-        sequenceOf(methodChooser, funcChooser, leftBoundInput, rightBoundInput, leftBoundValInput, accInput).forEach {
+        sequenceOf(methodChooser, funcInput, leftBoundInput, rightBoundInput, leftBoundValInput, accInput).forEach {
             when (it) {
                 is ComboBox<out Any> -> it.valueProperty().addListener {_, _, _ -> resetDots() }
                 is TextField -> it.textProperty().addListener {_, _, _ -> resetDots() }
@@ -95,24 +99,21 @@ class GUIController: Initializable {
         }
         xInput.textProperty().addListener { _, oldVal, newVal ->
             val x = newVal.toDouble()
-            val min = dots!!.min()!!.x
-            val max = dots!!.max()!!.x
+            val min = dots!!.minBy { it.x }!!.x
+            val max = dots!!.maxBy { it.x }!!.x
             if (x in min..max) {
                 val y = approxFunc.func(x)
                 yOutput.text = y.toString()
-                val p = Point(x, y)
+                val p = Point2D(x, y)
                 redrawGraph(Pair(min, max), p)
+                printMessage(GREEN_LIGHT, "Значение функции в f'(x) = $y")
             } else {
-                printMessage(RED_LIGHT, "x должно быть в интервале [${leftBoundInput.text} ; ${rightBoundInput.text}]")
-                xInput.text = oldVal
+                printMessage(RED_LIGHT, "x должно быть в интервале [${leftBoundInput.text} ; ${rightBoundInput.text})")
+                xInput.text = oldVal?: ""
             }
         }
         methodChooser.valueProperty().addListener {
                 _, _, _ -> method = methodChooser.value }
-        funcChooser.valueProperty().addListener {
-                _, _, _ -> func = funcChooser.value }
-        //TODO: методы и уравнения
-        funcChooser.items = FXCollections.observableList(OrdinaryDifferentialService.equations)
         methodChooser.items = FXCollections.observableList(OrdinaryDifferentialSolver.values().toList())
         FXMLLoader(javaClass.getResource("/resources/graph.fxml")).let {
             mainPane.right = it.load()
@@ -130,7 +131,7 @@ class GUIController: Initializable {
     @FXML fun showCredits() = Desktop.getDesktop().browse(URI("https://github.com/testpassword"))
 
     /** Печатает сообщение в главное окно вывода. */
-    @FXML fun printMessage(lightning: DropShadow, vararg strings: String) {
+    fun printMessage(lightning: DropShadow, vararg strings: String) {
         strings.forEach {
             outputArea.appendText("$linesCounter. $it\n")
             linesCounter++
@@ -138,10 +139,9 @@ class GUIController: Initializable {
         outputArea.effect = lightning
     }
 
-    private fun redrawGraph(borders: Pair<Double, Double>, extraPoint: Point? = null) =
+    private fun redrawGraph(borders: Pair<Double, Double>, extraPoint: Point2D? = null) =
         gControl.let {
             it.clear()
-            //it.drawLine(this.func, borders)
             it.drawLine(this.approxFunc, borders)
             dots!!.forEach {p -> it.drawPoint(p) }
             if (extraPoint != null) gControl.drawPoint(extraPoint, Color.DARKKHAKI)
@@ -149,6 +149,10 @@ class GUIController: Initializable {
 
     @FXML private fun showResult() {
         try {
+            val expression = Expression(funcInput.text).apply {
+                this.addArguments(Argument("x"), Argument("y"))
+                if (!this.checkSyntax()) throw IllegalArgumentException("Уравнение введено неверно")
+            }
             val x0 = leftBoundInput.text.toDouble()
             val xn = rightBoundInput.text.toDouble()
             val y0 = leftBoundValInput.text.toDouble()
@@ -159,11 +163,17 @@ class GUIController: Initializable {
                     it.coerceAtLeast(0.01)
                 } else it
             }
-            if (((xn - x0) / accuracy) > 50) throw Exception("Сильно много точек, JavaFX не поймёт 😭")
-            this.dots = OrdinaryDifferentialSolver.EULER.solve(this.func, Point(x0, y0), accuracy, (x0..xn))
+            if (((xn - x0) / accuracy) > 50) throw IllegalArgumentException("Сильно много точек, JavaFX не поймёт 😭")
+            this.dots = OrdinaryDifferentialSolver.EULER.solve(expression, Point2D(x0, y0), accuracy, (x0..xn))
             this.approxFunc = InterpolationSolver.newtonPolynomial(this.dots!!)
             redrawGraph(Pair(x0, xn))
-            //TODO: разблокировать расчёт в другой точке
-        } catch (e: Exception) { printMessage(RED_LIGHT, e.localizedMessage) }
+            interpolationControl.isDisable = false
+            printMessage(GREEN_LIGHT, "Решение ОДУ найдено")
+        } catch (e: Exception) {
+            when (e) {
+                is NumberFormatException -> printMessage(RED_LIGHT, "Одно из полей незаполненно или заполнено неверно")
+                else -> printMessage(RED_LIGHT, e.localizedMessage)
+            }
+        }
     }
 }

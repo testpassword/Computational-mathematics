@@ -21,45 +21,9 @@
                   </DropShadow>
                </effect>
                <HBox.margin>
-                  <Insets right="35.0" />
+                  <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <HBox fx:id="interpolationControl" alignment="CENTER" disable="true" prefHeight="51.0" prefWidth="340.0" styleClass="unit">
-               <children>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="50.0" text="X">
-                     <graphic>
-                        <TextField prefHeight="30.0" prefWidth="80.0" promptText="число" fx:id="xInput" />
-                     </graphic>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" text="=&gt;">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font></Label>
-                  <Label contentDisplay="RIGHT" layoutX="49.0" layoutY="10.0" prefHeight="50.0" text="Y" textFill="#bd1d1d">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <graphic>
-                        <TextField fx:id="yOutput" editable="false" prefWidth="80.0" promptText="dfdfdf" />
-                     </graphic>
-                  </Label>
-               </children>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </HBox>
             <Button fx:id="infoBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="1178.0" layoutY="44.0" mnemonicParsing="false" onAction="#showCredits" styleClass="info-button">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="minimize-button">
@@ -69,8 +33,11 @@
                   </ImageView>
                </graphic>
                <HBox.margin>
-                  <Insets left="420.0" />
+                  <Insets left="750.0" />
                </HBox.margin>
+               <tooltip>
+                  <Tooltip text="Открыть профиль разработчика на github" />
+               </tooltip>
             </Button>
             <Button alignment="CENTER" contentDisplay="CENTER" layoutX="1196.0" layoutY="41.0" mnemonicParsing="false" onAction="#minimizeWindow" styleClass="minimize-button">
                <graphic>
@@ -83,6 +50,7 @@
                <HBox.margin>
                   <Insets left="2.0" />
                </HBox.margin>
+               <tooltip><Tooltip text="Свернуть (шею разработчику)" /></tooltip>
             </Button>
             <Button fx:id="exitBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#closeProgram" styleClass="exit-button">
                <HBox.margin>
@@ -92,7 +60,9 @@
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <Image url="@icons/close-w.png" />
                   </ImageView>
-               </graphic></Button>
+               </graphic>
+               <tooltip><Tooltip text="Закрыть (поганый рот разработчика)" /></tooltip>
+            </Button>
          </children>
          <padding>
             <Insets bottom="25.0" left="35.0" right="25.0" top="25.0" />
@@ -109,69 +79,105 @@
       <!--место для графика-->
    </right>
    <left>
-      <VBox alignment="CENTER" fillWidth="false" prefHeight="548.0" prefWidth="576.0" styleClass="control-pane" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="450.0" spacing="25.0">
-               <children>
-                  <ComboBox fx:id="methodChooser" prefHeight="30.0" prefWidth="200.0" promptText="метод" />
-                  <ComboBox fx:id="funcChooser" prefHeight="30.0" prefWidth="200.0" promptText="функция" />
-               </children></HBox>
-            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="450.0" spacing="20.0">
-               <children>
-                  <Label contentDisplay="RIGHT" text="левая гр.">
-                     <graphic>
-                        <TextField fx:id="leftBoundInput" prefHeight="30.0" prefWidth="110.0" promptText="число" />
-                     </graphic>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <Label layoutX="15.0" layoutY="15.0" text="правая гр.">
-                     <graphic>
-                        <TextField fx:id="rightBoundInput" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="110.0" promptText="число" />
-                     </graphic>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </Label>
-               </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding></HBox>
-            <HBox alignment="CENTER" layoutX="73.0" layoutY="190.0" prefHeight="55.0" prefWidth="450.0" spacing="20.0">
-               <children>
-                  <Label contentDisplay="TOP" text="знач. в лев. гр">
-                     <graphic>
-                        <TextField fx:id="leftBoundValInput" alignment="CENTER" prefHeight="30.0" prefWidth="110.0" promptText="число" />
-                     </graphic>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <Label contentDisplay="TOP" layoutX="15.0" layoutY="15.0" text="точность">
-                     <graphic>
-                        <TextField fx:id="accInput" alignment="CENTER" prefHeight="30.0" prefWidth="110.0" promptText="число" />
-                     </graphic>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </Label>
-               </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </HBox>
-            <Separator prefHeight="28.0" prefWidth="440.0" />
-            <TextArea fx:id="outputArea" editable="false" prefHeight="150.0" prefWidth="440.0" promptText="лог программы" />
-         </children>
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="548.0" prefWidth="576.0" styleClass="control-pane"
+            BorderPane.alignment="CENTER">
          <padding>
-            <Insets bottom="30.0" left="50.0" right="50.0" top="30.0" />
-         </padding></VBox>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0"/>
+         </padding>
+         <HBox alignment="CENTER" prefHeight="30.0" prefWidth="450.0" spacing="25.0">
+            <ComboBox fx:id="methodChooser" prefHeight="30.0" prefWidth="200.0" promptText="метод"/>
+            <TextField fx:id="funcInput" promptText="функция вида y'="/>
+         </HBox>
+         <HBox alignment="CENTER" prefHeight="55.0" prefWidth="450.0" spacing="20.0">
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+            <Label contentDisplay="RIGHT" text="левая гр.">
+               <graphic>
+                  <TextField fx:id="leftBoundInput" prefHeight="30.0" prefWidth="110.0" promptText="число"/>
+               </graphic>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+               </padding>
+               <HBox.margin>
+                  <Insets/>
+               </HBox.margin>
+            </Label>
+            <Label layoutX="15.0" layoutY="15.0" text="правая гр.">
+               <graphic>
+                  <TextField fx:id="rightBoundInput" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="110.0"
+                             promptText="число"/>
+               </graphic>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+               </padding>
+            </Label>
+         </HBox>
+         <HBox alignment="CENTER" layoutX="73.0" layoutY="190.0" prefHeight="55.0" prefWidth="450.0" spacing="20.0">
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+            <Label contentDisplay="TOP" text="знач. в лев. гр">
+               <graphic>
+                  <TextField fx:id="leftBoundValInput" alignment="CENTER" prefHeight="30.0" prefWidth="110.0"
+                             promptText="число"/>
+               </graphic>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+               </padding>
+               <HBox.margin>
+                  <Insets/>
+               </HBox.margin>
+            </Label>
+            <Label contentDisplay="TOP" layoutX="15.0" layoutY="15.0" text="точность">
+               <graphic>
+                  <TextField fx:id="accInput" alignment="CENTER" prefHeight="30.0" prefWidth="110.0"
+                             promptText="число"/>
+               </graphic>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+               </padding>
+            </Label>
+         </HBox>
+         <Separator prefHeight="28.0" prefWidth="440.0"/>
+         <TextArea fx:id="outputArea" editable="false" prefHeight="150.0" prefWidth="440.0" promptText="лог программы"/>
+         <HBox fx:id="interpolationControl" alignment="CENTER" disable="true" prefHeight="51.0" prefWidth="340.0"
+               styleClass="unit">
+            <VBox.margin>
+               <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+            </VBox.margin>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="50.0" text="X">
+               <graphic>
+                  <TextField prefHeight="30.0" prefWidth="80.0" promptText="число" fx:id="xInput"/>
+               </graphic>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+               </padding>
+               <HBox.margin>
+                  <Insets/>
+               </HBox.margin>
+               <font>
+                  <Font size="14.0"/>
+               </font>
+            </Label>
+            <Label alignment="CENTER" text="=&gt;">
+               <font>
+                  <Font name="System Bold" size="14.0"/>
+               </font>
+            </Label>
+            <Label contentDisplay="RIGHT" layoutX="49.0" layoutY="10.0" prefHeight="50.0" text="Y"
+                   textFill="#bd1d1d">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+               </padding>
+               <font>
+                  <Font size="14.0"/>
+               </font>
+               <graphic>
+                  <TextField fx:id="yOutput" editable="false" prefWidth="80.0" promptText="dfdfdf"/>
+               </graphic>
+            </Label>
+         </HBox>
+      </VBox>
    </left>
 </BorderPane>
