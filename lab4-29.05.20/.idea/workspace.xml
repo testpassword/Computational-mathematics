@@ -7,108 +7,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8705f8d0-062f-412c-bfbe-d8c7d2bfa620" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/code.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/scheme.dio" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/~$чмат_лаб4_отчёт.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/вычмат_лаб4_отчёт.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/MathParser.org-mXparser-v.4.4.0-jdk8.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/derivative.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/derivative.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$2$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GraphController$drawLine$$inlined$apply$lambda$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GraphController$drawLine$$inlined$apply$lambda$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GraphController$drawLine$$inlined$apply$lambda$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/Point.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/controllers/GUIController$initialize$$inlined$let$lambda$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/controllers/GUIController$initialize$$inlined$let$lambda$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/controllers/GUIController$initialize$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/controllers/GUIController$initialize$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/controllers/GUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/controllers/GUIController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/controllers/GraphController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/controllers/GraphController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods$LEAST_SQUARES.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods$LEAST_SQUARES.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods$NEWTON_POLYNOMIAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods$NEWTON_POLYNOMIAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService$SolveMethods.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$Companion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$EXPONENTIAL$approximate$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$EXPONENTIAL$approximate$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$EXPONENTIAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$EXPONENTIAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$LINEAR$approximate$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$LINEAR$approximate$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$LINEAR.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$LINEAR.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$LOGARITHMIC$approximate$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$LOGARITHMIC$approximate$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$LOGARITHMIC.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$LOGARITHMIC.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$POW$approximate$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$POW$approximate$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$POW.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$POW.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$QUADRATIC$approximate$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$QUADRATIC$approximate$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$QUADRATIC.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType$QUADRATIC.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$LeastSquaresType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$newtonPolynomial$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver$newtonPolynomial$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3-24.04.20/out/production/lab3-24.04.20/math/InterpolationSolver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab4-29.05.20.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lab4-29.05.20.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/AeroMain$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/AeroMain$Companion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/AeroMain$makeDraggable$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/AeroMain$makeDraggable$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/AeroMain$makeDraggable$2$pause$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/AeroMain$makeDraggable$2$pause$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/AeroMain$makeDraggable$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/AeroMain$makeDraggable$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/AeroMain$makeDraggable$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/AeroMain$makeDraggable$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/AeroMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/AeroMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/Point.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$Companion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$$inlined$forEach$lambda$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$$inlined$forEach$lambda$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$$inlined$forEach$lambda$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$$inlined$forEach$lambda$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$$inlined$forEach$lambda$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$$inlined$forEach$lambda$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$$inlined$forEach$lambda$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$$inlined$let$lambda$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$$inlined$let$lambda$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$1$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$resetDots$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController$initialize$resetDots$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GUIController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GraphController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/controllers/GraphController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/MathFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/MathFunction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/Point.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/differential/OrdinaryDifferentialService$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/differential/OrdinaryDifferentialService$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/differential/OrdinaryDifferentialService$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/differential/OrdinaryDifferentialService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/differential/OrdinaryDifferentialSolver$EULER$solve$a$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/differential/OrdinaryDifferentialSolver$EULER$solve$a$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/differential/OrdinaryDifferentialSolver$EULER.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/differential/OrdinaryDifferentialSolver$EULER.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/differential/OrdinaryDifferentialSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/differential/OrdinaryDifferentialSolver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$Companion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$EXPONENTIAL$approximate$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$EXPONENTIAL$approximate$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$EXPONENTIAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$EXPONENTIAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$LINEAR$approximate$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$LINEAR$approximate$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$LINEAR.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$LINEAR.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$LOGARITHMIC$approximate$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$LOGARITHMIC$approximate$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$LOGARITHMIC.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$LOGARITHMIC.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$POW$approximate$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$POW.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$POW.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$QUADRATIC$approximate$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$QUADRATIC$approximate$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$QUADRATIC.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType$QUADRATIC.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$LeastSquaresType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$newtonPolynomial$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver$newtonPolynomial$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/math/interpolation/InterpolationSolver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/resources/graph.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/resources/graph.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4-29.05.20/resources/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4-29.05.20/resources/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AeroMain.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/AeroMain.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Point.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/GUIController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/GUIController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/GraphController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/GraphController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/math/MathFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/MathFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/math/Point.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/math/differential/OrdinaryDifferentialService.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/math/differential/OrdinaryDifferentialSolver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/differential/OrdinaryDifferentialSolver.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/math/interpolation/InterpolationSolver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/interpolation/InterpolationSolver.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/graph.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/graph.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="8705f8d0-062f-412c-bfbe-d8c7d2bfa620" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -152,7 +51,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -214,6 +113,8 @@
       <workItem from="1591307905497" duration="1046000" />
       <workItem from="1591308994005" duration="332000" />
       <workItem from="1591356512991" duration="20744000" />
+      <workItem from="1591624568294" duration="3384000" />
+      <workItem from="1592255101295" duration="127000" />
     </task>
     <servers />
   </component>
@@ -246,46 +147,46 @@
     </state>
     <state x="419" y="-913" key="FileChooserDialogImpl/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591360069063" />
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1591169973350" />
-    <state width="2004" height="282" key="GridCell.Tab.0.bottom" timestamp="1591399723331">
-      <screen x="-313" y="-1080" width="2048" height="824" />
+    <state width="1493" height="257" key="GridCell.Tab.0.bottom" timestamp="1592255227162">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="203" key="GridCell.Tab.0.bottom.inPresentationMode" timestamp="1591173175262">
       <screen x="-313" y="-1080" width="2048" height="824" />
     </state>
     <state width="1493" height="203" key="GridCell.Tab.0.bottom.inPresentationMode/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591173175262" />
     <state width="2004" height="282" key="GridCell.Tab.0.bottom/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591399723331" />
-    <state width="1493" height="253" key="GridCell.Tab.0.bottom/0.0.1536.824/-313.-1080.2048.824@0.0.1536.824" timestamp="1591303126386" />
-    <state width="1493" height="203" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591170892961" />
-    <state width="2004" height="282" key="GridCell.Tab.0.center" timestamp="1591399723331">
-      <screen x="-313" y="-1080" width="2048" height="824" />
+    <state width="1493" height="257" key="GridCell.Tab.0.bottom/0.0.1536.824/-313.-1080.2048.824@0.0.1536.824" timestamp="1591630756665" />
+    <state width="1493" height="257" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592255227162" />
+    <state width="1493" height="257" key="GridCell.Tab.0.center" timestamp="1592255227161">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="203" key="GridCell.Tab.0.center.inPresentationMode" timestamp="1591173175262">
       <screen x="-313" y="-1080" width="2048" height="824" />
     </state>
     <state width="1493" height="203" key="GridCell.Tab.0.center.inPresentationMode/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591173175262" />
     <state width="2004" height="282" key="GridCell.Tab.0.center/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591399723331" />
-    <state width="1493" height="253" key="GridCell.Tab.0.center/0.0.1536.824/-313.-1080.2048.824@0.0.1536.824" timestamp="1591303126386" />
-    <state width="1493" height="203" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591170892961" />
-    <state width="2004" height="282" key="GridCell.Tab.0.left" timestamp="1591399723331">
-      <screen x="-313" y="-1080" width="2048" height="824" />
+    <state width="1493" height="257" key="GridCell.Tab.0.center/0.0.1536.824/-313.-1080.2048.824@0.0.1536.824" timestamp="1591630756665" />
+    <state width="1493" height="257" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1592255227161" />
+    <state width="1493" height="257" key="GridCell.Tab.0.left" timestamp="1592255227161">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="203" key="GridCell.Tab.0.left.inPresentationMode" timestamp="1591173175262">
       <screen x="-313" y="-1080" width="2048" height="824" />
     </state>
     <state width="1493" height="203" key="GridCell.Tab.0.left.inPresentationMode/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591173175262" />
     <state width="2004" height="282" key="GridCell.Tab.0.left/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591399723331" />
-    <state width="1493" height="253" key="GridCell.Tab.0.left/0.0.1536.824/-313.-1080.2048.824@0.0.1536.824" timestamp="1591303126386" />
-    <state width="1493" height="203" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591170892961" />
-    <state width="2004" height="282" key="GridCell.Tab.0.right" timestamp="1591399723331">
-      <screen x="-313" y="-1080" width="2048" height="824" />
+    <state width="1493" height="257" key="GridCell.Tab.0.left/0.0.1536.824/-313.-1080.2048.824@0.0.1536.824" timestamp="1591630756664" />
+    <state width="1493" height="257" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1592255227161" />
+    <state width="1493" height="257" key="GridCell.Tab.0.right" timestamp="1592255227162">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="203" key="GridCell.Tab.0.right.inPresentationMode" timestamp="1591173175262">
       <screen x="-313" y="-1080" width="2048" height="824" />
     </state>
     <state width="1493" height="203" key="GridCell.Tab.0.right.inPresentationMode/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591173175262" />
     <state width="2004" height="282" key="GridCell.Tab.0.right/0.0.1536.824/-313.-1080.2048.824@-313.-1080.2048.824" timestamp="1591399723331" />
-    <state width="1493" height="253" key="GridCell.Tab.0.right/0.0.1536.824/-313.-1080.2048.824@0.0.1536.824" timestamp="1591303126386" />
-    <state width="1493" height="203" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591170892961" />
+    <state width="1493" height="257" key="GridCell.Tab.0.right/0.0.1536.824/-313.-1080.2048.824@0.0.1536.824" timestamp="1591630756665" />
+    <state width="1493" height="257" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592255227162" />
     <state width="2004" height="282" key="GridCell.Tab.1.bottom" timestamp="1591399723332">
       <screen x="-313" y="-1080" width="2048" height="824" />
     </state>
